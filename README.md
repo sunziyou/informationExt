@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DingTalk Stream Mode 介绍
 
 ----
@@ -44,3 +45,7 @@ Java SDK for DingTalk Stream Mode API, Compared with the webhook mode, it is eas
 技术支持
 
 [点击链接，加入Stream模式共创群交流](https://open-dingtalk.github.io/developerpedia/docs/explore/support/?via=moon-group)
+=======
+# informationExt
+对信息提取和智能回复的衣蛾ai
+>>>>>>> ebd46ede4530c1e58800741b04d53faa0c255bdf

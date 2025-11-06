@@ -1,0 +1,246 @@
+2025-11-05 14:20:22.758 [DingTalk-Consumer-1-1] ERROR o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_send orgGroupSendWithOptions throw TeaException, errCode=resource.not.found, errorMessage=code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 0B33A477-5048-7D33-9A54-5862894378A4
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 0B33A477-5048-7D33-9A54-5862894378A4
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:64)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 14:20:22.760 [DingTalk-Consumer-1-1] ERROR o.e.c.c.ChatBotCallbackListener - send group message by robot error:code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 0B33A477-5048-7D33-9A54-5862894378A4
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 0B33A477-5048-7D33-9A54-5862894378A4
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:64)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 14:27:20.211 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'openAiChatModel' defined in class path resource [org/springframework/ai/autoconfigure/openai/OpenAiAutoConfiguration.class]: Failed to instantiate [org.springframework.ai.openai.OpenAiChatModel]: Factory method 'openAiChatModel' threw exception with message: OpenAI API key must be set. Use the connection property: spring.ai.openai.api-key or spring.ai.openai.chat.api-key property.
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at org.example.Application.main(Application.java:12)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.ai.openai.OpenAiChatModel]: Factory method 'openAiChatModel' threw exception with message: OpenAI API key must be set. Use the connection property: spring.ai.openai.api-key or spring.ai.openai.chat.api-key property.
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	... 19 common frames omitted
+Caused by: java.lang.IllegalArgumentException: OpenAI API key must be set. Use the connection property: spring.ai.openai.api-key or spring.ai.openai.chat.api-key property.
+	at org.springframework.util.Assert.hasText(Assert.java:240)
+	at org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration.resolveConnectionProperties(OpenAiAutoConfiguration.java:106)
+	at org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration.openAiApi(OpenAiAutoConfiguration.java:168)
+	at org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration.openAiChatModel(OpenAiAutoConfiguration.java:124)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	... 20 common frames omitted
+2025-11-05 14:29:17.618 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2025-11-05 14:30:54.849 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2025-11-05 15:33:04.627 [DingTalk-Consumer-1-2] ERROR o.e.s.RobotGroupMessagesService - 钉钉机器人发送失败 [TeaException] code=resource.not.found, message=code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: A8FBE6CE-1F5F-701F-8050-4CE12AC965CA
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: A8FBE6CE-1F5F-701F-8050-4CE12AC965CA
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:88)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:113)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 15:33:04.641 [DingTalk-Consumer-1-2] ERROR o.e.c.c.ChatBotCallbackListener - send group message by robot error:code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: A8FBE6CE-1F5F-701F-8050-4CE12AC965CA
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: A8FBE6CE-1F5F-701F-8050-4CE12AC965CA
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:88)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:113)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 15:34:06.514 [DingTalk-Consumer-1-2] ERROR o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_send orgGroupSendWithOptions throw TeaException, errCode=resource.not.found, errorMessage=code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 78BF0F28-79CC-7D32-895E-7AD64EEF986A
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 78BF0F28-79CC-7D32-895E-7AD64EEF986A
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:63)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 15:34:06.516 [DingTalk-Consumer-1-2] ERROR o.e.c.c.ChatBotCallbackListener - send group message by robot error:code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 78BF0F28-79CC-7D32-895E-7AD64EEF986A
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 78BF0F28-79CC-7D32-895E-7AD64EEF986A
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:63)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 16:23:36.903 [Thread-1] ERROR o.e.c.c.ChatBotCallbackListener - receive group message by robot error:Cannot invoke "com.dingtalk.open.app.api.models.bot.MessageContent.getContent()" because the return value of "com.dingtalk.open.app.api.models.bot.ChatbotMessage.getText()" is null
+java.lang.NullPointerException: Cannot invoke "com.dingtalk.open.app.api.models.bot.MessageContent.getContent()" because the return value of "com.dingtalk.open.app.api.models.bot.ChatbotMessage.getText()" is null
+	at org.example.service.RobotGroupMessagesService.sendPrivateMessage(RobotGroupMessagesService.java:105)
+	at org.example.callback.chatbot.ChatBotCallbackListener.executeInfo(ChatBotCallbackListener.java:63)
+	at org.example.callback.chatbot.ChatBotCallbackListener.lambda$afterPropertiesSet$0(ChatBotCallbackListener.java:54)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 16:56:56.556 [connection-pool-2-1] ERROR c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] establish connection failed
+java.net.ConnectException: Connection timed out: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:554)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304)
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:178)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:534)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:639)
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:266)
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:380)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1241)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1127)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179)
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:142)
+	at com.dingtalk.open.app.api.open.HttpOpenApiClient.openConnection(HttpOpenApiClient.java:37)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.openConnection(OpenDingTalkStreamClient.java:80)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.lambda$start$0(OpenDingTalkStreamClient.java:50)
+	at com.dingtalk.open.app.stream.network.core.DefaultSessionPool$ConnectionTask.run(DefaultSessionPool.java:159)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset$$$capture(FutureTask.java:305)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 17:07:07.364 [connection-pool-2-1] ERROR c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] establish connection failed
+com.dingtalk.open.app.api.OpenDingTalkAppException: http failed statusstatus=401,msg={"requestid":"D10FBC86-66AE-7AC2-8BC0-76221F6A650D","code":"authFailed","message":"鉴权失败"}
+	at com.dingtalk.open.app.api.DingTalkAppError.toException(DingTalkAppError.java:78)
+	at com.dingtalk.open.app.api.open.HttpOpenApiClient.openConnection(HttpOpenApiClient.java:45)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.openConnection(OpenDingTalkStreamClient.java:80)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.lambda$start$0(OpenDingTalkStreamClient.java:50)
+	at com.dingtalk.open.app.stream.network.core.DefaultSessionPool$ConnectionTask.run(DefaultSessionPool.java:159)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 17:07:12.052 [connection-pool-2-1] ERROR c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] establish connection failed
+com.dingtalk.open.app.api.OpenDingTalkAppException: http failed statusstatus=401,msg={"requestid":"250E0137-F3DB-7D5E-8859-8E707BB1323D","code":"authFailed","message":"鉴权失败"}
+	at com.dingtalk.open.app.api.DingTalkAppError.toException(DingTalkAppError.java:78)
+	at com.dingtalk.open.app.api.open.HttpOpenApiClient.openConnection(HttpOpenApiClient.java:45)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.openConnection(OpenDingTalkStreamClient.java:80)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.lambda$start$0(OpenDingTalkStreamClient.java:50)
+	at com.dingtalk.open.app.stream.network.core.DefaultSessionPool$ConnectionTask.run(DefaultSessionPool.java:159)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 17:07:17.046 [connection-pool-2-1] ERROR c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] establish connection failed
+com.dingtalk.open.app.api.OpenDingTalkAppException: http failed statusstatus=401,msg={"requestid":"4C251599-3967-7EF1-9AFB-2024F936A844","code":"authFailed","message":"鉴权失败"}
+	at com.dingtalk.open.app.api.DingTalkAppError.toException(DingTalkAppError.java:78)
+	at com.dingtalk.open.app.api.open.HttpOpenApiClient.openConnection(HttpOpenApiClient.java:45)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.openConnection(OpenDingTalkStreamClient.java:80)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.lambda$start$0(OpenDingTalkStreamClient.java:50)
+	at com.dingtalk.open.app.stream.network.core.DefaultSessionPool$ConnectionTask.run(DefaultSessionPool.java:159)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)

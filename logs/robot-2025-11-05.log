@@ -1,0 +1,787 @@
+2025-11-05 14:19:53.742 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 3320 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:19:53.745 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:19:55.547 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:19:55.549 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:19:55.936 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:19:55.955 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:19:55.958 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:19:55.959 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:19:56.065 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:19:56.065 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2254 ms
+2025-11-05 14:19:56.902 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:19:56.955 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:19:57.092 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 14:19:57.108 [main] INFO  org.example.Application - Started Application in 4.004 seconds (process running for 4.469)
+2025-11-05 14:19:57.816 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=74428752-ba0f-11f0-8bff-5215a8ef9827
+2025-11-05 14:20:22.605 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 33
+2025-11-05 14:20:22.758 [DingTalk-Consumer-1-1] ERROR o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_send orgGroupSendWithOptions throw TeaException, errCode=resource.not.found, errorMessage=code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 0B33A477-5048-7D33-9A54-5862894378A4
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 0B33A477-5048-7D33-9A54-5862894378A4
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:64)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 14:20:22.760 [DingTalk-Consumer-1-1] ERROR o.e.c.c.ChatBotCallbackListener - send group message by robot error:code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 0B33A477-5048-7D33-9A54-5862894378A4
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 0B33A477-5048-7D33-9A54-5862894378A4
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:64)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 14:22:43.070 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 4964 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:22:43.075 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:22:44.806 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:22:44.807 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:22:45.110 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:22:45.129 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:22:45.132 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:22:45.132 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:22:45.226 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:22:45.226 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2095 ms
+2025-11-05 14:22:45.707 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:22:45.731 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 14:22:45.739 [main] INFO  org.example.Application - Started Application in 3.186 seconds (process running for 3.616)
+2025-11-05 14:22:45.811 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:22:46.795 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=d9014b1d-ba0f-11f0-80bd-52afbb2bd5e8
+2025-11-05 14:22:57.283 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 你是谁
+2025-11-05 14:23:53.448 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 31280 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:23:53.451 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:23:55.115 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:23:55.116 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:23:55.387 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:23:55.419 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:23:55.421 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:23:55.422 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:23:55.510 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:23:55.511 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2001 ms
+2025-11-05 14:23:56.052 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:23:56.075 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 14:23:56.086 [main] INFO  org.example.Application - Started Application in 3.205 seconds (process running for 4.159)
+2025-11-05 14:23:56.096 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:23:56.572 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=02e617ad-ba10-11f0-b7a2-faf2d53e39a8
+2025-11-05 14:25:36.998 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 你是谁
+2025-11-05 14:25:36.999 [DingTalk-Consumer-1-2] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 你是谁
+2025-11-05 14:27:16.674 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 26320 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:27:16.677 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:27:17.915 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2025-11-05 14:27:17.936 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 15 ms. Found 0 JDBC repository interfaces.
+2025-11-05 14:27:18.937 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:27:18.939 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:27:19.458 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:27:19.472 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:27:19.474 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:27:19.474 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:27:19.554 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:27:19.554 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2522 ms
+2025-11-05 14:27:20.079 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:27:20.166 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'openAiChatModel' defined in class path resource [org/springframework/ai/autoconfigure/openai/OpenAiAutoConfiguration.class]: Failed to instantiate [org.springframework.ai.openai.OpenAiChatModel]: Factory method 'openAiChatModel' threw exception with message: OpenAI API key must be set. Use the connection property: spring.ai.openai.api-key or spring.ai.openai.chat.api-key property.
+2025-11-05 14:27:20.171 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-05 14:27:20.189 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-05 14:27:20.211 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'openAiChatModel' defined in class path resource [org/springframework/ai/autoconfigure/openai/OpenAiAutoConfiguration.class]: Failed to instantiate [org.springframework.ai.openai.OpenAiChatModel]: Factory method 'openAiChatModel' threw exception with message: OpenAI API key must be set. Use the connection property: spring.ai.openai.api-key or spring.ai.openai.chat.api-key property.
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at org.example.Application.main(Application.java:12)
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.ai.openai.OpenAiChatModel]: Factory method 'openAiChatModel' threw exception with message: OpenAI API key must be set. Use the connection property: spring.ai.openai.api-key or spring.ai.openai.chat.api-key property.
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	... 19 common frames omitted
+Caused by: java.lang.IllegalArgumentException: OpenAI API key must be set. Use the connection property: spring.ai.openai.api-key or spring.ai.openai.chat.api-key property.
+	at org.springframework.util.Assert.hasText(Assert.java:240)
+	at org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration.resolveConnectionProperties(OpenAiAutoConfiguration.java:106)
+	at org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration.openAiApi(OpenAiAutoConfiguration.java:168)
+	at org.springframework.ai.autoconfigure.openai.OpenAiAutoConfiguration.openAiChatModel(OpenAiAutoConfiguration.java:124)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	... 20 common frames omitted
+2025-11-05 14:27:21.069 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=7c7ba0a1-ba10-11f0-bebd-26ca3a8714ef
+2025-11-05 14:29:13.496 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 26420 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:29:13.499 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:29:16.411 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:29:16.413 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:29:16.874 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:29:16.888 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:29:16.890 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:29:16.890 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:29:17.003 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:29:17.004 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3214 ms
+2025-11-05 14:29:17.576 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to determine a suitable driver class
+2025-11-05 14:29:17.580 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-05 14:29:17.595 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-05 14:29:17.618 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2025-11-05 14:29:17.625 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:29:18.248 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=c28b9bcc-ba10-11f0-93b1-0622e0c34cc7
+2025-11-05 14:30:51.933 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 9496 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:30:51.936 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:30:53.804 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:30:53.805 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:30:54.169 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:30:54.184 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:30:54.186 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:30:54.186 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:30:54.269 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:30:54.269 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2043 ms
+2025-11-05 14:30:54.800 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'dataSource' defined in class path resource [org/springframework/boot/autoconfigure/jdbc/DataSourceConfiguration$Hikari.class]: Failed to instantiate [com.zaxxer.hikari.HikariDataSource]: Factory method 'dataSource' threw exception with message: Failed to determine a suitable driver class
+2025-11-05 14:30:54.803 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-05 14:30:54.818 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:30:54.828 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-05 14:30:54.849 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to configure a DataSource: 'url' attribute is not specified and no embedded datasource could be configured.
+
+Reason: Failed to determine a suitable driver class
+
+
+Action:
+
+Consider the following:
+	If you want an embedded database (H2, HSQL or Derby), please put it on the classpath.
+	If you have database settings to be loaded from a particular profile you may need to activate it (no profiles are currently active).
+
+2025-11-05 14:30:55.303 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=fc7bbd62-ba10-11f0-bebd-26ca3a8714ef
+2025-11-05 14:32:43.339 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 18860 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:32:43.342 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:32:45.637 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:32:45.638 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:32:45.935 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:32:45.958 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:32:45.961 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:32:45.962 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:32:46.103 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:32:46.104 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2439 ms
+2025-11-05 14:32:46.783 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:32:46.913 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:32:46.930 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 14:32:46.943 [main] INFO  org.example.Application - Started Application in 4.291 seconds (process running for 4.829)
+2025-11-05 14:32:47.408 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=3f37d909-ba11-11f0-b05d-329bedae46d2
+2025-11-05 14:33:00.260 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 3333
+2025-11-05 14:40:53.816 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 29220 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:40:53.818 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:40:56.644 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:40:56.646 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:40:56.997 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:40:57.030 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:40:57.056 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:40:57.056 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:40:57.210 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:40:57.211 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3058 ms
+2025-11-05 14:40:57.850 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:40:57.988 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:40:58.004 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 14:40:58.016 [main] INFO  org.example.Application - Started Application in 4.862 seconds (process running for 5.461)
+2025-11-05 14:40:58.537 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=63ecdaed-ba12-11f0-8bff-5215a8ef9827
+2025-11-05 14:44:18.199 [DingTalk-Consumer-1-2] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 测试
+2025-11-05 14:44:18.199 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 测试
+2025-11-05 14:45:19.521 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 28576 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:45:19.523 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:45:21.318 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:45:21.320 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:45:21.585 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:45:21.598 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:45:21.600 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:45:21.600 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:45:21.694 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:45:21.694 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1869 ms
+2025-11-05 14:45:22.207 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:45:22.356 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:45:22.368 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 14:45:22.380 [main] INFO  org.example.Application - Started Application in 3.359 seconds (process running for 3.826)
+2025-11-05 14:45:22.818 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=017f5761-ba13-11f0-89fb-2eaa794b294e
+2025-11-05 14:45:43.922 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 31600 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:45:43.924 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:45:46.113 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:45:46.114 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:45:46.492 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:45:46.508 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:45:46.511 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:45:46.512 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:45:46.631 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:45:46.631 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2380 ms
+2025-11-05 14:45:47.246 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:45:47.382 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:45:47.397 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 14:45:47.408 [main] INFO  org.example.Application - Started Application in 4.077 seconds (process running for 4.708)
+2025-11-05 14:45:47.761 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=106b5074-ba13-11f0-89fb-2eaa794b294e
+2025-11-05 14:46:11.034 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 444
+2025-11-05 14:50:59.320 [DingTalk-Consumer-1-2] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 444
+2025-11-05 14:51:04.717 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 28572 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:51:04.719 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:51:06.747 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:51:06.748 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:51:07.103 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:51:07.124 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:51:07.127 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:51:07.128 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:51:07.231 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:51:07.231 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2185 ms
+2025-11-05 14:51:07.836 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:51:07.991 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:51:08.005 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 14:51:08.018 [main] INFO  org.example.Application - Started Application in 4.077 seconds (process running for 4.677)
+2025-11-05 14:51:08.556 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=cf8232fd-ba13-11f0-bebd-26ca3a8714ef
+2025-11-05 14:52:13.487 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 你是谁
+2025-11-05 14:56:34.010 [DingTalk-Consumer-1-2] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 你是谁
+2025-11-05 14:56:34.015 [DingTalk-Consumer-1-3] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 你是谁
+2025-11-05 14:56:38.390 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 29304 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 14:56:38.393 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 14:56:40.265 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 14:56:40.267 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 14:56:40.532 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 14:56:40.545 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:56:40.547 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 14:56:40.548 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 14:56:40.643 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 14:56:40.643 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1938 ms
+2025-11-05 14:56:41.166 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 14:56:41.310 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 14:56:41.324 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 14:56:41.335 [main] INFO  org.example.Application - Started Application in 3.56 seconds (process running for 4.162)
+2025-11-05 14:56:41.854 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=9633de58-ba14-11f0-93b1-0622e0c34cc7
+2025-11-05 14:57:00.919 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 1111
+2025-11-05 15:08:12.678 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 30692 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 15:08:12.680 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 15:08:15.095 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 15:08:15.098 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 15:08:15.429 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 15:08:15.443 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:08:15.446 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 15:08:15.447 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 15:08:15.538 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 15:08:15.538 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2534 ms
+2025-11-05 15:08:16.147 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 15:08:16.414 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:08:16.446 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 15:08:16.467 [main] INFO  org.example.Application - Started Application in 4.626 seconds (process running for 5.306)
+2025-11-05 15:08:17.077 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=34722af7-ba16-11f0-b7a2-faf2d53e39a8
+2025-11-05 15:08:46.707 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 你是谁
+2025-11-05 15:09:21.716 [DingTalk-Consumer-1-1] INFO  o.e.s.RobotGroupMessagesService - 钉钉机器人消息发送成功，processQueryKey=vIoWKx0Tdzbd6YynL+phzEwnvVY7c2QQ1sLDbVVGPC0=
+2025-11-05 15:12:36.600 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 30684 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 15:12:36.602 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 15:12:39.042 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 15:12:39.045 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 15:12:39.386 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 15:12:39.400 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:12:39.402 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 15:12:39.402 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 15:12:39.495 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 15:12:39.495 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2589 ms
+2025-11-05 15:12:40.013 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 15:12:40.134 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:12:40.146 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 15:12:40.157 [main] INFO  org.example.Application - Started Application in 4.163 seconds (process running for 4.653)
+2025-11-05 15:12:40.680 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=d1bb9650-ba16-11f0-884b-5a20030ba585
+2025-11-05 15:16:09.579 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 20024 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 15:16:09.581 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 15:16:12.584 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 15:16:12.586 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 15:16:12.885 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 15:16:12.909 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:16:12.913 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 15:16:12.914 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 15:16:13.016 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 15:16:13.016 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3081 ms
+2025-11-05 15:16:13.619 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 15:16:13.784 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:16:13.801 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 15:16:13.814 [main] INFO  org.example.Application - Started Application in 4.822 seconds (process running for 5.394)
+2025-11-05 15:16:14.726 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=510a6347-ba17-11f0-80c0-7e88154b8801
+2025-11-05 15:16:39.737 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 5555
+2025-11-05 15:17:07.500 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 30428 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 15:17:07.503 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 15:17:09.423 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 15:17:09.426 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 15:17:09.768 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 15:17:09.788 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:17:09.791 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 15:17:09.792 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 15:17:09.903 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 15:17:09.904 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2073 ms
+2025-11-05 15:17:10.463 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 15:17:10.612 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:17:10.632 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 15:17:10.644 [main] INFO  org.example.Application - Started Application in 3.761 seconds (process running for 4.532)
+2025-11-05 15:17:11.021 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=72f04e45-ba17-11f0-80c0-7e88154b8801
+2025-11-05 15:17:45.866 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 5555
+2025-11-05 15:17:45.876 [DingTalk-Consumer-1-2] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 4444
+2025-11-05 15:18:02.616 [DingTalk-Consumer-1-2] INFO  o.e.s.RobotGroupMessagesService - 钉钉机器人消息发送成功，processQueryKey=KcOsXaoK3GBDrGt0xA41XelT642XiZzcFtZyeqR9kjM=
+2025-11-05 15:18:04.875 [DingTalk-Consumer-1-1] INFO  o.e.s.RobotGroupMessagesService - 钉钉机器人消息发送成功，processQueryKey=tE+RBma7CzNg8DISMlXNxr0IdH5dtAz5D774NskD3wM=
+2025-11-05 15:19:38.388 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 29856 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 15:19:38.391 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 15:19:41.104 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 15:19:41.106 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 15:19:41.448 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 15:19:41.468 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:19:41.470 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 15:19:41.471 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 15:19:41.598 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 15:19:41.599 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2917 ms
+2025-11-05 15:19:42.132 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 15:19:42.262 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:19:42.276 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 15:19:42.288 [main] INFO  org.example.Application - Started Application in 4.462 seconds (process running for 5.06)
+2025-11-05 15:19:42.813 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=cd5646d1-ba17-11f0-89fb-2eaa794b294e
+2025-11-05 15:19:50.176 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 4444
+2025-11-05 15:19:50.929 [DingTalk-Consumer-1-1] INFO  o.e.s.RobotGroupMessagesService - 钉钉机器人消息发送成功，processQueryKey=15/LveKIbduoelWcQSO+Fk6WOKn5tH6c3UPOkRJ4Pn0=
+2025-11-05 15:33:03.730 [DingTalk-Consumer-1-2] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg=你是谁
+2025-11-05 15:33:04.627 [DingTalk-Consumer-1-2] ERROR o.e.s.RobotGroupMessagesService - 钉钉机器人发送失败 [TeaException] code=resource.not.found, message=code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: A8FBE6CE-1F5F-701F-8050-4CE12AC965CA
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: A8FBE6CE-1F5F-701F-8050-4CE12AC965CA
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:88)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:113)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 15:33:04.641 [DingTalk-Consumer-1-2] ERROR o.e.c.c.ChatBotCallbackListener - send group message by robot error:code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: A8FBE6CE-1F5F-701F-8050-4CE12AC965CA
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: A8FBE6CE-1F5F-701F-8050-4CE12AC965CA
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:88)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:113)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 15:33:41.140 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 28772 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 15:33:41.142 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 15:33:43.045 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 15:33:43.055 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 15:33:43.327 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 15:33:43.343 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:33:43.345 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 15:33:43.345 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 15:33:43.441 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 15:33:43.441 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1967 ms
+2025-11-05 15:33:44.014 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 15:33:44.158 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:33:44.172 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 15:33:44.184 [main] INFO  org.example.Application - Started Application in 3.551 seconds (process running for 4.045)
+2025-11-05 15:33:44.749 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=c32545f9-ba19-11f0-89fb-2eaa794b294e
+2025-11-05 15:33:55.073 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg= 444
+2025-11-05 15:34:06.359 [DingTalk-Consumer-1-2] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg=你是谁
+2025-11-05 15:34:06.514 [DingTalk-Consumer-1-2] ERROR o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_send orgGroupSendWithOptions throw TeaException, errCode=resource.not.found, errorMessage=code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 78BF0F28-79CC-7D32-895E-7AD64EEF986A
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 78BF0F28-79CC-7D32-895E-7AD64EEF986A
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:63)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 15:34:06.516 [DingTalk-Consumer-1-2] ERROR o.e.c.c.ChatBotCallbackListener - send group message by robot error:code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 78BF0F28-79CC-7D32-895E-7AD64EEF986A
+com.aliyun.tea.TeaException: code: 400, 错误描述: robot 不存在；解决方案:请确认 robotCode 是否正确； request id: 78BF0F28-79CC-7D32-895E-7AD64EEF986A
+	at com.aliyun.teaopenapi.Client.doROARequest(Client.java:403)
+	at com.aliyun.dingtalkrobot_1_0.Client.orgGroupSendWithOptions(Client.java:423)
+	at org.example.service.RobotGroupMessagesService.send(RobotGroupMessagesService.java:63)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:43)
+	at org.example.callback.chatbot.ChatBotCallbackListener.execute(ChatBotCallbackListener.java:17)
+	at com.dingtalk.open.app.api.callback.SimpleMethod.execute(SimpleMethod.java:22)
+	at com.dingtalk.open.app.api.callback.CallbackCommandExecutor.execute(CallbackCommandExecutor.java:50)
+	at com.dingtalk.open.app.api.command.CommandDispatcher.execute(CommandDispatcher.java:37)
+	at com.dingtalk.open.app.api.protocol.AppServiceListener.lambda$receive$0(AppServiceListener.java:30)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 15:34:47.999 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 33564 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 15:34:48.002 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 15:34:49.919 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 15:34:49.920 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 15:34:50.229 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 15:34:50.248 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:34:50.252 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 15:34:50.252 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 15:34:50.352 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 15:34:50.353 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1977 ms
+2025-11-05 15:34:50.940 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 15:34:51.039 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 15:34:51.055 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 15:34:51.066 [main] INFO  org.example.Application - Started Application in 3.74 seconds (process running for 4.462)
+2025-11-05 15:34:51.431 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=eb0b9b9b-ba19-11f0-8bc5-6647947ab531
+2025-11-05 15:35:00.988 [DingTalk-Consumer-1-1] INFO  o.e.c.c.ChatBotCallbackListener - receive bot message from user=$:LWCP_v1:$ACw1vdSs6ydfED3x2j00jg==, msg=444
+2025-11-05 16:08:45.045 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 35060 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:08:45.049 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:08:47.709 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:08:47.711 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:08:48.100 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:08:48.117 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:08:48.119 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:08:48.119 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:08:48.226 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:08:48.227 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2841 ms
+2025-11-05 16:08:48.969 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:08:49.185 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:08:49.200 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:08:49.213 [main] INFO  org.example.Application - Started Application in 4.837 seconds (process running for 5.562)
+2025-11-05 16:08:50.008 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=a9d39666-ba1e-11f0-93b1-0622e0c34cc7
+2025-11-05 16:09:15.468 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=null
+2025-11-05 16:10:16.475 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 8620 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:10:16.477 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:10:18.402 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:10:18.403 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:10:18.738 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:10:18.762 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:10:18.765 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:10:18.765 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:10:18.889 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:10:18.890 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2132 ms
+2025-11-05 16:10:19.519 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:10:19.673 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:10:19.689 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:10:19.701 [main] INFO  org.example.Application - Started Application in 3.9 seconds (process running for 4.587)
+2025-11-05 16:10:20.110 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=dfce1bdd-ba1e-11f0-80bd-52afbb2bd5e8
+2025-11-05 16:10:33.608 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.MessageContent@54db60f7
+2025-11-05 16:11:06.560 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 8436 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:11:06.564 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:11:08.948 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:11:08.951 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:11:09.307 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:11:09.332 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:11:09.335 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:11:09.336 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:11:09.445 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:11:09.446 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2469 ms
+2025-11-05 16:11:10.110 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:11:10.296 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:11:10.324 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:11:10.344 [main] INFO  org.example.Application - Started Application in 4.672 seconds (process running for 5.389)
+2025-11-05 16:11:10.873 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=fdf4e8e9-ba1e-11f0-884b-5a20030ba585
+2025-11-05 16:11:23.895 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage= 
+2025-11-05 16:12:59.990 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 36516 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:12:59.992 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:13:01.819 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:13:01.820 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:13:02.120 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:13:02.138 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:13:02.141 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:13:02.141 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:13:02.249 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:13:02.249 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1923 ms
+2025-11-05 16:13:02.873 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:13:03.045 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:13:03.060 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:13:03.075 [main] INFO  org.example.Application - Started Application in 3.679 seconds (process running for 4.392)
+2025-11-05 16:13:03.444 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=412bffca-ba1f-11f0-80bd-52afbb2bd5e8
+2025-11-05 16:14:02.339 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage= 你是谁
+2025-11-05 16:15:11.197 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 32400 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:15:11.200 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:15:13.437 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:15:13.439 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:15:13.748 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:15:13.765 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:15:13.767 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:15:13.767 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:15:13.848 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:15:13.849 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2357 ms
+2025-11-05 16:15:14.414 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:15:14.481 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:15:14.503 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:15:14.514 [main] INFO  org.example.Application - Started Application in 3.899 seconds (process running for 4.377)
+2025-11-05 16:15:15.050 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=8f95d745-ba1f-11f0-8bff-5215a8ef9827
+2025-11-05 16:15:20.629 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage= 你是谁
+2025-11-05 16:18:13.710 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 9008 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:18:13.712 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:18:16.622 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:18:16.625 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:18:16.979 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:18:17.002 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:18:17.006 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:18:17.007 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:18:17.112 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:18:17.112 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3041 ms
+2025-11-05 16:18:17.739 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:18:17.912 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:18:17.932 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:18:17.951 [main] INFO  org.example.Application - Started Application in 4.903 seconds (process running for 5.57)
+2025-11-05 16:18:19.133 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=fcdb185b-ba1f-11f0-8bff-5215a8ef9827
+2025-11-05 16:18:56.042 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=你是谁
+2025-11-05 16:20:45.462 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage= 
+2025-11-05 16:23:36.903 [Thread-1] ERROR o.e.c.c.ChatBotCallbackListener - receive group message by robot error:Cannot invoke "com.dingtalk.open.app.api.models.bot.MessageContent.getContent()" because the return value of "com.dingtalk.open.app.api.models.bot.ChatbotMessage.getText()" is null
+java.lang.NullPointerException: Cannot invoke "com.dingtalk.open.app.api.models.bot.MessageContent.getContent()" because the return value of "com.dingtalk.open.app.api.models.bot.ChatbotMessage.getText()" is null
+	at org.example.service.RobotGroupMessagesService.sendPrivateMessage(RobotGroupMessagesService.java:105)
+	at org.example.callback.chatbot.ChatBotCallbackListener.executeInfo(ChatBotCallbackListener.java:63)
+	at org.example.callback.chatbot.ChatBotCallbackListener.lambda$afterPropertiesSet$0(ChatBotCallbackListener.java:54)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 16:33:13.343 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 26808 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:33:13.345 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:33:16.220 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:33:16.221 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:33:16.535 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:33:16.553 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:33:16.557 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:33:16.557 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:33:16.662 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:33:16.663 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2981 ms
+2025-11-05 16:33:17.323 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:33:17.467 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:33:17.484 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:33:17.496 [main] INFO  org.example.Application - Started Application in 4.799 seconds (process running for 5.459)
+2025-11-05 16:33:18.032 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=15102fed-ba22-11f0-89fb-2eaa794b294e
+2025-11-05 16:35:25.548 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=33
+2025-11-05 16:38:52.495 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage= 444
+2025-11-05 16:48:48.109 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 31384 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:48:48.112 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:48:50.602 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:48:50.604 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:48:50.913 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:48:50.926 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:48:50.928 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:48:50.928 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:48:51.049 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:48:51.050 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2613 ms
+2025-11-05 16:48:51.728 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:48:51.877 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:48:51.896 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:48:51.909 [main] INFO  org.example.Application - Started Application in 4.411 seconds (process running for 5.115)
+2025-11-05 16:48:52.705 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=4206351d-ba24-11f0-884b-5a20030ba585
+2025-11-05 16:49:07.527 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=你是谁
+2025-11-05 16:56:00.205 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 19268 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:56:00.208 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:56:02.439 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:56:02.441 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:56:02.725 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:56:02.742 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:56:02.744 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:56:02.744 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:56:02.843 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:56:02.843 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2345 ms
+2025-11-05 16:56:03.456 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:56:03.605 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:56:03.619 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:56:03.632 [main] INFO  org.example.Application - Started Application in 4.015 seconds (process running for 4.599)
+2025-11-05 16:56:04.334 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=435b4ff9-ba25-11f0-bee8-0eb3b764c0bb
+2025-11-05 16:56:13.074 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=你是谁
+2025-11-05 16:56:33.050 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 23616 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:56:33.054 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:56:34.940 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:56:34.942 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:56:35.226 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:56:35.241 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:56:35.245 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:56:35.246 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:56:35.332 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:56:35.332 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1983 ms
+2025-11-05 16:56:36.032 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:56:36.060 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:56:36.070 [main] INFO  org.example.Application - Started Application in 3.591 seconds (process running for 4.367)
+2025-11-05 16:56:56.556 [connection-pool-2-1] ERROR c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] establish connection failed
+java.net.ConnectException: Connection timed out: no further information
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method)
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672)
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:554)
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602)
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327)
+	at java.base/java.net.Socket.connect(Socket.java:633)
+	at java.base/sun.security.ssl.SSLSocketImpl.connect(SSLSocketImpl.java:304)
+	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:178)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:534)
+	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:639)
+	at java.base/sun.net.www.protocol.https.HttpsClient.<init>(HttpsClient.java:266)
+	at java.base/sun.net.www.protocol.https.HttpsClient.New(HttpsClient.java:380)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.getNewHttpClient(AbstractDelegateHttpsURLConnection.java:193)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1241)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1127)
+	at java.base/sun.net.www.protocol.https.AbstractDelegateHttpsURLConnection.connect(AbstractDelegateHttpsURLConnection.java:179)
+	at java.base/sun.net.www.protocol.https.HttpsURLConnectionImpl.connect(HttpsURLConnectionImpl.java:142)
+	at com.dingtalk.open.app.api.open.HttpOpenApiClient.openConnection(HttpOpenApiClient.java:37)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.openConnection(OpenDingTalkStreamClient.java:80)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.lambda$start$0(OpenDingTalkStreamClient.java:50)
+	at com.dingtalk.open.app.stream.network.core.DefaultSessionPool$ConnectionTask.run(DefaultSessionPool.java:159)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset$$$capture(FutureTask.java:305)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 16:56:56.881 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:56:57.342 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=63350038-ba25-11f0-80c0-7e88154b8801
+2025-11-05 16:57:12.010 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 24756 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 16:57:12.012 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 16:57:14.225 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 16:57:14.228 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 16:57:14.598 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 16:57:14.622 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:57:14.624 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 16:57:14.624 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 16:57:14.724 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 16:57:14.725 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2400 ms
+2025-11-05 16:57:15.341 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 16:57:15.504 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 16:57:15.521 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 16:57:15.536 [main] INFO  org.example.Application - Started Application in 4.139 seconds (process running for 4.742)
+2025-11-05 16:57:15.884 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=6e35390f-ba25-11f0-bee8-0eb3b764c0bb
+2025-11-05 16:57:26.168 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=你是谁
+2025-11-05 17:07:03.711 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 20912 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 17:07:03.714 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 17:07:06.429 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 17:07:06.431 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 17:07:06.726 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 17:07:06.739 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 17:07:06.741 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 17:07:06.741 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 17:07:06.832 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 17:07:06.832 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2806 ms
+2025-11-05 17:07:07.364 [connection-pool-2-1] ERROR c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] establish connection failed
+com.dingtalk.open.app.api.OpenDingTalkAppException: http failed statusstatus=401,msg={"requestid":"D10FBC86-66AE-7AC2-8BC0-76221F6A650D","code":"authFailed","message":"鉴权失败"}
+	at com.dingtalk.open.app.api.DingTalkAppError.toException(DingTalkAppError.java:78)
+	at com.dingtalk.open.app.api.open.HttpOpenApiClient.openConnection(HttpOpenApiClient.java:45)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.openConnection(OpenDingTalkStreamClient.java:80)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.lambda$start$0(OpenDingTalkStreamClient.java:50)
+	at com.dingtalk.open.app.stream.network.core.DefaultSessionPool$ConnectionTask.run(DefaultSessionPool.java:159)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 17:07:07.499 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 17:07:07.524 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 17:07:07.536 [main] INFO  org.example.Application - Started Application in 4.469 seconds (process running for 4.925)
+2025-11-05 17:07:12.052 [connection-pool-2-1] ERROR c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] establish connection failed
+com.dingtalk.open.app.api.OpenDingTalkAppException: http failed statusstatus=401,msg={"requestid":"250E0137-F3DB-7D5E-8859-8E707BB1323D","code":"authFailed","message":"鉴权失败"}
+	at com.dingtalk.open.app.api.DingTalkAppError.toException(DingTalkAppError.java:78)
+	at com.dingtalk.open.app.api.open.HttpOpenApiClient.openConnection(HttpOpenApiClient.java:45)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.openConnection(OpenDingTalkStreamClient.java:80)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.lambda$start$0(OpenDingTalkStreamClient.java:50)
+	at com.dingtalk.open.app.stream.network.core.DefaultSessionPool$ConnectionTask.run(DefaultSessionPool.java:159)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 17:07:17.046 [connection-pool-2-1] ERROR c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] establish connection failed
+com.dingtalk.open.app.api.OpenDingTalkAppException: http failed statusstatus=401,msg={"requestid":"4C251599-3967-7EF1-9AFB-2024F936A844","code":"authFailed","message":"鉴权失败"}
+	at com.dingtalk.open.app.api.DingTalkAppError.toException(DingTalkAppError.java:78)
+	at com.dingtalk.open.app.api.open.HttpOpenApiClient.openConnection(HttpOpenApiClient.java:45)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.openConnection(OpenDingTalkStreamClient.java:80)
+	at com.dingtalk.open.app.api.OpenDingTalkStreamClient.lambda$start$0(OpenDingTalkStreamClient.java:50)
+	at com.dingtalk.open.app.stream.network.core.DefaultSessionPool$ConnectionTask.run(DefaultSessionPool.java:159)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:539)
+	at java.base/java.util.concurrent.FutureTask.runAndReset(FutureTask.java:305)
+	at java.base/java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:305)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635)
+	at shade.io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+2025-11-05 17:09:52.489 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 30348 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 17:09:52.491 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 17:09:55.363 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 17:09:55.364 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 17:09:55.655 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 17:09:55.674 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 17:09:55.675 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 17:09:55.676 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 17:09:55.751 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 17:09:55.752 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2949 ms
+2025-11-05 17:09:56.286 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 17:09:56.409 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 17:09:56.435 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 17:09:56.449 [main] INFO  org.example.Application - Started Application in 4.494 seconds (process running for 5.004)
+2025-11-05 17:09:56.956 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=33c8dd1e-ba27-11f0-80bd-52afbb2bd5e8
+2025-11-05 17:10:17.915 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=333
+2025-11-05 17:10:31.074 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage= 4444
+2025-11-05 17:20:32.533 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 35484 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-05 17:20:32.535 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-05 17:20:36.003 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-05 17:20:36.008 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-05 17:20:36.462 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-05 17:20:36.478 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-05 17:20:36.480 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-05 17:20:36.480 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-05 17:20:36.587 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-05 17:20:36.588 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3763 ms
+2025-11-05 17:20:37.377 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-05 17:20:37.448 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-05 17:20:37.465 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-05 17:20:37.477 [main] INFO  org.example.Application - Started Application in 5.713 seconds (process running for 6.305)
+2025-11-05 17:20:38.081 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=b1e84562-ba28-11f0-884b-5a20030ba585

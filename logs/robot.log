@@ -1,0 +1,17 @@
+2025-11-06 10:09:24.741 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 12340 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-06 10:09:24.747 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-06 10:09:28.290 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-06 10:09:28.292 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-06 10:09:28.619 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-06 10:09:28.634 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-06 10:09:28.637 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-06 10:09:28.638 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-06 10:09:28.722 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-06 10:09:28.722 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3670 ms
+2025-11-06 10:09:29.510 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-06 10:09:29.551 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-06 10:09:29.565 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-06 10:09:29.573 [main] INFO  org.example.Application - Started Application in 5.335 seconds (process running for 5.948)
+2025-11-06 10:09:30.336 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=a0a7567d-bab5-11f0-8bc5-6647947ab531
+2025-11-06 10:11:17.056 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage= 昨天去太阳油墨去开会，跟陈颖颖开会讨论了系统开发报表，讨论了两小时，讨论的是财务成本开发报表 ，上午9点到的根据以上内容，提取日期时间，客户名称，讨论内容，客户参与人 以表格形式体现
+2025-11-06 10:12:42.156 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage= 参与人还包括杜明闪
