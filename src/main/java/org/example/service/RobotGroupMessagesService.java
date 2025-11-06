@@ -196,11 +196,11 @@ public class RobotGroupMessagesService {
         cn.hutool.json.JSONObject jsonObject = JSONUtil.parseObj(jsonString);
         if(Objects.equals("信息提取",jsonObject.getStr("intent"))){
             Discussion discussion =  JSONUtil.toBean(jsonObject.getStr("entities"), Discussion.class);
-            if(discussion.getRemark()!=null&&!Objects.equals("",discussion.getRemark())){
-               return "当前提取信息如下\n"+discussion.toString()+"\n"+discussion.getRemark();
+            if(Objects.equals("finish",discussion.getRemark())){
+                ChatHistory.invalidate(senderStaffId);
+                return "当前提取信息如下\n"+discussion+"\n"+"已保存数据库";
             }
-            ChatHistory.invalidate(senderStaffId);
-            return "当前提取信息如下\n"+discussion+"\n"+"已保存数据库";
+            return "当前提取信息如下\n"+discussion.toString()+"\n"+discussion.getRemark();
 
         }
         return jsonObject.getJSONObject("entities").getStr("answer");
