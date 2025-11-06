@@ -29,6 +29,7 @@ import org.example.utils.StrUtils;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -64,8 +65,10 @@ public class RobotGroupMessagesService {
 
     @Autowired
     private DingDingWorkNoticeAccount dingDingWorkNoticeAccount;
-   @Autowired
+    @Autowired
     private OpenAiApi openAiApi;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     public RobotGroupMessagesService(AccessTokenService accessTokenService) {
@@ -90,13 +93,10 @@ public class RobotGroupMessagesService {
     public String send(String openConversationId, String text, String sendId) throws Exception {
         OrgGroupSendHeaders orgGroupSendHeaders = new OrgGroupSendHeaders();
         orgGroupSendHeaders.setXAcsDingtalkAccessToken(accessTokenService.getAccessToken());
-
         OrgGroupSendRequest orgGroupSendRequest = new OrgGroupSendRequest();
         orgGroupSendRequest.setMsgKey("sampleText");
         orgGroupSendRequest.setRobotCode(robotCode);
-
         orgGroupSendRequest.setOpenConversationId(openConversationId);
-
         JSONObject msgParam = new JSONObject();
         msgParam.put("content", "java-getting-start say : " + text);
         orgGroupSendRequest.setMsgParam(msgParam.toJSONString());
@@ -169,12 +169,12 @@ public class RobotGroupMessagesService {
         else {
             messages.add(CreateUser(chatbotMessage));
         }
-        String result=callLLM(senderStaffId,messages);
+        String result=callLLM(senderStaffId,messages,chatbotMessage.getSenderNick());
 
         return result;
     }
 
-    private String callLLM(String senderStaffId,List<OpenAiApi.ChatCompletionMessage> messages) {
+    private String callLLM(String senderStaffId,List<OpenAiApi.ChatCompletionMessage> messages,String nickName) {
         OpenAiApi.ChatCompletionRequest request = new OpenAiApi.ChatCompletionRequest(messages, moduleName, 0.0d, true);
         Flux<OpenAiApi.ChatCompletionChunk> chatCompletionChunkFlux = openAiApi.chatCompletionStream(request);
         String fullContent = chatCompletionChunkFlux
@@ -194,10 +194,13 @@ public class RobotGroupMessagesService {
         messages.add(assistantMessage);
         ChatHistory.put(senderStaffId, messages);
         cn.hutool.json.JSONObject jsonObject = JSONUtil.parseObj(jsonString);
-        if(Objects.equals("信息提取",jsonObject.getStr("intent"))){
+        if(Objects.equals("工作汇报",jsonObject.getStr("intent"))){
             Discussion discussion =  JSONUtil.toBean(jsonObject.getStr("entities"), Discussion.class);
+            discussion.setReportName(nickName);
+            saveDiscussion(discussion);
             if(Objects.equals("finish",discussion.getRemark())){
                 ChatHistory.invalidate(senderStaffId);
+                saveDiscussion(discussion);
                 return "当前提取信息如下\n"+discussion+"\n"+"已保存数据库";
             }
             return "当前提取信息如下\n"+discussion.toString()+"\n"+discussion.getRemark();
@@ -205,6 +208,13 @@ public class RobotGroupMessagesService {
         }
         return jsonObject.getJSONObject("entities").getStr("answer");
 
+    }
+
+    private void saveDiscussion(Discussion discussion) {
+        String sql = "INSERT INTO OP_WorkReport (FDate, FEmpName, FCustName, FCustEmpName, FReprotContent, FCreadteDate) " +
+                "VALUES (?, ?, ?, ?, ?, GETDATE())";
+
+       int count =jdbcTemplate.update(sql,discussion.getDateTime(),discussion.getReportName(),discussion.getCustomerName(),StrUtil.join(",",discussion.getParticipants()),discussion.getDiscussion());
     }
 
     private OpenAiApi.ChatCompletionMessage CreateUser(ChatbotMessage chatbotMessage) {

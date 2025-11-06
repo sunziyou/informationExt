@@ -10,7 +10,7 @@ public class Discussion {
     private String   customerName;
     private String discussion;
     private List<String> participants = new ArrayList<>();
-
+    private String reportName;
     private String remark;
 
     public String getDateTime() {
@@ -53,9 +53,18 @@ public class Discussion {
         this.remark = remark;
     }
 
+    public String getReportName() {
+        return reportName;
+    }
+
+    public void setReportName(String reportName) {
+        this.reportName = reportName;
+    }
+
     @Override
     public String toString() {
-        return  "日期时间:" + dateTime + '\n' +
+        return  "汇报人:"+ reportName +"(不可修改)\n" +
+                "日期时间:" + dateTime + '\n' +
                 "客户名称:" + customerName + '\n' +
                 "讨论内容:" + discussion + '\n' +
                 "参与人:" + getDiscussionString(participants);
