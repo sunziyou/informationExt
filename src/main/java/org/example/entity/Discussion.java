@@ -1,0 +1,61 @@
+package org.example.entity;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Discussion {
+    private String dateTime;
+    private String   customerName;
+    private String discussion;
+    private List<String> participants = new ArrayList<>();
+
+    private String remark;
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public String getDiscussion() {
+        return discussion;
+    }
+
+    public void setDiscussion(String discussion) {
+        this.discussion = discussion;
+    }
+
+    public List<String> getParticipants() {
+        return participants;
+    }
+
+    public void setParticipants(List<String> participants) {
+        this.participants = participants;
+    }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
+    @Override
+    public String toString() {
+        return  "日期时间:" + dateTime + '\n' +
+                "客户名称:" + customerName + '\n' +
+                "讨论内容:" + discussion + '\n' +
+                "参与人:" + participants;
+    }
+}

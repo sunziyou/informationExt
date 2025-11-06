@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10 seconds">
+
+    <!-- 变量定义 -->
+    <property name="LOG_PATH" value="logs" />
+    <property name="APP_NAME" value="robot" />
+
+    <!-- 控制台输出（彩色） -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>%cyan(%d{yyyy-MM-dd HH:mm:ss.SSS}) %highlight([%thread]) %boldYellow(%-5level) %magenta(%logger{36}) - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 滚动日志文件：按天分割，保留30天 -->
+    <appender name="FILE_DAILY" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${APP_NAME}.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- 每天一个文件 -->
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <timeBasedFileNamingAndRollingPolicy>
+                <maxFileSize>100MB</maxFileSize>
+            </timeBasedFileNamingAndRollingPolicy>
+            <!-- 保留30天 -->
+            <maxHistory>30</maxHistory>
+            <!-- 总大小限制 3GB -->
+            <totalSizeCap>3GB</totalSizeCap>
+            <cleanHistoryOnStart>true</cleanHistoryOnStart>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 错误级别单独存档 -->
+    <appender name="FILE_ERROR" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${APP_NAME}-error.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/${APP_NAME}-error-%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>60</maxHistory>
+            <totalSizeCap>500MB</totalSizeCap>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <!-- 你的项目包名（替换成实际包名） -->
+    <logger name="com.ouruan" level="DEBUG" />
+
+    <!-- 第三方库调低日志级别 -->
+    <logger name="org.springframework" level="INFO" />
+    <logger name="org.apache.http" level="WARN" />
+    <logger name="com.dingtalk" level="INFO" />
+    <logger name="com.aliyun" level="INFO" />
+
+    <!-- 根日志 -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE_DAILY" />
+        <appender-ref ref="FILE_ERROR" />
+    </root>
+
+</configuration>
