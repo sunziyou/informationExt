@@ -136,7 +136,7 @@ public class RobotGroupMessagesService {
         String content=getAnwserContent(chatbotMessage);
         batchSendOTOHeaders.xAcsDingtalkAccessToken = accessTokenService.getAccessToken();
         JSONObject msgParam = new JSONObject();
-        msgParam.put("text", content);
+        msgParam.put("text",  content.replaceAll("\n",  "  \n"));
         BatchSendOTORequest batchSendOTORequest = new BatchSendOTORequest()
                 .setRobotCode(robotCode)
                 .setUserIds(java.util.Arrays.asList(
@@ -197,8 +197,10 @@ public class RobotGroupMessagesService {
         if(Objects.equals("工作汇报",jsonObject.getStr("intent"))){
             Discussion discussion =  JSONUtil.toBean(jsonObject.getStr("entities"), Discussion.class);
             discussion.setReportName(nickName);
-            saveDiscussion(discussion);
             if(Objects.equals("finish",discussion.getRemark())){
+                if(!discussion.validate()){
+                    return "当前提取信息如下\n"+discussion+"\n"+",信息不完整请补充";
+                }
                 ChatHistory.invalidate(senderStaffId);
                 saveDiscussion(discussion);
                 return "当前提取信息如下\n"+discussion+"\n"+"已保存数据库";

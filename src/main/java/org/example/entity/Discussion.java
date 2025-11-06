@@ -73,4 +73,9 @@ public class Discussion {
     private String getDiscussionString(List<String> strs) {
         return StrUtil.join(",",strs);
     }
+
+    public boolean validate() {
+        return StrUtil.isNotBlank(dateTime) && StrUtil.isNotBlank(customerName)
+                && StrUtil.isNotBlank(discussion) && StrUtil.isNotBlank(remark)&&participants!=null &&participants.size()>0;
+    }
 }
