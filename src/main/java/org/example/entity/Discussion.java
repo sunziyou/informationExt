@@ -1,5 +1,7 @@
 package org.example.entity;
 
+import cn.hutool.core.util.StrUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,6 +58,10 @@ public class Discussion {
         return  "日期时间:" + dateTime + '\n' +
                 "客户名称:" + customerName + '\n' +
                 "讨论内容:" + discussion + '\n' +
-                "参与人:" + participants;
+                "参与人:" + getDiscussionString(participants);
+    }
+
+    private String getDiscussionString(List<String> strs) {
+        return StrUtil.join(",",strs);
     }
 }
