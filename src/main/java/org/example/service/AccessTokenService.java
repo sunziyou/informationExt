@@ -127,11 +127,14 @@ public class AccessTokenService {
     }
 
     public String getAccessToken() {
+        if(isTokenNearlyExpired()){
+            refreshAccessToken();
+        }
         return accessToken.accessToken;
     }
 
     public boolean isTokenNearlyExpired() {
         // if expired timestamp nearly 5000ms, should not send requests
-        return accessToken.expireTimestamp < System.currentTimeMillis() - 5000L;
+        return accessToken.expireTimestamp < System.currentTimeMillis() - 60000L;
     }
 }
