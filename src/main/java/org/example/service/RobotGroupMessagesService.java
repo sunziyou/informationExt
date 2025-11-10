@@ -23,6 +23,7 @@ import org.example.entity.DingDingRobotAccount;
 import org.example.entity.Discussion;
 import org.example.entity.SendMessageType;
 import org.example.parser.ParserToolFactory;
+import org.example.utils.ChatbotMessageUtils;
 import org.example.utils.DateUtils;
 import org.example.utils.MessageUtils;
 import org.example.utils.StrUtils;
@@ -120,7 +121,7 @@ public class RobotGroupMessagesService {
     }
 
     public void sendPrivateMessage(ChatbotMessage chatbotMessage) {
-        logger.info("RobotGroupMessagesService_sendPrivateMessage chatbotMessage={}", chatbotMessage.getText().getContent());
+        logger.info("RobotGroupMessagesService_sendPrivateMessage chatbotMessage={}", ChatbotMessageUtils.getUserContent(chatbotMessage));
         //1代表私聊，2群聊。群聊需要单独根据另外的机器人回复，本身的应用机器人不支持回复包括@
         if (Objects.equals(chatbotMessage.getConversationType(), "1")) {
             sendprivaterobot(chatbotMessage);
@@ -216,21 +217,23 @@ public class RobotGroupMessagesService {
         String sql = "INSERT INTO OP_WorkReport (FDate, FEmpName, FCustName, FCustEmpName, FReprotContent, FCreadteDate) " +
                 "VALUES (?, ?, ?, ?, ?, GETDATE())";
 
-       int count =jdbcTemplate.update(sql,discussion.getDateTime(),discussion.getReportName(),discussion.getCustomerName(),StrUtil.join(",",discussion.getParticipants()),discussion.getDiscussion());
+      int count =jdbcTemplate.update(sql,discussion.getDateTime(),discussion.getReportName(),discussion.getCustomerName(),StrUtil.join(",",discussion.getParticipants()),discussion.getDiscussion());
     }
 
     private OpenAiApi.ChatCompletionMessage CreateUser(ChatbotMessage chatbotMessage) {
-        return MessageUtils.createUserMessage(chatbotMessage.getText().getContent());
+        return MessageUtils.createUserMessage(ChatbotMessageUtils.getUserContent(chatbotMessage));
     }
 
     private OpenAiApi.ChatCompletionMessage createSystem(ChatbotMessage chatbotMessage) {
         String message = StrUtils.readByResource("informationExt.txt");
         Map<String, String> varValue = new HashMap<>();
-        varValue.put("input",chatbotMessage.getText().getContent());
+        varValue.put("input",ChatbotMessageUtils.getUserContent(chatbotMessage));
         varValue.put("dateTime", DateUtils.getCurrentTime());
         String systemMessage = MessageUtils.createMessage(varValue, message);
         return MessageUtils.createSystemMessage(systemMessage);
     }
+
+
 
     private void sendprivate(ChatbotMessage chatbotMessage) {
         try {

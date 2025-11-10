@@ -60,6 +60,10 @@ public class ChatBotCallbackListener implements OpenDingTalkCallbackListener<Cha
     }
 
     private void executeInfo(ChatbotMessage chatbotMessage) {
-        robotGroupMessagesService.sendPrivateMessage(chatbotMessage);
+        try {
+            robotGroupMessagesService.sendPrivateMessage(chatbotMessage);
+        }catch (Exception e){
+            log.warn("执行业务逻辑错误",e);
+        }
     }
 }
