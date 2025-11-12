@@ -26,14 +26,35 @@ public class ChatHistory {
         if(ifPresent == null) {
             return new ArrayList<>();
         }
+        int maxSize = 15;
+
         if(ifPresent.size()>15){
-            ifPresent.remove(1);
+           int count= ifPresent.size()-maxSize;
+           for(int i=0;i<count;i++){
+               ifPresent.remove(1);
+           }
+
         }
         cache.put(key, ifPresent);
         return ifPresent;
     }
     public static void invalidate(String key) {
         cache.invalidate(key);
+    }
+
+    public static void main(String[] args) {
+        List<String> ss = new ArrayList<>();
+        ss.add("1");
+        ss.add("2");
+        ss.add("3");
+        ss.add("4");
+        ss.add("5");
+        ss.add("6");
+        ss.add("7");
+        for(int i=0;i<3;i++){
+            ss.remove(1);
+        }
+       System.out.println(ss);
     }
 }
 
