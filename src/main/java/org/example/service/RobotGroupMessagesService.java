@@ -198,16 +198,32 @@ public class RobotGroupMessagesService {
         if(Objects.equals("工作汇报",jsonObject.getStr("intent"))){
             Discussion discussion =  JSONUtil.toBean(jsonObject.getStr("entities"), Discussion.class);
             discussion.setReportName(nickName);
+            boolean validateCustom=discussion.validateCustomerName(jdbcTemplate);
+            if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
+                messages.add(MessageUtils.createUserMessage(discussion.getCustomerNameError()));
+            }
             if(Objects.equals("finish",discussion.getRemark())){
+
                 if(!discussion.validate()){
-                    return "当前提取信息如下\n"+discussion+"\n"+",信息不完整请补充";
+                    String error = "当前提取信息如下\n"+discussion+"\n"+",信息不完整请补充";
+                    if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
+                        error+="\n"+discussion.getCustomerNameError();
+                    }
+                    return error;
                 }
+                if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
+                    return  discussion.getCustomerNameError();
+                }
+
                 ChatHistory.invalidate(senderStaffId);
                 saveDiscussion(discussion);
                 return "当前提取信息如下\n"+discussion+"\n"+"已保存数据库";
             }
-            return "当前提取信息如下\n"+discussion.toString()+"\n"+discussion.getRemark();
-
+            String result = "当前提取信息如下\n"+discussion.toString()+"\n"+discussion.getRemark();
+            if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
+                result+="\n"+discussion.getCustomerNameError();
+            }
+            return  result;
         }
         return jsonObject.getJSONObject("entities").getStr("answer");
 

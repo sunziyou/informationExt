@@ -1,17 +1,24 @@
 package org.example.entity;
 
 import cn.hutool.core.util.StrUtil;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Discussion {
+    private static Logger logger = LogManager.getLogger(Discussion.class);
     private String dateTime;
     private String   customerName;
     private String discussion;
     private List<String> participants = new ArrayList<>();
     private String reportName;
     private String remark;
+
+    private String customerNameError;
 
     public String getDateTime() {
         return dateTime;
@@ -70,6 +77,10 @@ public class Discussion {
                 "参与人:" + getDiscussionString(participants);
     }
 
+    public String getCustomerNameError() {
+        return customerNameError;
+    }
+
     private String getDiscussionString(List<String> strs) {
         return StrUtil.join(",",strs);
     }
@@ -77,5 +88,43 @@ public class Discussion {
     public boolean validate() {
         return StrUtil.isNotBlank(dateTime) && StrUtil.isNotBlank(customerName)
                 && StrUtil.isNotBlank(discussion) && StrUtil.isNotBlank(remark)&&participants!=null &&participants.size()>0;
+    }
+
+    public boolean validateCustomerName(JdbcTemplate jdbcTemplate) {
+        try {
+            if(customerName==null|| Objects.equals("",customerName)){
+                return false;
+            }
+            String sql = "select FcustName from  OP_Customer where FcustName=?";
+            List<String> names = jdbcTemplate.query(sql,(rs, rowNum) -> rs.getString("FcustName"),customerName);
+            if(names!=null &&names.size()==1){
+                this.customerNameError=null;
+                return true;
+            }
+            String sql2 = "select TOP 5 FcustName from OP_Customer where FcustName like '%"+customerName+"%'";
+            names = jdbcTemplate.query(sql2,(rs, rowNum) -> rs.getString("FcustName"));
+
+            if(names==null||names.size()==0){
+                this.customerNameError="当前客户名称错误,请重新说明客户名称。";
+                return  false;
+            }
+            if(names.size()==1){
+                this.customerNameError=null;
+                this.customerName=names.get(0);
+                return true;
+            }
+            StringBuffer buffer = new StringBuffer("根据当前信息查询到如下客户:\n");
+            for(int i=0;i<names.size();i++){
+                buffer.append((i+1)+". "+names.get(i)+"\n");
+            }
+            buffer.append("请根据序号选择需要的客户名称");
+            this.customerNameError=buffer.toString();
+            return  false;
+        }catch (Exception e){
+            logger.warn("校验客户名称错误",e);
+            this.customerNameError="数据库访问错误";
+            return  false;
+        }
+
     }
 }
