@@ -92,6 +92,9 @@ public class Discussion {
 
     public boolean validateCustomerName(JdbcTemplate jdbcTemplate) {
         try {
+            if(jdbcTemplate==null){
+                return true;
+            }
             if(customerName==null|| Objects.equals("",customerName)){
                 return false;
             }

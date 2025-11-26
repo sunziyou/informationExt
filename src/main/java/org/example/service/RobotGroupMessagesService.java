@@ -68,8 +68,8 @@ public class RobotGroupMessagesService {
     private DingDingWorkNoticeAccount dingDingWorkNoticeAccount;
     @Autowired
     private OpenAiApi openAiApi;
-    @Autowired
-    private JdbcTemplate jdbcTemplate;
+ /*   @Autowired
+    private JdbcTemplate jdbcTemplate;*/
 
     @Autowired
     public RobotGroupMessagesService(AccessTokenService accessTokenService) {
@@ -198,7 +198,8 @@ public class RobotGroupMessagesService {
         if(Objects.equals("工作汇报",jsonObject.getStr("intent"))){
             Discussion discussion =  JSONUtil.toBean(jsonObject.getStr("entities"), Discussion.class);
             discussion.setReportName(nickName);
-            boolean validateCustom=discussion.validateCustomerName(jdbcTemplate);
+           // boolean validateCustom=discussion.validateCustomerName(jdbcTemplate);
+            boolean validateCustom=discussion.validateCustomerName(null);
             if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
                 messages.add(MessageUtils.createUserMessage(discussion.getCustomerNameError()));
             }
@@ -230,10 +231,10 @@ public class RobotGroupMessagesService {
     }
 
     private void saveDiscussion(Discussion discussion) {
-        String sql = "INSERT INTO OP_WorkReport (FDate, FEmpName, FCustName, FCustEmpName, FReprotContent, FCreadteDate) " +
+       /* String sql = "INSERT INTO OP_WorkReport (FDate, FEmpName, FCustName, FCustEmpName, FReprotContent, FCreadteDate) " +
                 "VALUES (?, ?, ?, ?, ?, GETDATE())";
 
-      int count =jdbcTemplate.update(sql,discussion.getDateTime(),discussion.getReportName(),discussion.getCustomerName(),StrUtil.join(",",discussion.getParticipants()),discussion.getDiscussion());
+      int count =jdbcTemplate.update(sql,discussion.getDateTime(),discussion.getReportName(),discussion.getCustomerName(),StrUtil.join(",",discussion.getParticipants()),discussion.getDiscussion());*/
     }
 
     private OpenAiApi.ChatCompletionMessage CreateUser(ChatbotMessage chatbotMessage) {
