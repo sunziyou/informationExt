@@ -37,6 +37,9 @@ public class InvoiceManagerAccessTokenService {
     @Value("${app.invoiceManageragentId}")
     @Getter
     private String agentId;
+    @Value("${baiduapiKey}")
+    @Getter
+    private String baiduapiKey;
     private volatile AccessToken accessToken;
 
     @Getter
