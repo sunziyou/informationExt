@@ -40,6 +40,13 @@ public class InvoiceManagerAccessTokenService {
     @Value("${baiduapiKey}")
     @Getter
     private String baiduapiKey;
+
+    @Value("${xtiappid}")
+    @Getter
+    private String xtiappid;
+    @Value("${xtisecretcode}")
+    @Getter
+    private String xtisecretcode;
     private volatile AccessToken accessToken;
 
     @Getter

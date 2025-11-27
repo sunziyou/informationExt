@@ -7,10 +7,12 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Base64;
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class HttpDownloadUtils {
     public static final OkHttpClient HTTP_CLIENT = new OkHttpClient().newBuilder().readTimeout(600, TimeUnit.SECONDS).build();
+    private static final String URL = "https://api.textin.com/ai/service/v1/bill_recognize_v2";
 
     private static Logger logger = LogManager.getLogger(HttpDownloadUtils.class);
 
@@ -31,16 +33,39 @@ public class HttpDownloadUtils {
        return result;
    }
 
-    /**
+   public static String getreceiptTextIn(String url,String appId,String secretCode) throws IOException {
+       MediaType contentType = MediaType.get("text/plain; charset=utf-8");
+       RequestBody body = RequestBody.create(url, contentType);
+       Request request = new Request.Builder()
+               .url(URL)
+               .addHeader("x-ti-app-id", appId)
+               .addHeader("x-ti-secret-code", secretCode)
+               .addHeader("Content-Type", contentType.toString())
+               .post(body)
+               .build();
+
+       try (Response response = HTTP_CLIENT.newCall(request).execute()) {
+           if (!response.isSuccessful()) {
+               throw new IOException("请求失败，HTTP 状态码: " + response.code());
+           }
+
+           String result =response.body().string();
+           System.out.println(result);
+           return result;
+       }
+
+   }
+
+ /*   *//**
      * 根据URL下载文件并转换为Base64编码
      *
      * @param fileUrl 文件URL地址
      * @return Base64编码字符串
      * @throws IOException IO异常
-     */
+     *//*
     public static String downloadFileToBase64(String fileUrl) throws IOException {
         return downloadFileToBase64(fileUrl, 10000, 50000);
-    }
+    }*/
 
     /**
      * 根据URL下载文件并转换为Base64编码（可设置超时时间）

@@ -51,7 +51,7 @@ public class ChatbotMessageUtils {
             String downloadUrl = robotMessageFileDownloadResponse.getBody().getDownloadUrl();
            // Thread.sleep(3000);
            // String file = HttpDownloadUtils.downloadFileToBase64(downloadUrl);
-           return HttpDownloadUtils.getreceiptByBase64File(downloadUrl,invoiceManagerAccessTokenService.getBaiduapiKey());
+           return HttpDownloadUtils.getreceiptByBase64File(downloadUrl, invoiceManagerAccessTokenService.getBaiduapiKey());
         } catch (TeaException err) {
             logger.warn("获取图片失败",err);
         } catch (Exception _err) {
