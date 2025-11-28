@@ -68,8 +68,8 @@ public class RobotGroupMessagesService {
     private DingDingWorkNoticeAccount dingDingWorkNoticeAccount;
     @Autowired
     private OpenAiApi openAiApi;
- /*   @Autowired
-    private JdbcTemplate jdbcTemplate;*/
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     public RobotGroupMessagesService(AccessTokenService accessTokenService) {
@@ -231,10 +231,10 @@ public class RobotGroupMessagesService {
     }
 
     private void saveDiscussion(Discussion discussion) {
-       /* String sql = "INSERT INTO OP_WorkReport (FDate, FEmpName, FCustName, FCustEmpName, FReprotContent, FCreadteDate) " +
+      String sql = "INSERT INTO OP_WorkReport (FDate, FEmpName, FCustName, FCustEmpName, FReprotContent, FCreadteDate) " +
                 "VALUES (?, ?, ?, ?, ?, GETDATE())";
 
-      int count =jdbcTemplate.update(sql,discussion.getDateTime(),discussion.getReportName(),discussion.getCustomerName(),StrUtil.join(",",discussion.getParticipants()),discussion.getDiscussion());*/
+      int count =jdbcTemplate.update(sql,discussion.getDateTime(),discussion.getReportName(),discussion.getCustomerName(),StrUtil.join(",",discussion.getParticipants()),discussion.getDiscussion());
     }
 
     private OpenAiApi.ChatCompletionMessage CreateUser(ChatbotMessage chatbotMessage) {

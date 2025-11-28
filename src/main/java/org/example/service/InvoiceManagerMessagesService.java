@@ -31,6 +31,7 @@ import org.example.utils.StrUtils;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -67,8 +68,8 @@ public class InvoiceManagerMessagesService {
     private DingDingWorkNoticeAccount dingDingWorkNoticeAccount;
     @Autowired
     private OpenAiApi openAiApi;
- /*   @Autowired
-    private JdbcTemplate jdbcTemplate;*/
+     @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Autowired
     public InvoiceManagerMessagesService(InvoiceManagerAccessTokenService accessTokenService) {
