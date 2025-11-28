@@ -21,6 +21,7 @@ import org.apache.logging.log4j.Logger;
 import org.example.cache.ChatHistory;
 import org.example.entity.DingDingRobotAccount;
 import org.example.entity.Discussion;
+import org.example.entity.Invoice;
 import org.example.entity.SendMessageType;
 import org.example.parser.ParserToolFactory;
 import org.example.utils.ChatbotMessageUtils;
@@ -193,42 +194,23 @@ public class InvoiceManagerMessagesService {
         messages.add(assistantMessage);
         ChatHistory.put(senderStaffId, messages);
         cn.hutool.json.JSONObject jsonObject = JSONUtil.parseObj(jsonString);
-        if(Objects.equals("工作汇报",jsonObject.getStr("intent"))){
-            Discussion discussion =  JSONUtil.toBean(jsonObject.getStr("entities"), Discussion.class);
-            discussion.setReportName(nickName);
-           // boolean validateCustom=discussion.validateCustomerName(jdbcTemplate);
-            boolean validateCustom=discussion.validateCustomerName(null);
-            if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
-                messages.add(MessageUtils.createUserMessage(discussion.getCustomerNameError()));
-            }
-            if(Objects.equals("finish",discussion.getRemark())){
+        if(Objects.equals("发票信息提取",jsonObject.getStr("intent"))){
+            Invoice invoice =  JSONUtil.toBean(jsonObject.getStr("entities"), Invoice.class);
+            invoice.setReportName(nickName);
 
-                if(!discussion.validate()){
-                    String error = "当前提取信息如下\n"+discussion+"\n"+",信息不完整请补充";
-                    if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
-                        error+="\n"+discussion.getCustomerNameError();
-                    }
-                    return error;
-                }
-                if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
-                    return  discussion.getCustomerNameError();
-                }
-
+            if(Objects.equals("finish",invoice.getRemark())){
                 ChatHistory.invalidate(senderStaffId);
-                saveDiscussion(discussion);
-                return "当前提取信息如下\n"+discussion+"\n"+"已保存数据库";
+                saveInvoice(invoice);
+                return "当前提取信息如下\n"+invoice+"\n"+"已保存数据库";
             }
-            String result = "当前提取信息如下\n"+discussion.toString()+"\n"+discussion.getRemark();
-            if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
-                result+="\n"+discussion.getCustomerNameError();
-            }
+            String result = "当前提取信息如下\n"+invoice.toString()+"\n请确认信息是否正确";
             return  result;
         }
         return jsonObject.getJSONObject("entities").getStr("answer");
 
     }
 
-    private void saveDiscussion(Discussion discussion) {
+    private void saveInvoice(Invoice invoice) {
        /* String sql = "INSERT INTO OP_WorkReport (FDate, FEmpName, FCustName, FCustEmpName, FReprotContent, FCreadteDate) " +
                 "VALUES (?, ?, ?, ?, ?, GETDATE())";
 
@@ -240,7 +222,7 @@ public class InvoiceManagerMessagesService {
     }
 
     private OpenAiApi.ChatCompletionMessage createSystem(ChatbotMessage chatbotMessage) {
-        String message = StrUtils.readByResource("informationExt.txt");
+        String message = StrUtils.readByResource("invoiceExt.txt");
         Map<String, String> varValue = new HashMap<>();
         varValue.put("input",ChatbotMessageUtils.getInvoiceContent(chatbotMessage,robotClient, invoiceManagerAccessTokenService));
         varValue.put("dateTime", DateUtils.getCurrentTime());
