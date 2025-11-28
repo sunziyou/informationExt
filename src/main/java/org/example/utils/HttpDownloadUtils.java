@@ -29,10 +29,54 @@ public class HttpDownloadUtils {
                .build();
        Response response = HTTP_CLIENT.newCall(request).execute();
        String result =response.body().string();
-       System.out.println(result);
        return result;
    }
 
+    public static String saveByUrl(String url, String filePath, String fileName)  {
+        logger.info("下载url:"+url);
+        OkHttpClient client = new OkHttpClient();
+
+        Request request = new Request.Builder()
+                .url(url)
+                .build();
+        try (Response response = client.newCall(request).execute()) {
+            if (!response.isSuccessful()) {
+               logger.warn("Failed to download file: " + response);
+            }
+
+            // 确保文件路径存在
+            File directory = new File(filePath);
+            if (!directory.exists()) {
+                directory.mkdirs();
+            }
+
+            // 构造完整的文件路径
+            String fullFilePath = filePath + File.separator + fileName;
+            if (filePath.endsWith("/") || filePath.endsWith("\\")) {
+                fullFilePath = filePath + fileName;
+            }
+
+            // 写入文件
+            try (ResponseBody responseBody = response.body()) {
+                if (responseBody == null) {
+                    throw new IOException("Response body is null");
+                }
+
+                try (InputStream inputStream = responseBody.byteStream();
+                     FileOutputStream fileOutputStream = new FileOutputStream(fullFilePath)) {
+
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    while ((bytesRead = inputStream.read(buffer)) != -1) {
+                        fileOutputStream.write(buffer, 0, bytesRead);
+                    }
+                }
+            }
+            return fullFilePath;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
    public static String getreceiptTextIn(String url,String appId,String secretCode) throws IOException {
        MediaType contentType = MediaType.get("text/plain; charset=utf-8");
        RequestBody body = RequestBody.create(url, contentType);
@@ -182,5 +226,9 @@ public class HttpDownloadUtils {
                 fileOutputStream.close();
             }
         }
+    }
+
+    public static void main(String[] args) {
+        saveByUrl("http://wukong-file-im-zjk.oss-cn-zhangjiakou.aliyuncs.com/ddmedia%2FiwEcAqNqcGcDAQTRBDgF0QeABrCZFBC17yoUfwkBEoShRGwAB9IS8pg_CAAJomltCgAL0gAPMng.jpg?x-oss-access-key-id=LTAI5tHAVmgnLXFMYxv2BgEv&x-oss-expires=1764317822&x-oss-signature=rn2zRnSoF%2BzVWxPwgK3tbQW%2Bk1E7Z87N1d%2B1j8okGZc%3D&x-oss-signature-version=OSS2","C:/invoice","自友_30530302231009D082372.jpg");
     }
 }

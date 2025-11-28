@@ -12,12 +12,13 @@ serviceType(发票类型)
 totalAmount(金额)
 totalTax(税额 )
 invoiceType(发票种类)
+downloadUrl(发票下载url)
 如果是火车票则收票方、开票方和税额为空字符串
 如果无法识别则在remark中说明那些识别不了让用自己补充
 其他情况remark设置为空字符串
 输出格式必须为：
 json
-{"intent": "发票信息提取", "entities": {"purchaserName": "江苏欧软信息科技有限公司", "sellerName": "中国石化销售股份有限公司江苏苏州石油分公司","invoiceType","电子发票(普通发票)","invoiceNumConfirm": "25327000001533060951", "invoiceDate": "2025-11-24","serviceType":"交通","totalAmount":"166","totalTax":"21.63","remark": ""}}
+{"intent": "发票信息提取", "entities": {"purchaserName": "江苏欧软信息科技有限公司", "sellerName": "中国石化销售股份有限公司江苏苏州石油分公司","invoiceType","电子发票(普通发票)","invoiceNumConfirm": "25327000001533060951", "invoiceDate": "2025-11-24","serviceType":"交通","totalAmount":"166","totalTax":"21.63","downloadUrl":"","remark": ""}}
 当意图为"智能对话"时：
 entities对象中的answer字段就是对问题的具体智能回复
 输出格式必须为：

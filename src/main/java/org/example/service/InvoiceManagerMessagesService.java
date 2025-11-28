@@ -24,10 +24,7 @@ import org.example.entity.Discussion;
 import org.example.entity.Invoice;
 import org.example.entity.SendMessageType;
 import org.example.parser.ParserToolFactory;
-import org.example.utils.ChatbotMessageUtils;
-import org.example.utils.DateUtils;
-import org.example.utils.MessageUtils;
-import org.example.utils.StrUtils;
+import org.example.utils.*;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -212,10 +209,14 @@ public class InvoiceManagerMessagesService {
     }
 
     private void saveInvoice(Invoice invoice) {
-       /* String sql = "INSERT INTO OP_WorkReport (FDate, FEmpName, FCustName, FCustEmpName, FReprotContent, FCreadteDate) " +
-                "VALUES (?, ?, ?, ?, ?, GETDATE())";
-
-      int count =jdbcTemplate.update(sql,discussion.getDateTime(),discussion.getReportName(),discussion.getCustomerName(),StrUtil.join(",",discussion.getParticipants()),discussion.getDiscussion());*/
+        String sql = "INSERT INTO  OP_InvoiceData(FInvoiceDate, FInvoiceNo, FInvoiceName, FEmpName, FServiceType, FSellerName,FPurchaserName,FAmount,FTax) " +
+                "VALUES (?, ?, ?, ?, ?,?,?,?,?)";
+      int count =jdbcTemplate.update(sql,invoice.getInvoiceDate(),invoice.getInvoiceNumConfirm(),invoice.getFileName(),invoice.getReportName(),invoice.getServiceType(),invoice.getSellerName(),invoice.getPurchaserName(),invoice.getTotalAmount(),invoice.getTotalTax());
+       try {
+           HttpDownloadUtils.saveByUrl(invoice.getDownloadUrl(),invoiceManagerAccessTokenService.getSavePath(),invoice.getFileName());
+       }catch (Exception e){
+           logger.warn("保存文件错误",e);
+       }
     }
 
     private OpenAiApi.ChatCompletionMessage CreateUser(ChatbotMessage chatbotMessage) {

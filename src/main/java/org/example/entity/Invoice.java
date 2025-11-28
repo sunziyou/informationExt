@@ -17,6 +17,12 @@ public class Invoice {
     private String remark;
 
     private String invoiceType;
+
+    private String downloadUrl;
+
+    public String getFileName(){
+        return reportName+"_"+invoiceNumConfirm+".png";
+    }
     @Override
     public String toString() {
         return  "报销人:" + reportName  + "\n"+
@@ -32,6 +38,14 @@ public class Invoice {
 
     public String getInvoiceType() {
         return invoiceType;
+    }
+
+    public String getDownloadUrl() {
+        return downloadUrl;
+    }
+
+    public void setDownloadUrl(String downloadUrl) {
+        this.downloadUrl = downloadUrl;
     }
 
     public void setInvoiceType(String invoiceType) {

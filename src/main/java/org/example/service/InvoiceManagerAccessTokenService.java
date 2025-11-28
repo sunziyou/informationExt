@@ -47,6 +47,10 @@ public class InvoiceManagerAccessTokenService {
     @Value("${xtisecretcode}")
     @Getter
     private String xtisecretcode;
+
+    @Value("${savePath}")
+    @Getter
+    private String savePath;
     private volatile AccessToken accessToken;
 
     @Getter
