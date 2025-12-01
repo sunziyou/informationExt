@@ -198,8 +198,8 @@ public class RobotGroupMessagesService {
         if(Objects.equals("工作汇报",jsonObject.getStr("intent"))){
             Discussion discussion =  JSONUtil.toBean(jsonObject.getStr("entities"), Discussion.class);
             discussion.setReportName(nickName);
-           // boolean validateCustom=discussion.validateCustomerName(jdbcTemplate);
-            boolean validateCustom=discussion.validateCustomerName(null);
+            boolean validateCustom=discussion.validateCustomerName(jdbcTemplate);
+            //boolean validateCustom=discussion.validateCustomerName(null);
             if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
                 messages.add(MessageUtils.createUserMessage(discussion.getCustomerNameError()));
             }
