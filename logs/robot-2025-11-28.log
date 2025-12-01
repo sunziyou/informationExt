@@ -1,0 +1,802 @@
+2025-11-28 14:01:07.845 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 29704 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 14:01:07.850 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 14:01:11.189 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 14:01:11.192 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 14:01:11.691 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 14:01:11.712 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 14:01:11.715 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 14:01:11.715 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 14:01:11.854 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 14:01:11.854 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3625 ms
+2025-11-28 14:01:12.380 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 14:01:12.993 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 14:01:12.993 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 14:01:13.105 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 14:01:13.126 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 14:01:13.141 [main] INFO  org.example.Application - Started Application in 5.985 seconds (process running for 6.687)
+2025-11-28 14:01:13.755 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=a50b5a20-cc1f-11f0-884b-5a20030ba585
+2025-11-28 14:01:13.766 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=a50b7a5b-cc1f-11f0-8bff-5215a8ef9827
+2025-11-28 14:05:54.309 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@5c689c4e
+2025-11-28 14:06:45.955 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@4348e1f
+2025-11-28 14:08:15.381 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@3d64802d
+2025-11-28 14:08:47.682 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@2a0f5337
+2025-11-28 14:13:21.882 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 25768 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 14:13:21.885 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 14:13:25.386 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 14:13:25.388 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 14:13:25.859 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 14:13:25.875 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 14:13:25.878 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 14:13:25.879 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 14:13:25.996 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 14:13:25.996 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3706 ms
+2025-11-28 14:13:26.491 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 14:13:27.074 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 14:13:27.074 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 14:13:27.203 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 14:13:27.219 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 14:13:27.235 [main] INFO  org.example.Application - Started Application in 6.106 seconds (process running for 6.767)
+2025-11-28 14:13:28.206 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=5a99d0fe-cc21-11f0-8d8a-de809d1c6511
+2025-11-28 14:13:28.210 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=5a9b20da-cc21-11f0-bee8-0eb3b764c0bb
+2025-11-28 14:14:02.676 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@52c03ece
+2025-11-28 14:14:26.821 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@7bf800cb
+2025-11-28 14:34:52.206 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 18644 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 14:34:52.209 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 14:34:55.802 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 14:34:55.804 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 14:34:56.206 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 14:34:56.225 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 14:34:56.228 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 14:34:56.228 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 14:34:56.361 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 14:34:56.361 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3655 ms
+2025-11-28 14:34:56.769 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-28 14:35:26.895 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'chatBotCallbackListener' defined in file [C:\ideaworkspace\dingtalk-main\target\classes\org\example\callback\chatbot\ChatBotCallbackListener.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+2025-11-28 14:35:26.898 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-28 14:35:26.911 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-28 14:35:26.948 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'chatBotCallbackListener' defined in file [C:\ideaworkspace\dingtalk-main\target\classes\org\example\callback\chatbot\ChatBotCallbackListener.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at org.example.Application.main(Application.java:15)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:485)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
+	... 34 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	... 47 common frames omitted
+Caused by: java.lang.RuntimeException: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.example.dao.JdbcTemplateWapper.initJdbc(JdbcTemplateWapper.java:51)
+	at org.example.dao.JdbcTemplateWapper$$SpringCGLIB$$0.CGLIB$initJdbc$0(<generated>)
+	at org.example.dao.JdbcTemplateWapper$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348)
+	at org.example.dao.JdbcTemplateWapper$$SpringCGLIB$$0.initJdbc(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	... 48 common frames omitted
+Caused by: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:584)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:571)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:80)
+	at org.example.dao.JdbcTemplateWapper.initJdbc(JdbcTemplateWapper.java:47)
+	... 58 common frames omitted
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:190)
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:241)
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2243)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:491)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:1309)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:991)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:827)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1012)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	... 61 common frames omitted
+2025-11-28 14:37:09.216 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 32968 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 14:37:09.219 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 14:37:12.267 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 14:37:12.270 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 14:37:12.796 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 14:37:12.814 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 14:37:12.817 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 14:37:12.817 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 14:37:12.935 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 14:37:12.936 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3374 ms
+2025-11-28 14:37:13.343 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-28 14:37:44.336 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'chatBotCallbackListener' defined in file [C:\ideaworkspace\dingtalk-main\target\classes\org\example\callback\chatbot\ChatBotCallbackListener.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+2025-11-28 14:37:44.339 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-28 14:37:44.349 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-28 14:37:44.371 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'chatBotCallbackListener' defined in file [C:\ideaworkspace\dingtalk-main\target\classes\org\example\callback\chatbot\ChatBotCallbackListener.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at org.example.Application.main(Application.java:15)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:485)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
+	... 34 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	... 47 common frames omitted
+Caused by: java.lang.RuntimeException: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.example.dao.JdbcTemplateWapper.initJdbc(JdbcTemplateWapper.java:51)
+	at org.example.dao.JdbcTemplateWapper$$SpringCGLIB$$0.CGLIB$initJdbc$0(<generated>)
+	at org.example.dao.JdbcTemplateWapper$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348)
+	at org.example.dao.JdbcTemplateWapper$$SpringCGLIB$$0.initJdbc(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	... 48 common frames omitted
+Caused by: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:584)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:571)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:80)
+	at org.example.dao.JdbcTemplateWapper.initJdbc(JdbcTemplateWapper.java:47)
+	... 58 common frames omitted
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:190)
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:241)
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2243)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:491)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:1309)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:991)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:827)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1012)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	... 61 common frames omitted
+2025-11-28 14:39:05.616 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 23976 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 14:39:05.620 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 14:39:08.732 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 14:39:08.733 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 14:39:09.095 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 14:39:09.114 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 14:39:09.117 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 14:39:09.118 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 14:39:09.229 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 14:39:09.230 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3164 ms
+2025-11-28 14:39:09.693 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 14:39:10.233 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 14:39:10.233 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 14:39:10.343 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 14:39:10.361 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 14:39:10.372 [main] INFO  org.example.Application - Started Application in 5.644 seconds (process running for 6.472)
+2025-11-28 14:39:10.945 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=f26c3601-cc24-11f0-89fb-2eaa794b294e
+2025-11-28 14:39:10.945 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=f26c2946-cc24-11f0-884b-5a20030ba585
+2025-11-28 14:39:39.331 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@5c689c4e
+2025-11-28 15:11:59.735 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 11312 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 15:11:59.738 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 15:12:03.299 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:12:03.301 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 15:12:03.694 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 15:12:03.713 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:12:03.716 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 15:12:03.717 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 15:12:03.856 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 15:12:03.857 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3639 ms
+2025-11-28 15:12:04.269 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:12:04.784 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:12:04.784 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:12:04.907 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:12:04.925 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 15:12:04.941 [main] INFO  org.example.Application - Started Application in 6.033 seconds (process running for 6.771)
+2025-11-28 15:12:05.921 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=8b5fed6d-cc29-11f0-8d8a-de809d1c6511
+2025-11-28 15:12:05.921 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=8b61b59c-cc29-11f0-89fb-2eaa794b294e
+2025-11-28 15:12:29.256 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 12900 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 15:12:29.261 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 15:12:32.228 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:12:32.230 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 15:12:32.654 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 15:12:32.692 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:12:32.695 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 15:12:32.695 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 15:12:32.854 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 15:12:32.856 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3223 ms
+2025-11-28 15:12:33.429 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:12:33.920 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:12:34.044 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:12:34.060 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 15:12:34.075 [main] INFO  org.example.Application - Started Application in 5.648 seconds (process running for 6.267)
+2025-11-28 15:12:34.563 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=9cbd5d09-cc29-11f0-80c0-7e88154b8801
+2025-11-28 15:12:34.683 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:12:34.802 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=9d35c491-cc29-11f0-bebd-26ca3a8714ef
+2025-11-28 15:13:08.404 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@1d80a87e
+2025-11-28 15:13:34.950 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@19a66664
+2025-11-28 15:13:49.399 [Thread-2] WARN  o.e.c.c.InvoiceManagerChatBotCallbackListener - 执行业务逻辑错误
+java.lang.RuntimeException: java.io.FileNotFoundException: 自友_30530302231009D082372.jpg\C:\invoice (文件名、目录名或卷标语法不正确。)
+	at org.example.utils.HttpDownloadUtils.saveByUrl(HttpDownloadUtils.java:77)
+	at org.example.service.InvoiceManagerMessagesService.saveInvoice(InvoiceManagerMessagesService.java:217)
+	at org.example.service.InvoiceManagerMessagesService.callLLM(InvoiceManagerMessagesService.java:201)
+	at org.example.service.InvoiceManagerMessagesService.getAnwserContent(InvoiceManagerMessagesService.java:170)
+	at org.example.service.InvoiceManagerMessagesService.sendprivaterobot(InvoiceManagerMessagesService.java:134)
+	at org.example.service.InvoiceManagerMessagesService.sendPrivateMessage(InvoiceManagerMessagesService.java:124)
+	at org.example.callback.chatbot.InvoiceManagerChatBotCallbackListener.executeInfo(InvoiceManagerChatBotCallbackListener.java:65)
+	at org.example.callback.chatbot.InvoiceManagerChatBotCallbackListener.lambda$afterPropertiesSet$0(InvoiceManagerChatBotCallbackListener.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: java.io.FileNotFoundException: 自友_30530302231009D082372.jpg\C:\invoice (文件名、目录名或卷标语法不正确。)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:293)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.example.utils.HttpDownloadUtils.saveByUrl(HttpDownloadUtils.java:66)
+	... 8 common frames omitted
+2025-11-28 15:14:43.615 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 132 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 15:14:43.620 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 15:14:46.932 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:14:46.934 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 15:14:47.367 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 15:14:47.389 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:14:47.393 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 15:14:47.393 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 15:14:47.535 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 15:14:47.535 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3536 ms
+2025-11-28 15:14:47.972 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:14:48.530 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:14:48.530 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:14:48.691 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:14:48.712 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 15:14:48.730 [main] INFO  org.example.Application - Started Application in 5.91 seconds (process running for 6.579)
+2025-11-28 15:14:49.382 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=ecf9d133-cc29-11f0-bebd-26ca3a8714ef
+2025-11-28 15:14:49.382 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=ecfb96a8-cc29-11f0-b05d-329bedae46d2
+2025-11-28 15:16:30.284 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 22764 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 15:16:30.287 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 15:16:33.148 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:16:33.151 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 15:16:33.517 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 15:16:33.533 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:16:33.536 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 15:16:33.537 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 15:16:33.675 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 15:16:33.675 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3007 ms
+2025-11-28 15:16:34.146 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:16:34.693 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:16:34.693 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:16:34.865 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:16:34.882 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 15:16:34.898 [main] INFO  org.example.Application - Started Application in 5.24 seconds (process running for 6.674)
+2025-11-28 15:16:35.328 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=2c3fad12-cc2a-11f0-8bc5-6647947ab531
+2025-11-28 15:16:35.332 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=2c404ffd-cc2a-11f0-80c0-7e88154b8801
+2025-11-28 15:17:01.355 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@1ba22a5
+2025-11-28 15:17:24.143 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@177afbea
+2025-11-28 15:17:37.991 [Thread-2] INFO  org.example.utils.HttpDownloadUtils - 下载url:http://wukong-file-im-zjk.oss-cn-zhangjiakou.aliyuncs.com/ddmedia%2FiwEcAqNqcGcDAQTRBDgF0QeABrCZFBC17yoUfwkBEoShRGwAB9IS8pg_CAAJomltCgAL0gAPMng.jpg?x-oss-access-key-id=LTAI5tHAVmgnLXFMYxv2BgEv&x-oss-expires=1764317822&x-oss-signature=rn2zRnSoF%2BzVWxPwgK3tbQW%2Bk1E7Z87N1d%2B1j8okGZc%3D&x-oss-signature-version=OSS2
+2025-11-28 15:17:38.475 [Thread-2] WARN  o.e.c.c.InvoiceManagerChatBotCallbackListener - 执行业务逻辑错误
+java.lang.RuntimeException: java.io.FileNotFoundException: 自友_30530302231009D082372.jpg\C:\invoice (文件名、目录名或卷标语法不正确。)
+	at org.example.utils.HttpDownloadUtils.saveByUrl(HttpDownloadUtils.java:78)
+	at org.example.service.InvoiceManagerMessagesService.saveInvoice(InvoiceManagerMessagesService.java:217)
+	at org.example.service.InvoiceManagerMessagesService.callLLM(InvoiceManagerMessagesService.java:201)
+	at org.example.service.InvoiceManagerMessagesService.getAnwserContent(InvoiceManagerMessagesService.java:170)
+	at org.example.service.InvoiceManagerMessagesService.sendprivaterobot(InvoiceManagerMessagesService.java:134)
+	at org.example.service.InvoiceManagerMessagesService.sendPrivateMessage(InvoiceManagerMessagesService.java:124)
+	at org.example.callback.chatbot.InvoiceManagerChatBotCallbackListener.executeInfo(InvoiceManagerChatBotCallbackListener.java:65)
+	at org.example.callback.chatbot.InvoiceManagerChatBotCallbackListener.lambda$afterPropertiesSet$0(InvoiceManagerChatBotCallbackListener.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: java.io.FileNotFoundException: 自友_30530302231009D082372.jpg\C:\invoice (文件名、目录名或卷标语法不正确。)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:293)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.example.utils.HttpDownloadUtils.saveByUrl(HttpDownloadUtils.java:67)
+	... 8 common frames omitted
+2025-11-28 15:31:52.689 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 5556 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 15:31:52.692 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 15:31:56.735 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:31:56.737 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 15:31:57.185 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 15:31:57.202 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:31:57.205 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 15:31:57.205 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 15:31:57.336 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 15:31:57.336 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4230 ms
+2025-11-28 15:31:57.813 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 15:31:58.337 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:31:58.337 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 15:31:58.464 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 15:31:58.480 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 15:31:58.494 [main] INFO  org.example.Application - Started Application in 6.558 seconds (process running for 7.261)
+2025-11-28 15:31:59.075 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=52ce40de-cc2c-11f0-b7a2-faf2d53e39a8
+2025-11-28 15:31:59.075 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=52cfc08e-cc2c-11f0-93b1-0622e0c34cc7
+2025-11-28 15:32:41.303 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@1dfd2176
+2025-11-28 15:33:02.913 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@4bcf4312
+2025-11-28 15:33:16.008 [Thread-2] INFO  org.example.utils.HttpDownloadUtils - 下载url:http://wukong-file-im-zjk.oss-cn-zhangjiakou.aliyuncs.com/ddmedia%2FiwEcAqNwbmcDAQTRBjUF0QQdBrAEF_t7ed6J4QkBIYnR1kQAB9IS8pg_CAAJomltCgAL0gACv4M.png?x-oss-access-key-id=LTAI5tHAVmgnLXFMYxv2BgEv&x-oss-expires=1764318762&x-oss-signature=4J00pShr8Ae3XuK7tZkuTASTwcG%2FL9gG%2FGRG%2FwuUkss%3D&x-oss-signature-version=OSS2
+2025-11-28 16:05:50.163 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 24788 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 16:05:50.166 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 16:05:54.970 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:05:54.973 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 16:05:55.497 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 16:05:55.527 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:05:55.532 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 16:05:55.533 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 16:05:55.668 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 16:05:55.669 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 5045 ms
+2025-11-28 16:05:56.252 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:05:56.892 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:05:56.892 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:05:57.073 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:05:57.103 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 16:05:57.122 [main] INFO  org.example.Application - Started Application in 8.074 seconds (process running for 9.088)
+2025-11-28 16:05:57.827 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=11e83d95-cc31-11f0-b7a2-faf2d53e39a8
+2025-11-28 16:05:57.827 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=11e7e2e5-cc31-11f0-80bd-52afbb2bd5e8
+2025-11-28 16:12:23.923 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 20328 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 16:12:23.926 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 16:12:26.975 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:12:26.977 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 16:12:27.327 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 16:12:27.346 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:12:27.349 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 16:12:27.350 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 16:12:27.467 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 16:12:27.468 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3153 ms
+2025-11-28 16:12:27.829 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:12:28.358 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:12:28.358 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:12:28.477 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:12:28.494 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 16:12:28.508 [main] INFO  org.example.Application - Started Application in 5.32 seconds (process running for 5.938)
+2025-11-28 16:12:29.113 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=fb3f157c-cc31-11f0-b7a2-faf2d53e39a8
+2025-11-28 16:12:29.113 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=fb3d7849-cc31-11f0-8bff-5215a8ef9827
+2025-11-28 16:16:06.822 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 25388 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 16:16:06.827 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 16:16:09.962 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:16:09.964 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 16:16:10.375 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 16:16:10.392 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:16:10.394 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 16:16:10.395 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 16:16:10.511 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 16:16:10.511 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3332 ms
+2025-11-28 16:16:10.903 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:16:11.416 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:16:11.416 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:16:11.572 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:16:11.586 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 16:16:11.600 [main] INFO  org.example.Application - Started Application in 5.543 seconds (process running for 6.121)
+2025-11-28 16:16:12.461 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=8032c2f7-cc32-11f0-884b-5a20030ba585
+2025-11-28 16:16:12.461 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=803262cf-cc32-11f0-80bd-52afbb2bd5e8
+2025-11-28 16:32:32.465 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 26884 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 16:32:32.468 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 16:32:35.559 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:32:35.562 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 16:32:35.933 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 16:32:35.952 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:32:35.954 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 16:32:35.954 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 16:32:36.068 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 16:32:36.069 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3190 ms
+2025-11-28 16:32:36.508 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-11-28 16:33:07.476 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'chatBotCallbackListener' defined in file [C:\ideaworkspace\dingtalk-main\target\classes\org\example\callback\chatbot\ChatBotCallbackListener.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+2025-11-28 16:33:07.480 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-28 16:33:07.492 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-28 16:33:07.514 [main] ERROR o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'chatBotCallbackListener' defined in file [C:\ideaworkspace\dingtalk-main\target\classes\org\example\callback\chatbot\ChatBotCallbackListener.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352)
+	at org.example.Application.main(Application.java:15)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:788)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:768)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:509)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782)
+	... 19 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'initJdbc' defined in class path resource [org/example/dao/JdbcTemplateWapper.class]: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:485)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:785)
+	... 34 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.jdbc.core.JdbcTemplate]: Factory method 'initJdbc' threw exception with message: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178)
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644)
+	... 47 common frames omitted
+Caused by: java.lang.RuntimeException: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at org.example.dao.JdbcTemplateWapper.initJdbc(JdbcTemplateWapper.java:51)
+	at org.example.dao.JdbcTemplateWapper$$SpringCGLIB$$0.CGLIB$initJdbc$0(<generated>)
+	at org.example.dao.JdbcTemplateWapper$$SpringCGLIB$$FastClass$$1.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258)
+	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348)
+	at org.example.dao.JdbcTemplateWapper$$SpringCGLIB$$0.initJdbc(<generated>)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146)
+	... 48 common frames omitted
+Caused by: com.zaxxer.hikari.pool.HikariPool$PoolInitializationException: Failed to initialize pool: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at com.zaxxer.hikari.pool.HikariPool.throwPoolInitializationException(HikariPool.java:584)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:571)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:98)
+	at com.zaxxer.hikari.HikariDataSource.<init>(HikariDataSource.java:80)
+	at org.example.dao.JdbcTemplateWapper.initJdbc(JdbcTemplateWapper.java:47)
+	... 58 common frames omitted
+Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: 通过端口 1433 连接到主机 localhost 的 TCP/IP 连接失败。错误:“Connection refused: no further information。请验证连接属性。确保 SQL Server 的实例正在主机上运行，且在此端口接受 TCP/IP 连接，还要确保防火墙没有阻止到此端口的 TCP 连接。”。
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:190)
+	at com.microsoft.sqlserver.jdbc.SQLServerException.ConvertConnectExceptionToSQLServerException(SQLServerException.java:241)
+	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2243)
+	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:491)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:1309)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:991)
+	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:827)
+	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1012)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:137)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:360)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:202)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:461)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:550)
+	... 61 common frames omitted
+2025-11-28 16:38:13.620 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 6680 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 16:38:13.624 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 16:38:16.366 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:38:16.368 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 16:38:16.781 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 16:38:16.801 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:38:16.806 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 16:38:16.806 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 16:38:16.920 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 16:38:16.920 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2934 ms
+2025-11-28 16:38:17.213 [main] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'chatBotCallbackListener' defined in file [C:\ideaworkspace\dingtalk-main\target\classes\org\example\callback\chatbot\ChatBotCallbackListener.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'robotGroupMessagesService': Unsatisfied dependency expressed through field 'jdbcTemplate': No qualifying bean of type 'org.springframework.jdbc.core.JdbcTemplate' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2025-11-28 16:38:17.216 [main] INFO  o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-28 16:38:17.260 [main] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-28 16:38:17.281 [main] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field jdbcTemplate in org.example.service.RobotGroupMessagesService required a bean of type 'org.springframework.jdbc.core.JdbcTemplate' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'org.springframework.jdbc.core.JdbcTemplate' in your configuration.
+
+2025-11-28 16:38:46.878 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 18144 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 16:38:46.880 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 16:38:49.763 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:38:49.765 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 16:38:50.188 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 16:38:50.214 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:38:50.218 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 16:38:50.219 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 16:38:50.349 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 16:38:50.350 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3090 ms
+2025-11-28 16:38:50.822 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:38:51.333 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:38:51.335 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:38:51.483 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:38:51.503 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 16:38:51.522 [main] INFO  org.example.Application - Started Application in 5.361 seconds (process running for 6.051)
+2025-11-28 16:38:52.388 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=aacc6397-cc35-11f0-8bc5-6647947ab531
+2025-11-28 16:38:52.388 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=aacaf3f6-cc35-11f0-b7a2-faf2d53e39a8
+2025-11-28 16:41:21.030 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 15040 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 16:41:21.033 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 16:41:24.607 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:41:24.609 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 16:41:24.954 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 16:41:24.973 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:41:24.975 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 16:41:24.976 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 16:41:25.092 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 16:41:25.092 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3696 ms
+2025-11-28 16:41:25.511 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:41:26.036 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:41:26.036 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:41:26.169 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:41:26.185 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 16:41:26.197 [main] INFO  org.example.Application - Started Application in 5.889 seconds (process running for 6.542)
+2025-11-28 16:41:26.995 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=07039dd5-cc36-11f0-8d8a-de809d1c6511
+2025-11-28 16:41:26.995 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=07030412-cc36-11f0-93b1-0622e0c34cc7
+2025-11-28 16:41:43.797 [Thread-1] INFO  o.e.s.RobotGroupMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=你是谁
+2025-11-28 16:45:11.034 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 23504 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 16:45:11.039 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 16:45:14.207 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:45:14.211 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 16:45:14.592 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 16:45:14.613 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:45:14.616 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 16:45:14.617 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 16:45:14.742 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 16:45:14.743 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3341 ms
+2025-11-28 16:45:15.131 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 16:45:15.602 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:45:15.619 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 16:45:15.646 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 16:45:15.664 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 16:45:15.677 [main] INFO  org.example.Application - Started Application in 5.339 seconds (process running for 5.938)
+2025-11-28 16:45:16.602 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=8fe0b742-cc36-11f0-bee8-0eb3b764c0bb
+2025-11-28 16:45:16.602 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=8fd8b8ad-cc36-11f0-89fb-2eaa794b294e
+2025-11-28 16:45:59.300 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@73aff708
+2025-11-28 16:46:26.370 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@3e0f8d31
+2025-11-28 16:46:37.312 [Thread-2] INFO  org.example.utils.HttpDownloadUtils - 下载url:http://wukong-file-im-zjk.oss-cn-zhangjiakou.aliyuncs.com/ddmedia%2FiwEcAqNwbmcDAQTRBjUF0QQdBrAa6_PIoWm8gwkD_QWrnAcAB9IGSAgRCAAJomltCgAL0gACv4M.png?x-oss-access-key-id=LTAI5tHAVmgnLXFMYxv2BgEv&x-oss-expires=1764323160&x-oss-signature=OiRxI5BOIuPKocSFgC%2FF4Mb0%2FeiDQr8N1xdc%2F%2BO8%2FOM%3D&x-oss-signature-version=OSS2
+2025-11-28 16:46:37.592 [Thread-2] WARN  o.e.c.c.InvoiceManagerChatBotCallbackListener - 执行业务逻辑错误
+java.lang.RuntimeException: java.io.FileNotFoundException: E:\invoice\杜明闪_25327000001533060951.png (系统找不到指定的路径。)
+	at org.example.utils.HttpDownloadUtils.saveByUrl(HttpDownloadUtils.java:78)
+	at org.example.service.InvoiceManagerMessagesService.saveInvoice(InvoiceManagerMessagesService.java:215)
+	at org.example.service.InvoiceManagerMessagesService.callLLM(InvoiceManagerMessagesService.java:201)
+	at org.example.service.InvoiceManagerMessagesService.getAnwserContent(InvoiceManagerMessagesService.java:170)
+	at org.example.service.InvoiceManagerMessagesService.sendprivaterobot(InvoiceManagerMessagesService.java:134)
+	at org.example.service.InvoiceManagerMessagesService.sendPrivateMessage(InvoiceManagerMessagesService.java:124)
+	at org.example.callback.chatbot.InvoiceManagerChatBotCallbackListener.executeInfo(InvoiceManagerChatBotCallbackListener.java:65)
+	at org.example.callback.chatbot.InvoiceManagerChatBotCallbackListener.lambda$afterPropertiesSet$0(InvoiceManagerChatBotCallbackListener.java:55)
+	at java.base/java.lang.Thread.run(Thread.java:842)
+Caused by: java.io.FileNotFoundException: E:\invoice\杜明闪_25327000001533060951.png (系统找不到指定的路径。)
+	at java.base/java.io.FileOutputStream.open0(Native Method)
+	at java.base/java.io.FileOutputStream.open(FileOutputStream.java:293)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:235)
+	at java.base/java.io.FileOutputStream.<init>(FileOutputStream.java:123)
+	at org.example.utils.HttpDownloadUtils.saveByUrl(HttpDownloadUtils.java:67)
+	... 8 common frames omitted
+2025-11-28 17:23:44.663 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 30776 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 17:23:44.667 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:23:48.271 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:23:48.274 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 17:23:48.761 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 17:23:48.782 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:23:48.784 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 17:23:48.785 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 17:23:48.915 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 17:23:48.916 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3855 ms
+2025-11-28 17:23:49.430 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:23:50.056 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:23:50.056 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:23:50.247 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:23:50.271 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 17:23:50.291 [main] INFO  org.example.Application - Started Application in 6.457 seconds (process running for 7.3)
+2025-11-28 17:23:51.072 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=f3640718-cc3b-11f0-b7a2-faf2d53e39a8
+2025-11-28 17:23:51.072 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=f365b2b7-cc3b-11f0-b05d-329bedae46d2
+2025-11-28 17:24:04.646 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@11a9204
+2025-11-28 17:24:39.606 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 8844 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 17:24:39.609 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:24:42.582 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:24:42.585 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 17:24:42.998 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 17:24:43.018 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:24:43.023 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 17:24:43.023 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 17:24:43.137 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 17:24:43.138 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3084 ms
+2025-11-28 17:24:43.597 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:24:44.116 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:24:44.254 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:24:44.270 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 17:24:44.286 [main] INFO  org.example.Application - Started Application in 5.466 seconds (process running for 6.209)
+2025-11-28 17:24:44.352 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:24:44.717 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=139f402c-cc3c-11f0-8bc5-6647947ab531
+2025-11-28 17:24:44.717 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=13c94428-cc3c-11f0-8bff-5215a8ef9827
+2025-11-28 17:24:49.747 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@1d80a87e
+2025-11-28 17:25:39.477 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 3160 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 17:25:39.480 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:25:42.602 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:25:42.603 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 17:25:43.001 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 17:25:43.021 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:25:43.024 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 17:25:43.025 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 17:25:43.177 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 17:25:43.178 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3303 ms
+2025-11-28 17:25:43.618 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:25:44.142 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:25:44.142 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:25:44.274 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:25:44.295 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 17:25:44.311 [main] INFO  org.example.Application - Started Application in 5.634 seconds (process running for 6.347)
+2025-11-28 17:25:44.783 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=37671a49-cc3c-11f0-80c0-7e88154b8801
+2025-11-28 17:25:44.783 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=37672a88-cc3c-11f0-8bc5-6647947ab531
+2025-11-28 17:26:22.918 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@1d80a87e
+2025-11-28 17:27:18.930 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 23432 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 17:27:18.933 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:27:21.739 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:27:21.741 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 17:27:22.075 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 17:27:22.092 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:27:22.095 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 17:27:22.096 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 17:27:22.215 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 17:27:22.216 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2928 ms
+2025-11-28 17:27:22.648 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:27:23.132 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:27:23.132 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:27:23.238 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:27:23.254 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 17:27:23.266 [main] INFO  org.example.Application - Started Application in 5.007 seconds (process running for 5.665)
+2025-11-28 17:27:24.090 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=7267b3da-cc3c-11f0-8bff-5215a8ef9827
+2025-11-28 17:27:24.090 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=726818fb-cc3c-11f0-bebd-26ca3a8714ef
+2025-11-28 17:27:33.941 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@72d49fe7
+2025-11-28 17:29:01.090 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 34488 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 17:29:01.092 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:29:04.427 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:29:04.429 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 17:29:04.786 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 17:29:04.805 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:29:04.809 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 17:29:04.809 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 17:29:04.924 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 17:29:04.924 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3466 ms
+2025-11-28 17:29:05.435 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:29:05.894 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:29:05.894 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:29:05.997 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:29:06.017 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 17:29:06.030 [main] INFO  org.example.Application - Started Application in 5.623 seconds (process running for 6.354)
+2025-11-28 17:29:06.537 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=afa84caf-cc3c-11f0-bee8-0eb3b764c0bb
+2025-11-28 17:29:06.537 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=afa81c0d-cc3c-11f0-80bd-52afbb2bd5e8
+2025-11-28 17:29:08.895 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@1d80a87e
+2025-11-28 17:30:12.700 [main] INFO  org.example.Application - Starting Application using Java 17.0.12 with PID 31704 (C:\ideaworkspace\dingtalk-main\target\classes started by supersun in C:\ideaworkspace\dingtalk-main)
+2025-11-28 17:30:12.703 [main] INFO  org.example.Application - No active profile set, falling back to 1 default profile: "default"
+2025-11-28 17:30:15.465 [main] INFO  o.example.service.AccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:30:15.467 [main] WARN  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'accessTokenService' of type [org.example.service.AccessTokenService] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected/applied to a currently created BeanPostProcessor [authInterceptor]? Check the corresponding BeanPostProcessor declaration and its dependencies/advisors. If this bean does not have to be post-processed, declare it with ROLE_INFRASTRUCTURE.
+2025-11-28 17:30:15.881 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 7001 (http)
+2025-11-28 17:30:15.898 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:30:15.901 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-28 17:30:15.901 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-11-28 17:30:16.026 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-28 17:30:16.026 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2964 ms
+2025-11-28 17:30:16.423 [main] INFO  o.e.s.InvoiceManagerAccessTokenService - refresh access token success, expireIn=7200
+2025-11-28 17:30:16.921 [connection-pool-2-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:30:16.921 [connection-pool-4-1] INFO  c.d.o.a.s.n.w.WebsocketTransportConnector - [DingTalk] start websocket connection, uri=wss://wss-open-connection.dingtalk.com:443/connect
+2025-11-28 17:30:17.083 [main] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-7001"]
+2025-11-28 17:30:17.104 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 7001 (http) with context path '/'
+2025-11-28 17:30:17.119 [main] INFO  org.example.Application - Started Application in 5.079 seconds (process running for 5.764)
+2025-11-28 17:30:17.703 [connection-pool-4-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=d9fe6826-cc3c-11f0-8bff-5215a8ef9827
+2025-11-28 17:30:17.703 [connection-pool-2-1] INFO  c.d.o.a.s.n.core.DefaultSessionPool - [DingTalk] connection is established, connectionId=d9fd870d-cc3c-11f0-884b-5a20030ba585
+2025-11-28 17:30:56.649 [Thread-2] INFO  o.e.s.InvoiceManagerMessagesService - RobotGroupMessagesService_sendPrivateMessage chatbotMessage=com.dingtalk.open.app.api.models.bot.ChatbotMessage@4b19c932

@@ -20,8 +20,10 @@ public class Invoice {
 
     private String downloadUrl;
 
+    private String fileType="png";
+
     public String getFileName(){
-        return reportName+"_"+invoiceNumConfirm+".png";
+        return reportName+"_"+invoiceNumConfirm+"."+fileType;
     }
     @Override
     public String toString() {
@@ -122,5 +124,13 @@ public class Invoice {
 
     public void setTotalTax(String totalTax) {
         this.totalTax = totalTax;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 }

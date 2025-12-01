@@ -31,7 +31,7 @@ public class ChatbotMessageUtils {
     }
 
     public static String getInvoiceContent(ChatbotMessage chatbotMessage, Client robotClient, InvoiceManagerAccessTokenService invoiceManagerAccessTokenService) {
-        if (Objects.equals(chatbotMessage.getMsgtype(), "picture")) {
+        if (Objects.equals(chatbotMessage.getMsgtype(), "picture")||Objects.equals(chatbotMessage.getMsgtype(), "file")) {
             return getPictureContent(chatbotMessage, robotClient, invoiceManagerAccessTokenService);
         }
         if (chatbotMessage.getText() == null) {
@@ -54,16 +54,22 @@ public class ChatbotMessageUtils {
             String downloadUrl = robotMessageFileDownloadResponse.getBody().getDownloadUrl();
            // Thread.sleep(3000);
            // String file = HttpDownloadUtils.downloadFileToBase64(downloadUrl);
-            String result = HttpDownloadUtils.getreceiptByBase64File(downloadUrl, invoiceManagerAccessTokenService.getBaiduapiKey());
+            String fileType="png";
+            if(chatbotMessage.getContent()!=null &&chatbotMessage.getContent().getFileName()!=null){
+                String fileName=chatbotMessage.getContent().getFileName();
+                if(fileName.contains(".")){
+                    fileType=fileName.substring(fileName.lastIndexOf(".")+1);
+                }
+            }
+           // String result = HttpDownloadUtils.getreceiptByBase64File(downloadUrl, invoiceManagerAccessTokenService.getBaiduapiKey());
+            String result =  HttpDownloadUtils.getreceiptTextIn(downloadUrl, invoiceManagerAccessTokenService.getXtiappid(), invoiceManagerAccessTokenService.getXtisecretcode());
             JSONObject jsonObject = JSONUtil.parseObj(result);
-            JSONObject returnImange= jsonObject.getJSONArray("words_result").getJSONObject(0).getJSONObject("result");
-            System.out.println(returnImange);
+           /* JSONObject returnImange= jsonObject.getJSONArray("words_result").getJSONObject(0).getJSONObject("result");
             logger.info("识别发票信息:"+returnImange);
-            returnImange = reduceResult(returnImange);
-            System.out.println(returnImange);
-            returnImange.putOpt("downloadUrl",downloadUrl);
-
-            return returnImange.toString();
+            returnImange = reduceResult(returnImange);*/
+            jsonObject.putOpt("downloadUrl",downloadUrl);
+            jsonObject.putOpt("fileType",fileType);
+            return jsonObject.toString();
         } catch (TeaException err) {
             logger.warn("解析图片失败",err);
             return "图片解析失败，请检查baidukey 是否开通";
