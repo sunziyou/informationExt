@@ -358,9 +358,10 @@ public class InvoiceManagerMessagesService implements InitializingBean {
     @Override
     public void afterPropertiesSet() {
           new Thread(()->{
+              ChatbotMessage chatbotMessage =null;
               while (true){
                   try {
-                      ChatbotMessage chatbotMessage = linkedBlockingQueue.take();
+                       chatbotMessage = linkedBlockingQueue.take();
                       if(chatbotMessage!=null){
                           List<OpenAiApi.ChatCompletionMessage> messages = new ArrayList<>();
                           messages.add(createSystem(chatbotMessage,"invoiceSimpleExt.txt"));
@@ -374,6 +375,9 @@ public class InvoiceManagerMessagesService implements InitializingBean {
                       }
 
                   }catch (Throwable e){
+                      if(chatbotMessage!=null){
+                          sendMessage("处理发票错误:"+e.getMessage(),chatbotMessage.getSenderStaffId());
+                      }
                       logger.error("处理发票错误",e);
                   }
               }
