@@ -349,7 +349,12 @@ public class InvoiceManagerMessagesService implements InitializingBean {
                     logger.warn("处理发票信息错误", e);
                     if (boxChatbotMessage != null) {
                         if (boxChatbotMessage.getErrorCount() > 0) {
-                            sendMessage("处理发票错误", boxChatbotMessage.getChatbotMessage().getSenderStaffId());
+                            ChatbotMessage chatbotMessage = boxChatbotMessage.getChatbotMessage();
+                            String fileName="";
+                            if(chatbotMessage.getContent()!=null &&chatbotMessage.getContent().getFileName()!=null){
+                                fileName=chatbotMessage.getContent().getFileName();
+                            }
+                            sendMessage("处理发票错误:"+fileName, chatbotMessage.getSenderStaffId());
                         } else {
                             logger.warn("处理发票信息错误,重新处理");
                             boxChatbotMessage.error();
