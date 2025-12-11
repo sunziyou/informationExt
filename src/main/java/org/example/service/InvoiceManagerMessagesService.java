@@ -22,7 +22,9 @@ import org.example.cache.InvoiceChatHistory;
 import org.example.entity.DingDingRobotAccount;
 import org.example.entity.Invoice;
 import org.example.entity.SendMessageType;
+import org.example.entity.botMessage.BoxChatbotMessage;
 import org.example.parser.ParserToolFactory;
+import org.example.service.invoice.DbInvoiceService;
 import org.example.utils.*;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.beans.factory.InitializingBean;
@@ -53,7 +55,7 @@ public class InvoiceManagerMessagesService implements InitializingBean {
     private Client robotClient;
     private final InvoiceManagerAccessTokenService invoiceManagerAccessTokenService;
 
-    private LinkedBlockingQueue<ChatbotMessage> linkedBlockingQueue = new LinkedBlockingQueue<>(1000);
+    private LinkedBlockingQueue<BoxChatbotMessage> linkedBlockingQueue = new LinkedBlockingQueue<>(1000);
     private static final String SEND_URL = "https://oapi.dingtalk.com/topapi/message/corpconversation/asyncsend_v2";
 
     @Value("${invoiceManagerRobot.code}")
@@ -68,8 +70,9 @@ public class InvoiceManagerMessagesService implements InitializingBean {
     private DingDingWorkNoticeAccount dingDingWorkNoticeAccount;
     @Autowired
     private OpenAiApi openAiApi;
+
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private DbInvoiceService dbInvoiceService;
 
     @Autowired
     public InvoiceManagerMessagesService(InvoiceManagerAccessTokenService accessTokenService) {
@@ -122,8 +125,8 @@ public class InvoiceManagerMessagesService implements InitializingBean {
 
     public void sendPrivateMessage(ChatbotMessage chatbotMessage) {
         logger.info("RobotGroupMessagesService_sendPrivateMessage chatbotMessage={}", chatbotMessage);
-        if(isInvoiceMessage(chatbotMessage)){
-            linkedBlockingQueue.add(chatbotMessage);
+        if (isInvoiceMessage(chatbotMessage)) {
+            linkedBlockingQueue.add(new BoxChatbotMessage(chatbotMessage));
             sendMessage("发票信息已收到,ai正在努力处理中", chatbotMessage.getSenderStaffId());
             return;
         }
@@ -138,13 +141,13 @@ public class InvoiceManagerMessagesService implements InitializingBean {
     }
 
     private boolean isInvoiceMessage(ChatbotMessage chatbotMessage) {
-        if (Objects.equals(chatbotMessage.getMsgtype(), "picture")||Objects.equals(chatbotMessage.getMsgtype(), "file")){
-            return  true;
+        if (Objects.equals(chatbotMessage.getMsgtype(), "picture") || Objects.equals(chatbotMessage.getMsgtype(), "file")) {
+            return true;
         }
-        return  false;
+        return false;
     }
 
-    public void sendMessage(String message,String senderStaffId) {
+    public void sendMessage(String message, String senderStaffId) {
         BatchSendOTOHeaders batchSendOTOHeaders = new BatchSendOTOHeaders();
         batchSendOTOHeaders.xAcsDingtalkAccessToken = invoiceManagerAccessTokenService.getAccessToken();
         JSONObject msgParam = new JSONObject();
@@ -171,6 +174,7 @@ public class InvoiceManagerMessagesService implements InitializingBean {
 
         }
     }
+
     private void sendprivaterobot(ChatbotMessage chatbotMessage) {
         String content = getAnwserContent(chatbotMessage);
         sendMessage(content, chatbotMessage.getSenderStaffId());
@@ -180,7 +184,7 @@ public class InvoiceManagerMessagesService implements InitializingBean {
         String senderStaffId = chatbotMessage.getSenderStaffId();
         List<OpenAiApi.ChatCompletionMessage> messages = InvoiceChatHistory.get(senderStaffId);
         if (messages.size() == 0) {
-            messages.add(createSystem(chatbotMessage,"invoiceExt.txt"));
+            messages.add(createSystem(chatbotMessage, "invoiceExt.txt"));
         } else {
             messages.add(CreateUser(chatbotMessage));
         }
@@ -210,6 +214,7 @@ public class InvoiceManagerMessagesService implements InitializingBean {
         return jsonObject.getJSONObject("entities").getStr("answer");
 
     }
+
     private String callLLM(List<OpenAiApi.ChatCompletionMessage> messages) {
         OpenAiApi.ChatCompletionRequest request = new OpenAiApi.ChatCompletionRequest(messages, moduleName, 0.0d, true);
         Flux<OpenAiApi.ChatCompletionChunk> chatCompletionChunkFlux = openAiApi.chatCompletionStream(request);
@@ -229,35 +234,7 @@ public class InvoiceManagerMessagesService implements InitializingBean {
     }
 
     private void saveInvoice(Invoice invoice) {
-        String sql = "MERGE OP_InvoiceData AS target " +
-                "USING (SELECT ? AS FInvoiceNo, ? AS FInvoiceDate, ? AS FInvoiceName, ? AS FEmpName, " +
-                "? AS FServiceType, ? AS FSellerName, ? AS FPurchaserName, ? AS FAmount, ? AS FTax) AS source " +
-                "ON target.FInvoiceNo = source.FInvoiceNo " +
-                "WHEN MATCHED THEN " +
-                "UPDATE SET FInvoiceDate = source.FInvoiceDate, " +
-                "FInvoiceName = source.FInvoiceName, " +
-                "FEmpName = source.FEmpName, " +
-                "FServiceType = source.FServiceType, " +
-                "FSellerName = source.FSellerName, " +
-                "FPurchaserName = source.FPurchaserName, " +
-                "FAmount = source.FAmount, " +
-                "FTax = source.FTax " +
-                "WHEN NOT MATCHED THEN " +
-                "INSERT (FInvoiceNo, FInvoiceDate, FInvoiceName, FEmpName, FServiceType, FSellerName, FPurchaserName, FAmount, FTax) " +
-                "VALUES (source.FInvoiceNo, source.FInvoiceDate, source.FInvoiceName, source.FEmpName, " +
-                "source.FServiceType, source.FSellerName, source.FPurchaserName, source.FAmount, source.FTax);";
-
-       int count = jdbcTemplate.update(sql,
-                invoice.getInvoiceNumConfirm(),
-                invoice.getInvoiceDate(),
-                invoice.getFileName(),
-                invoice.getReportName(),
-                invoice.getServiceType(),
-                invoice.getSellerName(),
-                invoice.getPurchaserName(),
-                emptyAsZero(invoice.getTotalAmount()),
-               emptyAsZero(invoice.getTotalTax())
-        );
+        dbInvoiceService.save(invoice);
         try {
             HttpDownloadUtils.saveByUrl(invoice.getDownloadUrl(), invoiceManagerAccessTokenService.getSavePath(), invoice.getFileName());
         } catch (Exception e) {
@@ -265,18 +242,12 @@ public class InvoiceManagerMessagesService implements InitializingBean {
         }
     }
 
-    private Object emptyAsZero(String totalTax) {
-        if(totalTax==null ||totalTax.trim().equals("")){
-            return 0;
-        }
-        return totalTax;
-    }
 
     private OpenAiApi.ChatCompletionMessage CreateUser(ChatbotMessage chatbotMessage) {
         return MessageUtils.createUserMessage(ChatbotMessageUtils.getInvoiceContent(chatbotMessage, robotClient, invoiceManagerAccessTokenService));
     }
 
-    private OpenAiApi.ChatCompletionMessage createSystem(ChatbotMessage chatbotMessage,String filename) {
+    private OpenAiApi.ChatCompletionMessage createSystem(ChatbotMessage chatbotMessage, String filename) {
         String message = StrUtils.readByResource(filename);
         Map<String, String> varValue = new HashMap<>();
         varValue.put("input", ChatbotMessageUtils.getInvoiceContent(chatbotMessage, robotClient, invoiceManagerAccessTokenService));
@@ -357,31 +328,38 @@ public class InvoiceManagerMessagesService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-          new Thread(()->{
-              ChatbotMessage chatbotMessage =null;
-              while (true){
-                  try {
-                       chatbotMessage = linkedBlockingQueue.take();
-                      if(chatbotMessage!=null){
-                          List<OpenAiApi.ChatCompletionMessage> messages = new ArrayList<>();
-                          messages.add(createSystem(chatbotMessage,"invoiceSimpleExt.txt"));
-                          String s = callLLM(messages);
-                          cn.hutool.json.JSONObject jsonObject = JSONUtil.parseObj(s);
-                          Invoice invoice = JSONUtil.toBean(jsonObject.getStr("entities"), Invoice.class);
-                          invoice.setReportName(chatbotMessage.getSenderNick());
-                          saveInvoice(invoice);
-                          String result= "当前提取信息如下\n" + invoice + "\n" + "已保存数据库";
-                          sendMessage(result, chatbotMessage.getSenderStaffId());
-                      }
+        new Thread(() -> {
+            BoxChatbotMessage boxChatbotMessage = null;
+            while (true) {
+                try {
+                    boxChatbotMessage = linkedBlockingQueue.take();
+                    if (boxChatbotMessage != null) {
+                        ChatbotMessage chatbotMessage = boxChatbotMessage.getChatbotMessage();
+                        List<OpenAiApi.ChatCompletionMessage> messages = new ArrayList<>();
+                        messages.add(createSystem(chatbotMessage, "invoiceSimpleExt.txt"));
+                        String s = callLLM(messages);
+                        cn.hutool.json.JSONObject jsonObject = JSONUtil.parseObj(s);
+                        Invoice invoice = JSONUtil.toBean(jsonObject.getStr("entities"), Invoice.class);
+                        invoice.setReportName(chatbotMessage.getSenderNick());
+                        saveInvoice(invoice);
+                        String result = "当前提取信息如下\n" + invoice + "\n" + "已保存数据库";
+                        sendMessage(result, chatbotMessage.getSenderStaffId());
+                    }
+                } catch (Throwable e) {
+                    logger.warn("处理发票信息错误", e);
+                    if (boxChatbotMessage != null) {
+                        if (boxChatbotMessage.getErrorCount() > 0) {
+                            sendMessage("处理发票错误", boxChatbotMessage.getChatbotMessage().getSenderStaffId());
+                        } else {
+                            logger.warn("处理发票信息错误,重新处理");
+                            boxChatbotMessage.error();
+                            linkedBlockingQueue.add(boxChatbotMessage);
+                        }
+                    }
+                    logger.error("处理发票错误", e);
+                }
+            }
 
-                  }catch (Throwable e){
-                      if(chatbotMessage!=null){
-                          sendMessage("处理发票错误:"+e.getMessage(),chatbotMessage.getSenderStaffId());
-                      }
-                      logger.error("处理发票错误",e);
-                  }
-              }
-
-          }).start();
+        }).start();
     }
 }

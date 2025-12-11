@@ -23,6 +23,8 @@ import org.example.entity.DingDingRobotAccount;
 import org.example.entity.Discussion;
 import org.example.entity.SendMessageType;
 import org.example.parser.ParserToolFactory;
+import org.example.service.customer.DbCustomerService;
+import org.example.service.discussion.DbDiscussionService;
 import org.example.utils.ChatbotMessageUtils;
 import org.example.utils.DateUtils;
 import org.example.utils.MessageUtils;
@@ -69,7 +71,9 @@ public class RobotGroupMessagesService {
     @Autowired
     private OpenAiApi openAiApi;
     @Autowired
-    private JdbcTemplate jdbcTemplate;
+    private DbCustomerService dbCustomerService;
+    @Autowired
+    private DbDiscussionService dbDiscussionService;
 
     @Autowired
     public RobotGroupMessagesService(AccessTokenService accessTokenService) {
@@ -134,10 +138,10 @@ public class RobotGroupMessagesService {
 
     private void sendprivaterobot(ChatbotMessage chatbotMessage) {
         BatchSendOTOHeaders batchSendOTOHeaders = new BatchSendOTOHeaders();
-        String content=getAnwserContent(chatbotMessage);
+        String content = getAnwserContent(chatbotMessage);
         batchSendOTOHeaders.xAcsDingtalkAccessToken = accessTokenService.getAccessToken();
         JSONObject msgParam = new JSONObject();
-        msgParam.put("text",  content.replaceAll("\n",  "  \n"));
+        msgParam.put("text", content.replaceAll("\n", "  \n"));
         BatchSendOTORequest batchSendOTORequest = new BatchSendOTORequest()
                 .setRobotCode(robotCode)
                 .setUserIds(java.util.Arrays.asList(
@@ -149,13 +153,13 @@ public class RobotGroupMessagesService {
             robotClient.batchSendOTOWithOptions(batchSendOTORequest, batchSendOTOHeaders, new RuntimeOptions());
         } catch (TeaException err) {
             if (!com.aliyun.teautil.Common.empty(err.code) && !com.aliyun.teautil.Common.empty(err.message)) {
-               logger.warn("RobotGroupMessagesService_sendPrivateMessage err.code={}, err.message={}", err.code, err.message);
+                logger.warn("RobotGroupMessagesService_sendPrivateMessage err.code={}, err.message={}", err.code, err.message);
             }
 
         } catch (Exception _err) {
             TeaException err = new TeaException(_err.getMessage(), _err);
             if (!com.aliyun.teautil.Common.empty(err.code) && !com.aliyun.teautil.Common.empty(err.message)) {
-               logger.warn("RobotGroupMessagesService_sendPrivateMessage err.code={}, err.message={}", err.code, err.message);
+                logger.warn("RobotGroupMessagesService_sendPrivateMessage err.code={}, err.message={}", err.code, err.message);
             }
 
         }
@@ -164,18 +168,17 @@ public class RobotGroupMessagesService {
     private String getAnwserContent(ChatbotMessage chatbotMessage) {
         String senderStaffId = chatbotMessage.getSenderStaffId();
         List<OpenAiApi.ChatCompletionMessage> messages = ChatHistory.get(senderStaffId);
-        if(messages.size()==0){
+        if (messages.size() == 0) {
             messages.add(createSystem(chatbotMessage));
-        }
-        else {
+        } else {
             messages.add(CreateUser(chatbotMessage));
         }
-        String result=callLLM(senderStaffId,messages,chatbotMessage.getSenderNick());
+        String result = callLLM(senderStaffId, messages, chatbotMessage.getSenderNick());
 
         return result;
     }
 
-    private String callLLM(String senderStaffId,List<OpenAiApi.ChatCompletionMessage> messages,String nickName) {
+    private String callLLM(String senderStaffId, List<OpenAiApi.ChatCompletionMessage> messages, String nickName) {
         OpenAiApi.ChatCompletionRequest request = new OpenAiApi.ChatCompletionRequest(messages, moduleName, 0.0d, true);
         Flux<OpenAiApi.ChatCompletionChunk> chatCompletionChunkFlux = openAiApi.chatCompletionStream(request);
         String fullContent = chatCompletionChunkFlux
@@ -195,46 +198,43 @@ public class RobotGroupMessagesService {
         messages.add(assistantMessage);
         ChatHistory.put(senderStaffId, messages);
         cn.hutool.json.JSONObject jsonObject = JSONUtil.parseObj(jsonString);
-        if(Objects.equals("工作汇报",jsonObject.getStr("intent"))){
-            Discussion discussion =  JSONUtil.toBean(jsonObject.getStr("entities"), Discussion.class);
+        if (Objects.equals("工作汇报", jsonObject.getStr("intent"))) {
+            Discussion discussion = JSONUtil.toBean(jsonObject.getStr("entities"), Discussion.class);
             discussion.setReportName(nickName);
-            boolean validateCustom=discussion.validateCustomerName(jdbcTemplate);
+            boolean validateCustom = discussion.validateCustomerName(dbCustomerService);
             //boolean validateCustom=discussion.validateCustomerName(null);
-            if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
+            if (!validateCustom && discussion.getCustomerNameError() != null && !Objects.equals("", discussion.getCustomerNameError())) {
                 messages.add(MessageUtils.createUserMessage(discussion.getCustomerNameError()));
             }
-            if(Objects.equals("finish",discussion.getRemark())){
+            if (Objects.equals("finish", discussion.getRemark())) {
 
-                if(!discussion.validate()){
-                    String error = "当前提取信息如下\n"+discussion+"\n"+",信息不完整请补充";
-                    if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
-                        error+="\n"+discussion.getCustomerNameError();
+                if (!discussion.validate()) {
+                    String error = "当前提取信息如下\n" + discussion + "\n" + ",信息不完整请补充";
+                    if (!validateCustom && discussion.getCustomerNameError() != null && !Objects.equals("", discussion.getCustomerNameError())) {
+                        error += "\n" + discussion.getCustomerNameError();
                     }
                     return error;
                 }
-                if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
-                    return  discussion.getCustomerNameError();
+                if (!validateCustom && discussion.getCustomerNameError() != null && !Objects.equals("", discussion.getCustomerNameError())) {
+                    return discussion.getCustomerNameError();
                 }
 
                 ChatHistory.invalidate(senderStaffId);
                 saveDiscussion(discussion);
-                return "当前提取信息如下\n"+discussion+"\n"+"已保存数据库";
+                return "当前提取信息如下\n" + discussion + "\n" + "已保存数据库";
             }
-            String result = "当前提取信息如下\n"+discussion.toString()+"\n"+discussion.getRemark();
-            if(!validateCustom&&discussion.getCustomerNameError()!=null&&!Objects.equals("",discussion.getCustomerNameError())){
-                result+="\n"+discussion.getCustomerNameError();
+            String result = "当前提取信息如下\n" + discussion.toString() + "\n" + discussion.getRemark();
+            if (!validateCustom && discussion.getCustomerNameError() != null && !Objects.equals("", discussion.getCustomerNameError())) {
+                result += "\n" + discussion.getCustomerNameError();
             }
-            return  result;
+            return result;
         }
         return jsonObject.getJSONObject("entities").getStr("answer");
 
     }
 
     private void saveDiscussion(Discussion discussion) {
-    String sql = "INSERT INTO OP_WorkReport (FDate, FEmpName, FCustName, FCustEmpName, FReprotContent, FCreadteDate) " +
-                "VALUES (?, ?, ?, ?, ?, GETDATE())";
-
-      int count =jdbcTemplate.update(sql,discussion.getDateTime(),discussion.getReportName(),discussion.getCustomerName(),StrUtil.join(",",discussion.getParticipants()),discussion.getDiscussion());
+        dbDiscussionService.saveDiscussion(discussion);
     }
 
     private OpenAiApi.ChatCompletionMessage CreateUser(ChatbotMessage chatbotMessage) {
@@ -244,18 +244,17 @@ public class RobotGroupMessagesService {
     private OpenAiApi.ChatCompletionMessage createSystem(ChatbotMessage chatbotMessage) {
         String message = StrUtils.readByResource("informationExt.txt");
         Map<String, String> varValue = new HashMap<>();
-        varValue.put("input",ChatbotMessageUtils.getUserContent(chatbotMessage));
+        varValue.put("input", ChatbotMessageUtils.getUserContent(chatbotMessage));
         varValue.put("dateTime", DateUtils.getCurrentTime());
         String systemMessage = MessageUtils.createMessage(varValue, message);
         return MessageUtils.createSystemMessage(systemMessage);
     }
 
 
-
     private void sendprivate(ChatbotMessage chatbotMessage) {
         try {
-        OapiMessageCorpconversationAsyncsendV2Request request = assemblePrivateParam(dingDingWorkNoticeAccount, chatbotMessage);
-        String accessToken = accessTokenService.getAccessToken();
+            OapiMessageCorpconversationAsyncsendV2Request request = assemblePrivateParam(dingDingWorkNoticeAccount, chatbotMessage);
+            String accessToken = accessTokenService.getAccessToken();
 
             new DefaultDingTalkClient(SEND_URL).execute(request, accessToken);
         } catch (ApiException e) {

@@ -3,6 +3,7 @@ package org.example.entity;
 import cn.hutool.core.util.StrUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.example.service.customer.CustomerService;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
@@ -90,22 +91,20 @@ public class Discussion {
                 && StrUtil.isNotBlank(discussion) && StrUtil.isNotBlank(remark)&&participants!=null &&participants.size()>0;
     }
 
-    public boolean validateCustomerName(JdbcTemplate jdbcTemplate) {
+    public boolean validateCustomerName(CustomerService customerService) {
         try {
-            if(jdbcTemplate==null){
+            if(customerService==null){
                 return true;
             }
             if(customerName==null|| Objects.equals("",customerName)){
                 return false;
             }
-            String sql = "select FcustName from  OP_Customer where FcustName=?";
-            List<String> names = jdbcTemplate.query(sql,(rs, rowNum) -> rs.getString("FcustName"),customerName);
+            List<String> names = customerService.queryByName(customerName);
             if(names!=null &&names.size()==1){
                 this.customerNameError=null;
                 return true;
             }
-            String sql2 = "select TOP 5 FcustName from OP_Customer where FcustName like '%"+customerName+"%'";
-            names = jdbcTemplate.query(sql2,(rs, rowNum) -> rs.getString("FcustName"));
+            names =customerService.queryByVagueName(customerName);
 
             if(names==null||names.size()==0){
                 this.customerNameError="当前客户名称错误,请重新说明客户名称。";
