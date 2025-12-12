@@ -21,20 +21,20 @@ import java.util.Objects;
  */
 @Slf4j
 @Service
-public class AccessTokenService {
+public class ServiceAccessTokenService {
     private Client auth2Client;
 
-    @Value("${app.appKey}")
+    @Value("${app.saleAppKey}")
     private String appKey;
 
-    @Value("${app.appSecret}")
+    @Value("${app.saleAppSecret}")
     private String appSecret;
 
-    @Value("${robot.code}")
+    @Value("${robot.sale.code}")
     @Getter
     private String robotCode;
 
-    @Value("${app.agentId}")
+    @Value("${app.saleAgentId=}")
     @Getter
     private String agentId;
     private volatile AccessToken accessToken;

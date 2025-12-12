@@ -21,36 +21,22 @@ import java.util.Objects;
  */
 @Slf4j
 @Service
-public class InvoiceManagerAccessTokenService {
+public class SaleAccessTokenService {
     private Client auth2Client;
 
-    @Value("${app.invoiceManagerKey}")
+    @Value("${app.saleAppKey}")
     private String appKey;
 
-    @Value("${app.invoiceManagerAppSecret}")
+    @Value("${app.saleAppSecret}")
     private String appSecret;
 
-    @Value("${robot.invoiceManager.code}")
+    @Value("${robot.sale.code}")
     @Getter
     private String robotCode;
 
-    @Value("${app.invoiceManageragentId}")
+    @Value("${app.saleAgentId=}")
     @Getter
     private String agentId;
-    @Value("${baiduapiKey}")
-    @Getter
-    private String baiduapiKey;
-
-    @Value("${xtiappid}")
-    @Getter
-    private String xtiappid;
-    @Value("${xtisecretcode}")
-    @Getter
-    private String xtisecretcode;
-
-    @Value("${savePath}")
-    @Getter
-    private String savePath;
     private volatile AccessToken accessToken;
 
     @Getter

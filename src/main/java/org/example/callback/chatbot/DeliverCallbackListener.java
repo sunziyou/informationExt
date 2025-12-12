@@ -1,11 +1,10 @@
 package org.example.callback.chatbot;
 
 import com.alibaba.fastjson.JSONObject;
-import com.dingtalk.open.app.api.models.bot.ChatbotMessage;
-import com.dingtalk.open.app.api.models.bot.MessageContent;
-import org.example.service.RobotGroupMessagesService;
 import com.dingtalk.open.app.api.callback.OpenDingTalkCallbackListener;
+import com.dingtalk.open.app.api.models.bot.ChatbotMessage;
 import lombok.extern.slf4j.Slf4j;
+import org.example.service.DeliverGroupMessagesService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -20,13 +19,13 @@ import java.util.concurrent.BlockingQueue;
  */
 @Slf4j
 @Component
-public class ChatBotCallbackListener implements OpenDingTalkCallbackListener<ChatbotMessage, JSONObject>, InitializingBean {
+public class DeliverCallbackListener implements OpenDingTalkCallbackListener<ChatbotMessage, JSONObject>, InitializingBean {
     private BlockingQueue<ChatbotMessage> messageQueue = new ArrayBlockingQueue<>(1000);
-    private RobotGroupMessagesService robotGroupMessagesService;
+    private DeliverGroupMessagesService deliverGroupMessagesService;
 
     @Autowired
-    public ChatBotCallbackListener(RobotGroupMessagesService robotGroupMessagesService) {
-        this.robotGroupMessagesService = robotGroupMessagesService;
+    public DeliverCallbackListener(DeliverGroupMessagesService deliverGroupMessagesService) {
+        this.deliverGroupMessagesService = deliverGroupMessagesService;
     }
 
     /**
@@ -61,7 +60,7 @@ public class ChatBotCallbackListener implements OpenDingTalkCallbackListener<Cha
 
     private void executeInfo(ChatbotMessage chatbotMessage) {
         try {
-            robotGroupMessagesService.sendPrivateMessage(chatbotMessage);
+            deliverGroupMessagesService.sendPrivateMessage(chatbotMessage);
         }catch (Exception e){
             log.warn("执行业务逻辑错误",e);
         }
