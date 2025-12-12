@@ -2,8 +2,8 @@ package org.example.controller.interceptor;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.example.service.AccessTokenService;
 import lombok.extern.slf4j.Slf4j;
+import org.example.service.DeliverAccessTokenService;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
@@ -25,12 +25,12 @@ import java.util.Set;
 @Slf4j
 @Component
 public class AuthInterceptor implements HandlerInterceptor, BeanPostProcessor {
-    private final AccessTokenService accessTokenService;
+    private final DeliverAccessTokenService deliverAccessTokenService;
     private final Set<String> needAuthUri = new HashSet<>(100);
 
     @Autowired
-    public AuthInterceptor(AccessTokenService accessTokenService) {
-        this.accessTokenService = accessTokenService;
+    public AuthInterceptor(DeliverAccessTokenService deliverAccessTokenService) {
+        this.deliverAccessTokenService = deliverAccessTokenService;
     }
 
     @Override
@@ -39,7 +39,7 @@ public class AuthInterceptor implements HandlerInterceptor, BeanPostProcessor {
             return true;
         }
 
-        if (accessTokenService.isTokenNearlyExpired()) {
+        if (deliverAccessTokenService.isTokenNearlyExpired()) {
             // server token expired, not client, so not return 401
             response.setStatus(500);
             response.getWriter().write("server token is expired, please try later.");

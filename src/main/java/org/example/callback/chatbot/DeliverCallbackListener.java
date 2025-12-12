@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.open.app.api.callback.OpenDingTalkCallbackListener;
 import com.dingtalk.open.app.api.models.bot.ChatbotMessage;
 import lombok.extern.slf4j.Slf4j;
-import org.example.service.InvoiceManagerMessagesService;
+import org.example.service.DeliverGroupMessagesService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,14 +19,13 @@ import java.util.concurrent.BlockingQueue;
  */
 @Slf4j
 @Component
-public class InvoiceManagerChatBotCallbackListener implements OpenDingTalkCallbackListener<ChatbotMessage, JSONObject>, InitializingBean {
+public class DeliverCallbackListener implements OpenDingTalkCallbackListener<ChatbotMessage, JSONObject>, InitializingBean {
     private BlockingQueue<ChatbotMessage> messageQueue = new ArrayBlockingQueue<>(1000);
-
-    private InvoiceManagerMessagesService invoiceManagerMessagesService;
+    private DeliverGroupMessagesService deliverGroupMessagesService;
 
     @Autowired
-    public InvoiceManagerChatBotCallbackListener(InvoiceManagerMessagesService invoiceManagerMessagesService) {
-        this.invoiceManagerMessagesService = invoiceManagerMessagesService;
+    public DeliverCallbackListener(DeliverGroupMessagesService deliverGroupMessagesService) {
+        this.deliverGroupMessagesService = deliverGroupMessagesService;
     }
 
     /**
@@ -51,7 +50,7 @@ public class InvoiceManagerChatBotCallbackListener implements OpenDingTalkCallba
             while (true) {
                 try {
                     ChatbotMessage chatbotMessage = messageQueue.take();
-                    executeInfo(chatbotMessage);
+                    executeDeliverInfo(chatbotMessage);
                 } catch (Exception e) {
                     log.error("receive group message by robot error:" + e.getMessage(), e);
                 }
@@ -59,9 +58,9 @@ public class InvoiceManagerChatBotCallbackListener implements OpenDingTalkCallba
         }).start();
     }
 
-    private void executeInfo(ChatbotMessage chatbotMessage) {
+    private void executeDeliverInfo(ChatbotMessage chatbotMessage) {
         try {
-            invoiceManagerMessagesService.sendPrivateMessage(chatbotMessage);
+            deliverGroupMessagesService.sendPrivateMessage(chatbotMessage);
         }catch (Exception e){
             log.warn("执行业务逻辑错误",e);
         }

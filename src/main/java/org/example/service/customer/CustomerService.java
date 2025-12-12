@@ -5,4 +5,5 @@ import java.util.List;
 public interface CustomerService {
        List<String> queryByName(String customer);
        List<String> queryByVagueName(String customer);
+       List<Projectbean> queryProject(String customer);
 }

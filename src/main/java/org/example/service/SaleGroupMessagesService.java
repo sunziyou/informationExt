@@ -25,14 +25,10 @@ import org.example.entity.SendMessageType;
 import org.example.parser.ParserToolFactory;
 import org.example.service.customer.DbCustomerService;
 import org.example.service.discussion.DbDiscussionService;
-import org.example.utils.ChatbotMessageUtils;
-import org.example.utils.DateUtils;
-import org.example.utils.MessageUtils;
-import org.example.utils.StrUtils;
+import org.example.utils.*;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -48,17 +44,17 @@ import java.util.*;
  */
 @Slf4j
 @Service
-public class RobotGroupMessagesService {
+public class SaleGroupMessagesService {
     private static final String ENCRYPTION_ALGORITHM = "HmacSHA256";
     private static final String CHARSET = "utf-8";
 
-    private static Logger logger = LogManager.getLogger(RobotGroupMessagesService.class);
+    private static Logger logger = LogManager.getLogger(SaleGroupMessagesService.class);
     private static final String SEND_ALL = "@all";
     private Client robotClient;
-    private final AccessTokenService accessTokenService;
+    private final SaleAccessTokenService accessTokenService;
     private static final String SEND_URL = "https://oapi.dingtalk.com/topapi/message/corpconversation/asyncsend_v2";
 
-    @Value("${robot.code}")
+    @Value("${robot.sale.code}")
     private String robotCode;
 
     @Value("${module}")
@@ -76,7 +72,7 @@ public class RobotGroupMessagesService {
     private DbDiscussionService dbDiscussionService;
 
     @Autowired
-    public RobotGroupMessagesService(AccessTokenService accessTokenService) {
+    public SaleGroupMessagesService(SaleAccessTokenService accessTokenService) {
         this.accessTokenService = accessTokenService;
     }
 
@@ -107,7 +103,7 @@ public class RobotGroupMessagesService {
         orgGroupSendRequest.setMsgParam(msgParam.toJSONString());
         try {
             OrgGroupSendResponse orgGroupSendResponse = robotClient.orgGroupSendWithOptions(orgGroupSendRequest,
-                    orgGroupSendHeaders, new com.aliyun.teautil.models.RuntimeOptions());
+                    orgGroupSendHeaders, new RuntimeOptions());
             if (Objects.isNull(orgGroupSendResponse) || Objects.isNull(orgGroupSendResponse.getBody())) {
                 log.error("RobotGroupMessagesService_send orgGroupSendWithOptions return error, response={}",
                         orgGroupSendResponse);
@@ -144,7 +140,7 @@ public class RobotGroupMessagesService {
         msgParam.put("text", content.replaceAll("\n", "  \n"));
         BatchSendOTORequest batchSendOTORequest = new BatchSendOTORequest()
                 .setRobotCode(robotCode)
-                .setUserIds(java.util.Arrays.asList(
+                .setUserIds(Arrays.asList(
                         chatbotMessage.getSenderStaffId()
                 ))
                 .setMsgKey("sampleMarkdown")
@@ -179,21 +175,7 @@ public class RobotGroupMessagesService {
     }
 
     private String callLLM(String senderStaffId, List<OpenAiApi.ChatCompletionMessage> messages, String nickName) {
-        OpenAiApi.ChatCompletionRequest request = new OpenAiApi.ChatCompletionRequest(messages, moduleName, 0.0d, true);
-        Flux<OpenAiApi.ChatCompletionChunk> chatCompletionChunkFlux = openAiApi.chatCompletionStream(request);
-        String fullContent = chatCompletionChunkFlux
-                .flatMap(chunk -> {
-                    if (chunk.choices() == null || chunk.choices().isEmpty()) {
-                        return Mono.empty();
-                    }
-                    String content = chunk.choices().get(0).delta().content();
-                    return Mono.justOrEmpty(content);
-                })
-                .reduce("", (a, b) -> a + b)
-                .onErrorResume(e -> {
-                    return Mono.just(e.getMessage()); // 返回默认值
-                }).block(Duration.ofSeconds(240));
-        String jsonString = ParserToolFactory.createParserTool(moduleName).parseJson(fullContent);
+        String jsonString= OpenAiUtils.invokeLLm(openAiApi, messages, moduleName);
         OpenAiApi.ChatCompletionMessage assistantMessage = MessageUtils.createAssistantMessage(jsonString);
         messages.add(assistantMessage);
         ChatHistory.put(senderStaffId, messages);
@@ -203,29 +185,18 @@ public class RobotGroupMessagesService {
             discussion.setReportName(nickName);
             boolean validateCustom = discussion.validateCustomerName(dbCustomerService);
             //boolean validateCustom=discussion.validateCustomerName(null);
-            if (!validateCustom && discussion.getCustomerNameError() != null && !Objects.equals("", discussion.getCustomerNameError())) {
-                messages.add(MessageUtils.createUserMessage(discussion.getCustomerNameError()));
+            if (!validateCustom && discussion.getTipsInfo() != null && !Objects.equals("", discussion.getTipsInfo())) {
+                messages.add(MessageUtils.createUserMessage(discussion.getTipsInfo()));
             }
             if (Objects.equals("finish", discussion.getRemark())) {
-
-                if (!discussion.validate()) {
-                    String error = "当前提取信息如下\n" + discussion + "\n" + ",信息不完整请补充";
-                    if (!validateCustom && discussion.getCustomerNameError() != null && !Objects.equals("", discussion.getCustomerNameError())) {
-                        error += "\n" + discussion.getCustomerNameError();
-                    }
-                    return error;
-                }
-                if (!validateCustom && discussion.getCustomerNameError() != null && !Objects.equals("", discussion.getCustomerNameError())) {
-                    return discussion.getCustomerNameError();
-                }
 
                 ChatHistory.invalidate(senderStaffId);
                 saveDiscussion(discussion);
                 return "当前提取信息如下\n" + discussion + "\n" + "已保存数据库";
             }
             String result = "当前提取信息如下\n" + discussion.toString() + "\n" + discussion.getRemark();
-            if (!validateCustom && discussion.getCustomerNameError() != null && !Objects.equals("", discussion.getCustomerNameError())) {
-                result += "\n" + discussion.getCustomerNameError();
+            if (!validateCustom && discussion.getTipsInfo() != null && !Objects.equals("", discussion.getTipsInfo())) {
+                result += "\n" + discussion.getTipsInfo();
             }
             return result;
         }

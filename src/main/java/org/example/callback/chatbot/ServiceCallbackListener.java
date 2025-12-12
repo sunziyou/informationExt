@@ -4,7 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.dingtalk.open.app.api.callback.OpenDingTalkCallbackListener;
 import com.dingtalk.open.app.api.models.bot.ChatbotMessage;
 import lombok.extern.slf4j.Slf4j;
-import org.example.service.InvoiceManagerMessagesService;
+import org.example.service.SaleGroupMessagesService;
+import org.example.service.ServiceGroupMessagesService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -19,14 +20,13 @@ import java.util.concurrent.BlockingQueue;
  */
 @Slf4j
 @Component
-public class InvoiceManagerChatBotCallbackListener implements OpenDingTalkCallbackListener<ChatbotMessage, JSONObject>, InitializingBean {
+public class ServiceCallbackListener implements OpenDingTalkCallbackListener<ChatbotMessage, JSONObject>, InitializingBean {
     private BlockingQueue<ChatbotMessage> messageQueue = new ArrayBlockingQueue<>(1000);
-
-    private InvoiceManagerMessagesService invoiceManagerMessagesService;
+    private ServiceGroupMessagesService serviceGroupMessagesService;
 
     @Autowired
-    public InvoiceManagerChatBotCallbackListener(InvoiceManagerMessagesService invoiceManagerMessagesService) {
-        this.invoiceManagerMessagesService = invoiceManagerMessagesService;
+    public ServiceCallbackListener(ServiceGroupMessagesService serviceGroupMessagesService) {
+        this.serviceGroupMessagesService = serviceGroupMessagesService;
     }
 
     /**
@@ -61,7 +61,7 @@ public class InvoiceManagerChatBotCallbackListener implements OpenDingTalkCallba
 
     private void executeInfo(ChatbotMessage chatbotMessage) {
         try {
-            invoiceManagerMessagesService.sendPrivateMessage(chatbotMessage);
+            serviceGroupMessagesService.sendPrivateMessage(chatbotMessage);
         }catch (Exception e){
             log.warn("执行业务逻辑错误",e);
         }

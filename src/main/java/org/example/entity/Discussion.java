@@ -4,6 +4,7 @@ import cn.hutool.core.util.StrUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.example.service.customer.CustomerService;
+import org.example.service.customer.Projectbean;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.util.ArrayList;
@@ -15,10 +16,13 @@ public class Discussion {
     private String dateTime;
     private String   customerName;
     private String discussion;
-    private List<String> participants = new ArrayList<>();
+    private String participants;
     private String reportName;
     private String remark;
-
+    private String  projectName;
+    private String projectNum;
+    private String workload;
+    private String isOnSite;
     private String customerNameError;
 
     public String getDateTime() {
@@ -45,12 +49,16 @@ public class Discussion {
         this.discussion = discussion;
     }
 
-    public List<String> getParticipants() {
+    public String getParticipants() {
         return participants;
     }
 
-    public void setParticipants(List<String> participants) {
+    public void setParticipants(String participants) {
         this.participants = participants;
+    }
+
+    public void setCustomerNameError(String customerNameError) {
+        this.customerNameError = customerNameError;
     }
 
     public String getRemark() {
@@ -69,16 +77,52 @@ public class Discussion {
         this.reportName = reportName;
     }
 
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
+    }
+
+    public String getProjectNum() {
+        return projectNum;
+    }
+
+    public void setProjectNum(String projectNum) {
+        this.projectNum = projectNum;
+    }
+
+    public String getWorkload() {
+        return workload;
+    }
+
+    public void setWorkload(String workload) {
+        this.workload = workload;
+    }
+
+    public String getIsOnSite() {
+        return isOnSite;
+    }
+
+    public void setIsOnSite(String isOnSite) {
+        this.isOnSite = isOnSite;
+    }
+
     @Override
     public String toString() {
         return  "汇报人:"+ reportName +"(不可修改)\n" +
                 "日期时间:" + dateTime + '\n' +
                 "客户名称:" + customerName + '\n' +
                 "讨论内容:" + discussion + '\n' +
-                "参与人:" + getDiscussionString(participants);
+                "参与人:" + participants+ '\n' +
+                "项目名称:"+projectName+ '\n' +
+                "项目编号:"+projectNum+'\n' +
+                "工作量:"+workload+'\n' +
+                "是否现场:"+isOnSite;
     }
 
-    public String getCustomerNameError() {
+    public String getTipsInfo() {
         return customerNameError;
     }
 
@@ -86,10 +130,7 @@ public class Discussion {
         return StrUtil.join(",",strs);
     }
 
-    public boolean validate() {
-        return StrUtil.isNotBlank(dateTime) && StrUtil.isNotBlank(customerName)
-                && StrUtil.isNotBlank(discussion) && StrUtil.isNotBlank(remark)&&participants!=null &&participants.size()>0;
-    }
+
 
     public boolean validateCustomerName(CustomerService customerService) {
         try {
@@ -102,10 +143,9 @@ public class Discussion {
             List<String> names = customerService.queryByName(customerName);
             if(names!=null &&names.size()==1){
                 this.customerNameError=null;
-                return true;
+                return valiDateProject(customerService,customerName);
             }
             names =customerService.queryByVagueName(customerName);
-
             if(names==null||names.size()==0){
                 this.customerNameError="当前客户名称错误,请重新说明客户名称。";
                 return  false;
@@ -113,7 +153,7 @@ public class Discussion {
             if(names.size()==1){
                 this.customerNameError=null;
                 this.customerName=names.get(0);
-                return true;
+                return valiDateProject(customerService,this.customerName);
             }
             StringBuffer buffer = new StringBuffer("根据当前信息查询到如下客户:\n");
             for(int i=0;i<names.size();i++){
@@ -127,6 +167,66 @@ public class Discussion {
             this.customerNameError="数据库访问错误";
             return  false;
         }
+
+    }
+
+    private boolean valiDateProject(CustomerService customerService,String customerName) {
+        List<Projectbean> projectbeans = customerService.queryProject(customerName);
+        if(projectbeans.size()==0){
+            this.customerNameError="当前客户名下没有项目,公司名:"+customerName+",请选择其他客户";
+            return  false;
+        }
+        if(containsProjectNum(projectbeans)){
+            return  true;
+        }
+        if(projectbeans.size()==1){
+            this.projectName=projectbeans.get(0).getName();
+            this.projectNum=projectbeans.get(0).getNumber();
+            return  true;
+        }
+        StringBuffer buffer = new StringBuffer("根据客户查询到如下项目:\n");
+        for(int i=0;i<projectbeans.size();i++){
+            buffer.append((i+1)+". 项目名称:"+projectbeans.get(i).getName()+",项目编号:"+projectbeans.get(i).getNumber()+"\n");
+        }
+        buffer.append("请根据序号选择项目名称");
+        this.customerNameError=buffer.toString();
+        return  false;
+    }
+
+    private boolean containsProjectNum(List<Projectbean> projectbeans) {
+        if(projectNum==null||Objects.equals("",projectNum)){
+            return  false;
+        }
+        for(Projectbean projectbean:projectbeans){
+            if(Objects.equals(projectbean.getNumber(),projectNum)){
+                return  true;
+            }
+        }
+        return  false;
+    }
+
+    public boolean validateProperties() {
+        StringBuffer stringBuffer = new StringBuffer("");
+        if(StrUtil.isEmpty(customerName)){
+            stringBuffer.append("客户名称不能为空"+"");
+        }
+        if(StrUtil.isEmpty(discussion)){
+            stringBuffer.append("汇报不能为空"+"");
+        }
+        if(StrUtil.isEmpty(dateTime)){
+            stringBuffer.append("汇报时间不能为空"+"");
+        }
+        if(StrUtil.isEmpty(workload)){
+            stringBuffer.append("工作量不能为空"+"");
+        }
+        if(StrUtil.isEmpty(isOnSite)){
+            isOnSite="Y";
+        }
+        if(stringBuffer.length()>2){
+            this.customerNameError=stringBuffer.toString();
+            return  false;
+        }
+        return  true;
 
     }
 }

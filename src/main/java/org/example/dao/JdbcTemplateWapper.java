@@ -3,7 +3,6 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.example.service.RobotGroupMessagesService;
 import org.example.utils.AESUtils;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Component;
 /**
  * @Author sunzy
  * @DATE Create in  2019/12/9 10:16
@@ -32,7 +30,7 @@ public class JdbcTemplateWapper {
         OpenAiApi openAiApi = OpenAiApi.builder().apiKey(AESUtils.decrypt(apiKey)).baseUrl(baseUrl).build();
         return openAiApi;
     }
-    @Bean
+   /* @Bean(name="localJdbc")
     public JdbcTemplate initJdbc() {
 		try {
             HikariConfig hikariConfig = new HikariConfig();
@@ -50,7 +48,27 @@ public class JdbcTemplateWapper {
         }catch (Exception e){
              throw   new RuntimeException(e);
         }
-    }
+    }*/
+
+    /*@Bean(name="k3Jdbc")
+    public JdbcTemplate initK3Jdbc() {
+        try {
+            HikariConfig hikariConfig = new HikariConfig();
+            //        hikariConfig.setJdbcUrl("jdbc:mysql://localhost:3306/mydata");//mysql
+            hikariConfig.setJdbcUrl(getConfig("k3jdbc.url"));//oracle
+            hikariConfig.setDriverClassName(getConfig("k3jdbc.drive"));
+            hikariConfig.setUsername(getConfig("k3jdbc.username"));
+            hikariConfig.setPassword(AESUtils.decrypt(getConfig("k3jdbc.password")));
+            hikariConfig.addDataSourceProperty("cachePrepStmts", "true");
+            hikariConfig.addDataSourceProperty("prepStmtCacheSize", "270");
+            hikariConfig.addDataSourceProperty("prepStmtCacheSqlLimit", "2072");
+            HikariDataSource ds = new HikariDataSource(hikariConfig);
+            JdbcTemplate jdbcTemplate = new JdbcTemplate(ds);
+            return jdbcTemplate;
+        }catch (Exception e){
+            throw   new RuntimeException(e);
+        }
+    }*/
 
     private String getConfig(String key) {
         return env.getProperty(key);

@@ -150,6 +150,19 @@
             <artifactId>sqljdbc4</artifactId>
             <version>4.0</version>
         </dependency>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.9</version>
+        </dependency>
+        <dependency>
+            <groupId>com.k3</groupId>
+            <artifactId>webapi</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/k3cloud-webapi-sdk-java1.8-v8.2.0.jar</systemPath>
+        </dependency>
+
         <!-- 删除 servlet-api（Spring Boot 已包含） -->
         <!-- <dependency>
             <groupId>javax.servlet</groupId>

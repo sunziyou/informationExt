@@ -23,19 +23,19 @@ public class DingDingWorkNoticeAccount {
     /**
      * 应用的唯一标识key。
      */
-    @Value("${app.appKey}")
+    @Value("${app.deliverAppKey}")
     private String appKey;
 
     /**
      * 应用的密钥
      */
-    @Value("${app.appSecret}")
+    @Value("${app.deliverAppSecret}")
     private String appSecret;
 
     /**
      * 发送消息时使用的微应用的AgentID
      */
-    @Value("${app.agentId}")
+    @Value("${app.deliverAgentId}")
     private String agentId;
 
     @Override

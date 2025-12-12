@@ -1,15 +1,13 @@
 package org.example.callback.chatbot;
 
 import com.alibaba.fastjson.JSONObject;
-import com.dingtalk.open.app.api.models.bot.ChatbotMessage;
-import com.dingtalk.open.app.api.models.bot.MessageContent;
-import org.example.service.RobotGroupMessagesService;
 import com.dingtalk.open.app.api.callback.OpenDingTalkCallbackListener;
+import com.dingtalk.open.app.api.models.bot.ChatbotMessage;
 import lombok.extern.slf4j.Slf4j;
+import org.example.service.SaleGroupMessagesService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -20,13 +18,13 @@ import java.util.concurrent.BlockingQueue;
  */
 @Slf4j
 @Component
-public class ChatBotCallbackListener implements OpenDingTalkCallbackListener<ChatbotMessage, JSONObject>, InitializingBean {
+public class SaleCallbackListener implements OpenDingTalkCallbackListener<ChatbotMessage, JSONObject>, InitializingBean {
     private BlockingQueue<ChatbotMessage> messageQueue = new ArrayBlockingQueue<>(1000);
-    private RobotGroupMessagesService robotGroupMessagesService;
+    private SaleGroupMessagesService saleGroupMessagesService;
 
     @Autowired
-    public ChatBotCallbackListener(RobotGroupMessagesService robotGroupMessagesService) {
-        this.robotGroupMessagesService = robotGroupMessagesService;
+    public SaleCallbackListener(SaleGroupMessagesService saleGroupMessagesService) {
+        this.saleGroupMessagesService = saleGroupMessagesService;
     }
 
     /**
@@ -61,7 +59,7 @@ public class ChatBotCallbackListener implements OpenDingTalkCallbackListener<Cha
 
     private void executeInfo(ChatbotMessage chatbotMessage) {
         try {
-            robotGroupMessagesService.sendPrivateMessage(chatbotMessage);
+            saleGroupMessagesService.sendPrivateMessage(chatbotMessage);
         }catch (Exception e){
             log.warn("执行业务逻辑错误",e);
         }

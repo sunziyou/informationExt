@@ -3,10 +3,10 @@ package org.example.K3.customer;
 
 import java.util.*;
 
-import com.google.gson.JsonObject;
-import com.kingdee.bos.webapi.entity.*;
-import com.kingdee.bos.webapi.sdk.K3CloudApi;
 import com.google.gson.Gson;
+import com.kingdee.bos.webapi.entity.SaveParam;
+import com.kingdee.bos.webapi.entity.SaveResult;
+import com.kingdee.bos.webapi.sdk.K3CloudApi;
 import org.example.K3.common.SeqHelper;
 
 
