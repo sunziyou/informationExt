@@ -9,6 +9,8 @@ public class Projectbean {
     private String name;
     private String number;
 
+    private String fPMNumber;
+
     public String getName() {
         return name;
     }
@@ -25,9 +27,17 @@ public class Projectbean {
         this.number = number;
     }
 
+    public String getfPMNumber() {
+        return fPMNumber;
+    }
+
+    public void setfPMNumber(String fPMNumber) {
+        this.fPMNumber = fPMNumber;
+    }
+
     @Override
     public String toString() {
         return  "项目名称:" + name +
-                ",项目号:" + number ;
+                ",项目号:" + number +",项目经理编号:"+fPMNumber;
     }
 }

@@ -30,7 +30,7 @@ public class JdbcTemplateWapper {
         OpenAiApi openAiApi = OpenAiApi.builder().apiKey(AESUtils.decrypt(apiKey)).baseUrl(baseUrl).build();
         return openAiApi;
     }
-   /* @Bean(name="localJdbc")
+    @Bean(name="localJdbc")
     public JdbcTemplate initJdbc() {
 		try {
             HikariConfig hikariConfig = new HikariConfig();
@@ -48,9 +48,9 @@ public class JdbcTemplateWapper {
         }catch (Exception e){
              throw   new RuntimeException(e);
         }
-    }*/
+    }
 
-    /*@Bean(name="k3Jdbc")
+    @Bean(name="k3Jdbc")
     public JdbcTemplate initK3Jdbc() {
         try {
             HikariConfig hikariConfig = new HikariConfig();
@@ -68,7 +68,7 @@ public class JdbcTemplateWapper {
         }catch (Exception e){
             throw   new RuntimeException(e);
         }
-    }*/
+    }
 
     private String getConfig(String key) {
         return env.getProperty(key);

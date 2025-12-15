@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import org.example.service.customer.CustomerService;
 import org.example.service.customer.Projectbean;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,8 @@ public class Discussion {
     private String workload;
     private String isOnSite;
     private String customerNameError;
+
+    private String fPMNumber;
 
     public String getDateTime() {
         return dateTime;
@@ -109,6 +112,14 @@ public class Discussion {
         this.isOnSite = isOnSite;
     }
 
+    public String getfPMNumber() {
+        return fPMNumber;
+    }
+
+    public void setfPMNumber(String fPMNumber) {
+        this.fPMNumber = fPMNumber;
+    }
+
     @Override
     public String toString() {
         return  "汇报人:"+ reportName +"(不可修改)\n" +
@@ -182,6 +193,7 @@ public class Discussion {
         if(projectbeans.size()==1){
             this.projectName=projectbeans.get(0).getName();
             this.projectNum=projectbeans.get(0).getNumber();
+            this.fPMNumber=projectbeans.get(0).getfPMNumber();
             return  true;
         }
         StringBuffer buffer = new StringBuffer("根据客户查询到如下项目:\n");
@@ -199,6 +211,7 @@ public class Discussion {
         }
         for(Projectbean projectbean:projectbeans){
             if(Objects.equals(projectbean.getNumber(),projectNum)){
+                this.fPMNumber=projectbean.getfPMNumber();
                 return  true;
             }
         }
@@ -206,18 +219,22 @@ public class Discussion {
     }
 
     public boolean validateProperties() {
-        StringBuffer stringBuffer = new StringBuffer("");
+        StringBuffer stringBuffer = new StringBuffer("\n");
         if(StrUtil.isEmpty(customerName)){
-            stringBuffer.append("客户名称不能为空"+"");
+            stringBuffer.append("客户名称不能为空"+"\n");
         }
         if(StrUtil.isEmpty(discussion)){
-            stringBuffer.append("汇报不能为空"+"");
+            stringBuffer.append("汇报不能为空"+"\n");
         }
         if(StrUtil.isEmpty(dateTime)){
-            stringBuffer.append("汇报时间不能为空"+"");
+            stringBuffer.append("汇报时间不能为空"+"\n");
         }
         if(StrUtil.isEmpty(workload)){
-            stringBuffer.append("工作量不能为空"+"");
+            stringBuffer.append("工作量不能为空"+"\n");
+        }else{
+            if(!workload.matches("-?\\d+(\\.\\d+)?")){
+                stringBuffer.append("工作量必须是数字类型"+"\n");
+            }
         }
         if(StrUtil.isEmpty(isOnSite)){
             isOnSite="Y";

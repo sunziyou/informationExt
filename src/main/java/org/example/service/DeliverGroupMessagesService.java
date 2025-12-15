@@ -18,6 +18,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.example.K3.report.ReportService;
+import org.example.K3.report.ResultBean;
 import org.example.cache.ChatHistory;
 import org.example.entity.DingDingRobotAccount;
 import org.example.entity.Discussion;
@@ -68,7 +70,8 @@ public class DeliverGroupMessagesService extends AbstractMessageService {
     private DbCustomerService dbCustomerService;
     @Autowired
     private DbDiscussionService dbDiscussionService;
-
+    @Autowired
+    private ReportService reportService;
     @Autowired
     public DeliverGroupMessagesService(DeliverAccessTokenService deliverAccessTokenService) {
         this.deliverAccessTokenService = deliverAccessTokenService;
@@ -80,14 +83,21 @@ public class DeliverGroupMessagesService extends AbstractMessageService {
     }
 
     public void sendPrivateMessage(ChatbotMessage chatbotMessage) {
-        logger.info("RobotGroupMessagesService_sendPrivateMessage chatbotMessage={}", ChatbotMessageUtils.getUserContent(chatbotMessage));
-        //1代表私聊，2群聊。群聊需要单独根据另外的机器人回复，本身的应用机器人不支持回复包括@
-        if (Objects.equals(chatbotMessage.getConversationType(), "1")) {
-            sendDeliverPrivateRobot(chatbotMessage);
-        } else {
-            String content = getAnwserContent(chatbotMessage);
-            DingDingRobotParam dingDingRobotParam = assembleParam(content, chatbotMessage);
-            HttpUtil.post(assembleParamUrl(dingDingRobotAccount), JSONObject.toJSONString(dingDingRobotParam));
+        try {
+            logger.info("RobotGroupMessagesService_sendPrivateMessage chatbotMessage={}", ChatbotMessageUtils.getUserContent(chatbotMessage));
+            //1代表私聊，2群聊。群聊需要单独根据另外的机器人回复，本身的应用机器人不支持回复包括@
+            if (Objects.equals(chatbotMessage.getConversationType(), "1")) {
+                sendDeliverPrivateRobot(chatbotMessage);
+            } else {
+                String content = getAnwserContent(chatbotMessage);
+                DingDingRobotParam dingDingRobotParam = assembleParam(content, chatbotMessage);
+                HttpUtil.post(assembleParamUrl(dingDingRobotAccount), JSONObject.toJSONString(dingDingRobotParam));
+            }
+
+        }catch (Exception e){
+            sendContentToRobotCode(deliverAccessTokenService.getAccessToken(), "汇报系统出错,请重新汇报", robotClient, robotCode, chatbotMessage.getSenderStaffId());
+            ChatHistory.invalidate(chatbotMessage.getSenderStaffId());
+            logger.warn("汇报系统出错",e);
         }
 
     }
@@ -127,11 +137,21 @@ public class DeliverGroupMessagesService extends AbstractMessageService {
                 ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
                 return content;
             }
-            saveDiscussion(discussion);
+            ResultBean resultBean = saveDiscussion(discussion);
+            if(resultBean.getCode()!=0){
+               content=resultBean.getMessage();
+               return  content;
+            }
             ChatHistory.invalidate(chatbotMessage.getSenderStaffId());
             content = "恭喜工作汇报已完成";
             return content;
         } else {
+            if(discussion.getRemark()!=null&&discussion.getRemark().length()>1&&discussion.getRemark().contains("补充")){
+                content=discussion.getRemark()+"\n";
+                messages.add(MessageUtils.createUserMessage(content));
+                ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
+                return content;
+            }
             content += "汇报信息如下:" + '\n' + discussion + '\n' + "请确认";
             messages.add(MessageUtils.createUserMessage(content));
             ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
@@ -141,8 +161,10 @@ public class DeliverGroupMessagesService extends AbstractMessageService {
     }
 
 
-    private void saveDiscussion(Discussion discussion) {
+    private ResultBean saveDiscussion(Discussion discussion) {
         dbDiscussionService.saveDiscussion(discussion);
+        ResultBean resultBean =reportService.saveReport(discussion);
+        return  resultBean;
     }
 
 
