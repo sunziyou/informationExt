@@ -141,19 +141,18 @@ public class DeliverGroupMessagesService extends AbstractMessageService {
             return content;
         } else {
             discussion.validateNormal();
-            if(!StringUtils.isEmpty(discussion.getNormalTips())){
+            if(StringUtils.isEmpty(discussion.getNormalTips())){
                 content += "汇报信息如下:" + '\n' + discussion + '\n' + "请确认";
                 messages.add(MessageUtils.createUserMessage(content));
                 ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
             }else{
                 content += "汇报信息如下:" + '\n' + discussion + '\n';
-                content=discussion.getNormalTips();
+                content+=discussion.getNormalTips();
                 messages.add(MessageUtils.createUserMessage(content));
                 ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
             }
 
         }
-
         return content;
     }
 
