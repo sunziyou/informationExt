@@ -108,6 +108,11 @@ public class DeliverGroupMessagesService extends AbstractMessageService {
     }
 
     public String getAnwserContent(ChatbotMessage chatbotMessage) {
+        String userContent = ChatbotMessageUtils.getUserContent(chatbotMessage);
+        if(Objects.equals("clear",userContent.toLowerCase())){
+            ChatHistory.invalidate(chatbotMessage.getSenderStaffId());
+            return "历史消息已经清除";
+        }
         List<OpenAiApi.ChatCompletionMessage> messages = getMessages(chatbotMessage, "workReport.txt");
         logger.info("请求内容:"+messages);
         String jsonString = OpenAiUtils.invokeLLm(openAiApi, messages, moduleName);
@@ -124,34 +129,21 @@ public class DeliverGroupMessagesService extends AbstractMessageService {
             ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
             return content;
         }
-        if ("finish".equals(discussion.getRemark())) {
-            if (!discussion.validateProperties()) {
-                content += discussion.getTipsInfo();
-                messages.add(MessageUtils.createUserMessage(content));
-                ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
-                return content;
-            }
+        discussion.validateNormal();
+        if(StringUtils.isEmpty(discussion.getNormalTips())){
             ResultBean resultBean = saveDiscussion(discussion);
             if(resultBean.getCode()!=0){
-               content=resultBean.getMessage();
-               return  content;
+                content=resultBean.getMessage();
+                return  content;
             }
             ChatHistory.invalidate(chatbotMessage.getSenderStaffId());
             content = "恭喜工作汇报已完成";
             return content;
-        } else {
-            discussion.validateNormal();
-            if(StringUtils.isEmpty(discussion.getNormalTips())){
-                content += "汇报信息如下:" + '\n' + discussion + '\n' + "请确认";
-                messages.add(MessageUtils.createUserMessage(content));
-                ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
-            }else{
-                content += "汇报信息如下:" + '\n' + discussion + '\n';
-                content+=discussion.getNormalTips();
-                messages.add(MessageUtils.createUserMessage(content));
-                ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
-            }
-
+        }else{
+            content += "汇报信息如下:" + '\n' + discussion + '\n';
+            content+=discussion.getNormalTips();
+            messages.add(MessageUtils.createUserMessage(content));
+            ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
         }
         return content;
     }
