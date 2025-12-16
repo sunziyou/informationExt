@@ -25,7 +25,7 @@ public class Discussion {
     private String workload;
     private String isOnSite;
     private String customerNameError;
-
+    private String normalTips="";
     private String fPMNumber;
 
     public String getDateTime() {
@@ -134,6 +134,10 @@ public class Discussion {
     }
 
     public String getTipsInfo() {
+        validateNormal();
+        if(!StringUtils.isEmpty(normalTips)){
+            return normalTips+"\n"+customerNameError;
+        }
         return customerNameError;
     }
 
@@ -141,7 +145,32 @@ public class Discussion {
         return StrUtil.join(",",strs);
     }
 
+    public void validateNormal(){
+        normalTips="";
+        StringBuffer buffer = new StringBuffer("");
+        if(StrUtil.isEmpty(customerName)){
+            buffer.append("客户名称"+"/");
+        }
+        if(StrUtil.isEmpty(discussion)){
+            buffer.append("汇报内容"+"/");
+        }
+        if(StrUtil.isEmpty(dateTime)){
+            buffer.append("汇报日期"+"/");
+        }
+        if(StrUtil.isEmpty(workload)||Objects.equals("0",workload)){
+            buffer.append("工作量"+"/");
+        }
+        if(StrUtil.isEmpty(isOnSite)){
+            buffer.append("是否现场"+"/");
+        }
+        if(buffer.length()>1){
+            normalTips="请补充如下信息:"+buffer.substring(0,buffer.length()-1);
+        }
+    }
 
+    public String getNormalTips() {
+        return normalTips;
+    }
 
     public boolean validateCustomerName(CustomerService customerService) {
         try {
@@ -194,11 +223,23 @@ public class Discussion {
             this.projectName=projectbeans.get(0).getName();
             this.projectNum=projectbeans.get(0).getNumber();
             this.fPMNumber=projectbeans.get(0).getfPMNumber();
+            if(StrUtil.isEmpty(this.projectName)||StrUtil.isEmpty(this.projectNum)){
+                this.customerNameError="当前客户名下项目不规范，没有项目名称或者项目编码";
+                return  false;
+            }
             return  true;
         }
         StringBuffer buffer = new StringBuffer("根据客户查询到如下项目:\n");
+        int count=0;
         for(int i=0;i<projectbeans.size();i++){
-            buffer.append((i+1)+". 项目名称:"+projectbeans.get(i).getName()+",项目编号:"+projectbeans.get(i).getNumber()+"\n");
+            if(!StrUtil.isEmpty(projectbeans.get(i).getNumber())&&!StrUtil.isEmpty(projectbeans.get(i).getName())){
+                count++;
+                buffer.append((i+1)+". 项目名称:"+projectbeans.get(i).getName()+",项目编号:"+projectbeans.get(i).getNumber()+"\n");
+            }
+        }
+        if(count==0){
+            this.customerNameError="当前客户名下项目不规范，没有项目名称或者项目编码";
+            return  false;
         }
         buffer.append("请根据序号选择项目名称");
         this.customerNameError=buffer.toString();
@@ -206,12 +247,14 @@ public class Discussion {
     }
 
     private boolean containsProjectNum(List<Projectbean> projectbeans) {
-        if(projectNum==null||Objects.equals("",projectNum)){
+        if(projectNum==null||Objects.equals("",projectNum.trim())){
             return  false;
         }
         for(Projectbean projectbean:projectbeans){
-            if(Objects.equals(projectbean.getNumber(),projectNum)){
+            if(Objects.equals(projectbean.getNumber(),projectNum)&&!StrUtil.isEmpty(projectbean.getNumber())&&!StrUtil.isEmpty(projectbean.getName())){
                 this.fPMNumber=projectbean.getfPMNumber();
+                this.projectNum=projectbean.getNumber();
+                this.projectName=projectbean.getName();
                 return  true;
             }
         }

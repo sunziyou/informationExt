@@ -118,12 +118,6 @@ public class DeliverGroupMessagesService extends AbstractMessageService {
         discussion.setReportName(chatbotMessage.getSenderNick());
         boolean validate = discussion.validateCustomerName(dbCustomerService);
         String content = "";
-        if(!Objects.equals("finish",discussion.getRemark())){
-            content=discussion.getRemark();
-            if(content!=null&&content.length()>0){
-                content+="\n";
-            }
-        }
         if (!validate) {
             content += discussion.getTipsInfo();
             messages.add(MessageUtils.createUserMessage(content));
@@ -146,15 +140,18 @@ public class DeliverGroupMessagesService extends AbstractMessageService {
             content = "恭喜工作汇报已完成";
             return content;
         } else {
-            if(discussion.getRemark()!=null&&discussion.getRemark().length()>1&&discussion.getRemark().contains("补充")){
-                content=discussion.getRemark()+"\n";
+            discussion.validateNormal();
+            if(!StringUtils.isEmpty(discussion.getNormalTips())){
+                content += "汇报信息如下:" + '\n' + discussion + '\n' + "请确认";
                 messages.add(MessageUtils.createUserMessage(content));
                 ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
-                return content;
+            }else{
+                content += "汇报信息如下:" + '\n' + discussion + '\n';
+                content=discussion.getNormalTips();
+                messages.add(MessageUtils.createUserMessage(content));
+                ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
             }
-            content += "汇报信息如下:" + '\n' + discussion + '\n' + "请确认";
-            messages.add(MessageUtils.createUserMessage(content));
-            ChatHistory.put(chatbotMessage.getSenderStaffId(), messages);
+
         }
 
         return content;

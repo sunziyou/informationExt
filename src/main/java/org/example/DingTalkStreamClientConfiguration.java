@@ -7,8 +7,6 @@ import com.dingtalk.open.app.api.security.AuthClientCredential;
 import org.example.callback.ai.AIGraphPluginCallbackListener;
 import org.example.callback.chatbot.DeliverCallbackListener;
 import org.example.callback.chatbot.InvoiceManagerChatBotCallbackListener;
-import org.example.callback.chatbot.SaleCallbackListener;
-import org.example.callback.chatbot.ServiceCallbackListener;
 import org.example.utils.AESUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
