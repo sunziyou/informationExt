@@ -70,6 +70,7 @@ public class HttpDownloadUtils {
                     while ((bytesRead = inputStream.read(buffer)) != -1) {
                         fileOutputStream.write(buffer, 0, bytesRead);
                     }
+                    fileOutputStream.flush();
                 }
             }
             return fullFilePath;
@@ -94,7 +95,7 @@ public class HttpDownloadUtils {
            }
 
            String result =response.body().string();
-           System.out.println(result);
+           logger.info("图片信息识别结果:"+result);
            return result;
        }
 

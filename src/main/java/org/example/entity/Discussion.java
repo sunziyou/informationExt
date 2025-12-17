@@ -174,6 +174,7 @@ public class Discussion {
 
     public boolean validateCustomerName(CustomerService customerService) {
         try {
+            this.customerNameError="";
             if(customerService==null){
                 return true;
             }

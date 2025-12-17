@@ -4,15 +4,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 public class Invoice {
     private static Logger logger = LogManager.getLogger(Invoice.class);
+    private String id;
+
     private String reportName;
     private String purchaserName;
     private String sellerName;
     private String invoiceNumConfirm;
     private String invoiceDate;
     private String serviceType;
-    private String totalAmount;
+    private double totalAmount;
 
-    private String totalTax;
+    private double totalTax;
 
     private String remark;
 
@@ -110,20 +112,36 @@ public class Invoice {
         this.serviceType = serviceType;
     }
 
-    public String getTotalAmount() {
+    public static Logger getLogger() {
+        return logger;
+    }
+
+    public static void setLogger(Logger logger) {
+        Invoice.logger = logger;
+    }
+
+    public double getTotalAmount() {
         return totalAmount;
     }
 
-    public void setTotalAmount(String totalAmount) {
+    public void setTotalAmount(double totalAmount) {
         this.totalAmount = totalAmount;
     }
 
-    public String getTotalTax() {
+    public double getTotalTax() {
         return totalTax;
     }
 
-    public void setTotalTax(String totalTax) {
+    public void setTotalTax(double totalTax) {
         this.totalTax = totalTax;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getFileType() {
