@@ -31,6 +31,7 @@ import java.util.concurrent.TimeUnit;
 public class BillService {
     private static Logger logger = LogManager.getLogger(BillService.class);
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    private static  final String formid="UNW_OPINvoiceSP";
     @Autowired
     private K3userService k3userService;
 
@@ -70,7 +71,7 @@ public class BillService {
         String result = null;
         try {
             logger.info("保存票据:{}", jsonObject.toString());
-            result = api.save("UNW_OPINvoiceSP", jsonObject.toString());
+            result = api.save(formid, jsonObject.toString());
             logger.info("票据返回信息" + result);
             JSONObject jsonObject1 = JSONUtil.parseObj(result);
             resultBean= checkResult(jsonObject1, resultBean,invoice,filePath,api,false);
@@ -114,7 +115,6 @@ public class BillService {
     }
 
     private ResultBean attachFile(Invoice invoice, K3CloudApi api,String filePath) {
-        String formId = "UNW_OPINvoiceSP";
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
@@ -161,7 +161,7 @@ public class BillService {
                 String fileBase64String = Base64.encode(uploadBytes);
                 Map<String, Object> request = new HashMap<>();
                 request.put("FileName", invoice.getFileName());
-                request.put("FormId", formId);
+                request.put("FormId", formid);
                 request.put("IsLast", isLast);
                 request.put("InterId", id);
                 request.put("BillNo", billNo);
