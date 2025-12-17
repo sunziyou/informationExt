@@ -51,8 +51,8 @@ public class BillService {
         model.putOpt("FCreatorId", fCreatorId);
         model.putOpt("FCreateDate", currentDate);
         model.putOpt("F_PAEZ_NonTaxAmount", invoice.getTotalAmount());
-        model.putOpt("F_PAEZ_TaxAmount", invoice.getTotalTax());
-        model.putOpt("F_PAEZ_Department", invoice.getTotalTax() + invoice.getTotalAmount());
+        model.putOpt("F_PAEZ_Tax", invoice.getTotalTax());
+        model.putOpt("F_PAEZ_TaxAmount", invoice.getTotalTax() + invoice.getTotalAmount());
         JSONObject f_PAEZ_Department = model.getJSONObject("F_PAEZ_Department");
         f_PAEZ_Department.putOpt("FNumber", userBean.getFdepartmentNumber());
         model.putOpt("F_PAEZ_Department", f_PAEZ_Department);
@@ -203,7 +203,6 @@ public class BillService {
         File file = new File(filePath);
         if (file.length() <= 0) {
             resultBean.error("文件内容为空");
-           System.out.println(resultBean.getMessage());
            return;
         }
         FileInputStream fis=null;
@@ -233,11 +232,11 @@ public class BillService {
                 String fileBase64String = Base64.encode(uploadBytes);
                 Map<String, Object> request = new HashMap<>();
                 request.put("FileName",fileName);
-                request.put("FormId", formId);
+               /* request.put("FormId", formId);*/
                 request.put("IsLast", isLast);
-                request.put("InterId", id);
-                request.put("BillNo", billNo);
-                request.put("AliasFileName", fileName);
+              /*  request.put("InterId", id);
+                request.put("BillNo", billNo);*/
+               /* request.put("AliasFileName", fileName);*/
                 request.put("FileId ", fileId);
                 logger.info("上传附件数据:"+JSONUtil.toJsonStr(request));
                 request.put("SendByte", fileBase64String);
