@@ -26,7 +26,7 @@
                 <maxFileSize>100MB</maxFileSize>
             </timeBasedFileNamingAndRollingPolicy>
             <!-- 保留30天 -->
-            <maxHistory>30</maxHistory>
+            <maxHistory>7</maxHistory>
             <!-- 总大小限制 3GB -->
             <totalSizeCap>3GB</totalSizeCap>
             <cleanHistoryOnStart>true</cleanHistoryOnStart>

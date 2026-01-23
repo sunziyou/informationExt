@@ -7,8 +7,8 @@ sellerName(开票方)
 invoiceNumConfirm(发票号)
 invoiceDate(开票日期转化为yyyy-MM-dd)
 serviceType(发票类型)
-totalAmount(金额,数字类型)
-totalTax(税额 数字类型)
+totalAmount(金额,数字类型,默认值0)
+totalTax(税额 数字类型,默认值0)
 invoiceType(发票种类)
 downloadUrl(发票下载url)
 fileType(文件类型)
@@ -18,5 +18,7 @@ json
 当前时间:%{dateTime}%
 最重要指令:
 你的响应就是只有上述JSON对象，绝对不允许添加任何额外的解释、问候语或道歉。
+totalAmount 必须是数字类型(整数或者带小数都可以),totalTax必须是数字类型(整数或者带小数都可以),如果没有值则填0,默认值0
+如果发票类型识别不出就用发票里项目名称作为发票类型,发票类型要尽最大努力填写
 经最大努力识别出的发票信息.实在识别不出可以填充空字符串
 用户输入:%{input}%

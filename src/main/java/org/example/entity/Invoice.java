@@ -40,6 +40,26 @@ public class Invoice {
                 "发票种类:"+invoiceType;
     }
 
+    public boolean check(){
+        if(isEmpty(invoiceNumConfirm)){
+            return  false;
+        }
+        if(isEmpty(invoiceDate)){
+            return  false;
+        }
+        if(isEmpty(serviceType)) {
+            return  false;
+        }
+        if(isEmpty(invoiceType)){
+            return  false;
+        }
+        return  true;
+    }
+
+    private boolean isEmpty(String invoiceNumConfirm) {
+        return invoiceNumConfirm == null || invoiceNumConfirm.trim().length() == 0;
+    }
+
     public String getInvoiceType() {
         return invoiceType;
     }
