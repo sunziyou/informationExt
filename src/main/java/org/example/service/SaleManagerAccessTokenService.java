@@ -21,20 +21,20 @@ import java.util.Objects;
  */
 @Slf4j
 @Service
-public class InvoiceManagerAccessTokenService implements  ManagerAccessTokenService{
+public class SaleManagerAccessTokenService  implements ManagerAccessTokenService{
     private Client auth2Client;
 
-    @Value("${app.invoiceManagerKey}")
+    @Value("${app.saleManagerKey}")
     private String appKey;
 
-    @Value("${app.invoiceManagerAppSecret}")
+    @Value("${app.saleManagerAppSecret}")
     private String appSecret;
 
-    @Value("${robot.invoiceManager.code}")
+    @Value("${robot.saleManager.code}")
     @Getter
     private String robotCode;
 
-    @Value("${app.invoiceManageragentId}")
+    @Value("${app.saleManageragentId}")
     @Getter
     private String agentId;
     @Value("${baiduapiKey}")

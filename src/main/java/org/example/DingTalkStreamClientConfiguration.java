@@ -5,8 +5,10 @@ import com.dingtalk.open.app.api.OpenDingTalkStreamClientBuilder;
 import com.dingtalk.open.app.api.callback.DingTalkStreamTopics;
 import com.dingtalk.open.app.api.security.AuthClientCredential;
 import org.example.callback.ai.AIGraphPluginCallbackListener;
+import org.example.callback.chatbot.CustomManagerChatBotCallbackListener;
 import org.example.callback.chatbot.DeliverCallbackListener;
 import org.example.callback.chatbot.InvoiceManagerChatBotCallbackListener;
+import org.example.callback.chatbot.SaleManagerChatBotCallbackListener;
 import org.example.utils.AESUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,10 +31,22 @@ public class DingTalkStreamClientConfiguration {
     @Value("${app.invoiceManagerAppSecret}")
     private String invoiceManagerClientSecret;
 
+
+    @Value("${app.saleManagerKey}")
+    private String saleManagerClientId;
+    @Value("${app.saleManagerAppSecret}")
+    private String saleManagerClientSecret;
+
+
+    @Value("${app.customerManagerKey}")
+    private String customManagerClientId;
+    @Value("${app.customerManagerAppSecret}")
+    private String customManagerClientSecret;
+
    /* *//**
      * 配置OpenDingTalkClient客户端并配置初始化方法(start)
      *
-     * @param saleCallbackListener
+     * @param
      * @param aiGraphPluginCallbackListener
      * @return
      * @throws Exception
@@ -86,6 +100,31 @@ public class DingTalkStreamClientConfiguration {
                 .credential(new AuthClientCredential(invoiceManagerClientId, AESUtils.decrypt(invoiceManagerClientSecret)))
                 //注册机器人回调
                 .registerCallbackListener(DingTalkStreamTopics.BOT_MESSAGE_TOPIC, invoiceManagerChatBotCallbackListener)
+                //注册graph api回调
+                .registerCallbackListener(DingTalkStreamTopics.GRAPH_API_TOPIC, aiGraphPluginCallbackListener).build();
+    }
+
+    @Bean(initMethod = "start",name="saleManager")
+    public OpenDingTalkClient configureSaleManager(@Autowired SaleManagerChatBotCallbackListener saleManagerChatBotCallbackListener,
+                                                      @Autowired AIGraphPluginCallbackListener aiGraphPluginCallbackListener) throws Exception {
+        // init stream client
+        return OpenDingTalkStreamClientBuilder.custom()
+                //配置应用的身份信息, 企业内部应用分别为appKey和appSecret, 三方应用为suiteKey和suiteSecret
+                .credential(new AuthClientCredential(saleManagerClientId, AESUtils.decrypt(saleManagerClientSecret)))
+                //注册机器人回调
+                .registerCallbackListener(DingTalkStreamTopics.BOT_MESSAGE_TOPIC, aiGraphPluginCallbackListener)
+                //注册graph api回调
+                .registerCallbackListener(DingTalkStreamTopics.GRAPH_API_TOPIC, aiGraphPluginCallbackListener).build();
+    }
+    @Bean(initMethod = "start",name="customManager")
+    public OpenDingTalkClient configureCustomManager(@Autowired CustomManagerChatBotCallbackListener customManagerChatBotCallbackListener,
+                                                   @Autowired AIGraphPluginCallbackListener aiGraphPluginCallbackListener) throws Exception {
+        // init stream client
+        return OpenDingTalkStreamClientBuilder.custom()
+                //配置应用的身份信息, 企业内部应用分别为appKey和appSecret, 三方应用为suiteKey和suiteSecret
+                .credential(new AuthClientCredential(customManagerClientId, AESUtils.decrypt(customManagerClientSecret)))
+                //注册机器人回调
+                .registerCallbackListener(DingTalkStreamTopics.BOT_MESSAGE_TOPIC, aiGraphPluginCallbackListener)
                 //注册graph api回调
                 .registerCallbackListener(DingTalkStreamTopics.GRAPH_API_TOPIC, aiGraphPluginCallbackListener).build();
     }

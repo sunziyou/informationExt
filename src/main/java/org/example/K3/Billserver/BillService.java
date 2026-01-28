@@ -14,6 +14,7 @@ import org.example.K3.report.ResultBean;
 import org.example.entity.Invoice;
 import org.example.service.K3user.K3userService;
 import org.example.service.K3user.UserBean;
+import org.example.service.sale.ContractBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -32,6 +33,7 @@ public class BillService {
     private static Logger logger = LogManager.getLogger(BillService.class);
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static  final String formid="UNW_OPINvoiceSP";
+    private static  final String saleformid="UNW_OPINvoiceSP";
     @Autowired
     private K3userService k3userService;
 
@@ -74,7 +76,7 @@ public class BillService {
             result = api.save(formid, jsonObject.toString());
             logger.info("票据返回信息" + result);
             JSONObject jsonObject1 = JSONUtil.parseObj(result);
-            resultBean= checkResult(jsonObject1, resultBean,invoice,filePath,api,false);
+            resultBean= checkResult(jsonObject1, resultBean,invoice,filePath,api,false,formid);
 
         } catch (Exception e) {
             logger.warn("保存工作汇报失败", e);
@@ -84,14 +86,14 @@ public class BillService {
 
     }
 
-    private ResultBean checkResult(JSONObject jsonObject1, ResultBean resultBean,Invoice invoice,String filePath,K3CloudApi api,Boolean isAttach) {
+    private ResultBean checkResult(JSONObject jsonObject1, ResultBean resultBean,Invoice invoice,String filePath,K3CloudApi api,Boolean isAttach,String sourceFormid) {
         if (jsonObject1.containsKey("Result") && jsonObject1.getJSONObject("Result").containsKey("ResponseStatus")) {
             JSONObject reponse = jsonObject1.getJSONObject("Result").getJSONObject("ResponseStatus");
             if (Boolean.TRUE.equals(reponse.getBool("IsSuccess"))) {
                 if(!isAttach){
                     JSONObject result1 = jsonObject1.getJSONObject("Result");
                     invoice.setId(result1.getStr("Id"));
-                    return attachFile(invoice, api,filePath);
+                    return attachFile(invoice, api,filePath,sourceFormid);
                 }
                 return resultBean;
             }
@@ -114,7 +116,7 @@ public class BillService {
         return  String.valueOf(fieldName);
     }
 
-    private ResultBean attachFile(Invoice invoice, K3CloudApi api,String filePath) {
+    private ResultBean attachFile(Invoice invoice, K3CloudApi api,String filePath,String sourceFormid) {
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
@@ -161,7 +163,7 @@ public class BillService {
                 String fileBase64String = Base64.encode(uploadBytes);
                 Map<String, Object> request = new HashMap<>();
                 request.put("FileName", invoice.getFileName());
-                request.put("FormId", formid);
+                request.put("FormId", sourceFormid);
                 request.put("IsLast", isLast);
                 request.put("InterId", id);
                 request.put("BillNo", billNo);
@@ -173,7 +175,7 @@ public class BillService {
                 logger.info("上传附件结果:"+result);
                 JSONObject resultObject = JSONUtil.parseObj(result);
                 JSONObject data = resultObject.getJSONObject("Result");
-                resultBean= checkResult(resultObject, resultBean,invoice,filePath,api,true);
+                resultBean= checkResult(resultObject, resultBean,invoice,filePath,api,true,sourceFormid);
                 if(resultBean.getCode()!=0){
                     return  resultBean;
                 }
@@ -191,6 +193,65 @@ public class BillService {
         return resultBean;
     }
 
+    public ResultBean saveSaleInvoice(Invoice invoice, String filePath, ContractBean contractBean) {
+        String json = "{\"NeedUpDateFields\": [],\"NeedReturnFields\": [],\"IsDeleteEntry\": \"true\",\"SubSystemId\": \"\",\"IsVerifyBaseDataField\": \"false\",\"IsEntryBatchFill\": \"true\",\"ValidateFlag\": \"true\",\"NumberSearch\": \"true\",\"IsAutoAdjustField\": \"true\",\"InterationFlags\": \"\",\"IgnoreInterationFlag\": \"\",\"IsControlPrecision\": \"false\",\"ValidateRepeatJson\": \"true\",\"Model\": {\"FID\": 0,\"FCreatorId\": {\"FUserID\": 16394},\"FCreateDate\": \"2026-01-22 09:32:33\",\"F_PAEZ_ConAmount\": 10000.0000000000,\"FEmp\": {\"FSTAFFNUMBER\": \"BDRY201810220002\"},\"F_PAEZ_Department\": {\"FNumber\": \"OPKHCG\"},\"F_PAEZ_ConDate\": \"2025-12-30 00:00:00\",\"F_PAEZ_ContractBillNo\": \"SH-JY20251120\",\"F_PAEZ_PaymentDate\": \"2026-01-22 00:00:00\",\"F_PAEZ_Supplier\": {\"FNUMBER\": \"VEN00861\"},\"F_UNW_PayAmount\": 1060.0,\"F_UNW_InvoiceNo\": \"1212\",\"F_UNW_FPAmount\": 1060.0,\"F_UNW_FPNotaxAmount\": 1000.0,\"F_UNW_FPtaxAmount\": 60.0,\"F_UNW_ConText\": \"迈科条码服务外包\",\"FBillHead_Link\": [{\"FBillHead_Link_FRuleId \": \"65ba355b-ab6e-40a1-824d-ab40d6041e72\",\"FBillHead_Link_FSTableName \": \"UNW_t_Cust110053\",\"FBillHead_Link_FSBillId \": \"100007\",\"FBillHead_Link_FSId \": \"100007\"}],\"F_PAEZ_SubHeadEntity\": {}}}";
+        JSONObject jsonObject = JSONUtil.parseObj(json);
+        UserBean userBean = k3userService.queryUserByDdingdingName(invoice.getReportName());
+        ResultBean resultBean = new ResultBean();
+        if (userBean == null) {
+            resultBean.error("当前钉钉用户名,无法匹配k3用户,钉钉名:" + invoice.getReportName());
+            return resultBean;
+        }
+        String currentDate = formatter.format(LocalDateTime.now());
+        JSONObject model = jsonObject.getJSONObject("Model");
+        JSONObject fCreatorId = model.getJSONObject("FCreatorId");
+        fCreatorId.putOpt("FUserID", userBean.getfSecUserID());
+        model.putOpt("FCreatorId", fCreatorId);
+        model.putOpt("FCreateDate", currentDate);
+        model.putOpt("F_PAEZ_ConAmount",contractBean.getF_PAEZ_ConAmount());
+        JSONObject FEmp = model.getJSONObject("FEmp");
+        FEmp.putOpt("FSTAFFNUMBER", userBean.getfSecUserNo());
+        model.putOpt("FEmp", FEmp);
+        JSONObject f_PAEZ_Department = model.getJSONObject("F_PAEZ_Department");
+        f_PAEZ_Department.putOpt("FNumber", userBean.getFdepartmentNumber());
+        model.putOpt("F_PAEZ_Department", f_PAEZ_Department);
+        model.putOpt("F_PAEZ_ConDate",contractBean.getF_PAEZ_ConDate());
+        model.putOpt("F_PAEZ_ContractBillNo",contractBean.getF_PAEZ_ContractBillNo());
+        model.putOpt("F_PAEZ_PaymentDate",contractBean.getF_PAEZ_PaymentDate());
+        JSONObject f_PAEZ_Supplier = model.getJSONObject("F_PAEZ_Supplier");
+        f_PAEZ_Supplier.putOpt("FNUMBER", contractBean.getF_PAEZ_Supplier_FNumbe());
+        model.putOpt("F_PAEZ_Supplier", f_PAEZ_Supplier);
+
+        model.putOpt("F_UNW_PayAmount",  invoice.getTotalTax() + invoice.getTotalAmount());
+        model.putOpt("F_UNW_InvoiceNo",invoice.getInvoiceNumConfirm());
+        model.putOpt("F_UNW_FPAmount",  invoice.getTotalTax() + invoice.getTotalAmount());
+        model.putOpt("F_UNW_FPNotaxAmount",  invoice.getTotalAmount());
+        model.putOpt("F_UNW_FPtaxAmount",  invoice.getTotalTax() );
+        model.putOpt("F_UNW_ConText",contractBean.getF_UNW_ConText());
+        JSONArray jsonArray = new JSONArray();
+        JSONObject resultObject = new JSONObject();
+        resultObject.putOpt("FBillHead_Link_FRuleId", contractBean.getfBillHead_Link_FRuleId());
+        resultObject.putOpt("FBillHead_Link_FSTableName", contractBean.getfBillHead_Link_FSTableName());
+        resultObject.putOpt("FBillHead_Link_FSBillId", contractBean.getfBillHead_Link_FSBillId());
+        resultObject.putOpt("FBillHead_Link_FSId", contractBean.getfBillHead_Link_FSId());
+        jsonArray.add(resultObject);
+        model.putOpt("FBillHead_Link", jsonArray);
+        jsonObject.putOpt("Model", model);
+        K3CloudApi api = new K3CloudApi();
+        String result = null;
+        try {
+            logger.info("保存票据:{}", jsonObject.toString());
+            result = api.save(saleformid, jsonObject.toString());
+            logger.info("票据返回信息" + result);
+            JSONObject jsonObject1 = JSONUtil.parseObj(result);
+            resultBean= checkResult(jsonObject1, resultBean,invoice,filePath,api,false,saleformid);
+
+        } catch (Exception e) {
+            logger.warn("保存工作汇报失败", e);
+            resultBean.error("保存工作汇报失败");
+        }
+        return resultBean;
+    }
     public static void main(String[] args) throws Exception {
 
         String formId = "UNW_OPINvoiceSP";

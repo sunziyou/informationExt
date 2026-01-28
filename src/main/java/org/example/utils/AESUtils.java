@@ -19,7 +19,7 @@ public class AESUtils {
         AES aes = SecureUtil.aes(key.getBytes());
 
         // 要加密的内容
-        String content = "P@ssw0rd";
+        String content = "WXCjYnA7Rnr21Xke60RBg5kUhTrR6NOU23nA1wqsEaxsafcETI0zz22Zv7N50bGo";
 
         // 加密
         String encryptHex = aes.encryptHex(content);

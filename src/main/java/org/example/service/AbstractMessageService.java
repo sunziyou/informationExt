@@ -117,7 +117,7 @@ public class AbstractMessageService {
         String senderStaffId=chatbotMessage.getSenderStaffId();
         ChatHistory.put(senderStaffId, messages);
     }
-    private OpenAiApi.ChatCompletionMessage createSystem(ChatbotMessage chatbotMessage,String fileName) {
+    protected OpenAiApi.ChatCompletionMessage createSystem(ChatbotMessage chatbotMessage,String fileName) {
         String message = StrUtils.readByResource(fileName);
         Map<String, String> varValue = new HashMap<>();
         varValue.put("input", ChatbotMessageUtils.getUserContent(chatbotMessage));
@@ -125,7 +125,7 @@ public class AbstractMessageService {
         String systemMessage = MessageUtils.createMessage(varValue, message);
         return MessageUtils.createSystemMessage(systemMessage);
     }
-    private OpenAiApi.ChatCompletionMessage CreateUser(ChatbotMessage chatbotMessage) {
+    protected OpenAiApi.ChatCompletionMessage CreateUser(ChatbotMessage chatbotMessage) {
         return MessageUtils.createUserMessage(ChatbotMessageUtils.getUserContent(chatbotMessage));
     }
 }

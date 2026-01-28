@@ -171,4 +171,10 @@ public class Invoice {
     public void setFileType(String fileType) {
         this.fileType = fileType;
     }
+
+    public void enhanceSuperName() {
+        if(sellerName!=null&&(sellerName.startsWith("(")||sellerName.startsWith("（"))){
+            sellerName=sellerName.substring(1,sellerName.length()-1);
+        }
+    }
 }

@@ -12,6 +12,7 @@ import com.dingtalk.open.app.api.models.bot.ChatbotMessage;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.example.service.InvoiceManagerAccessTokenService;
+import org.example.service.ManagerAccessTokenService;
 
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -30,9 +31,9 @@ public class ChatbotMessageUtils {
 
     }
 
-    public static String getInvoiceContent(ChatbotMessage chatbotMessage, Client robotClient, InvoiceManagerAccessTokenService invoiceManagerAccessTokenService) {
+    public static String getInvoiceContent(ChatbotMessage chatbotMessage, Client robotClient, ManagerAccessTokenService managerAccessTokenService) {
         if (Objects.equals(chatbotMessage.getMsgtype(), "picture")||Objects.equals(chatbotMessage.getMsgtype(), "file")) {
-            return getPictureContent(chatbotMessage, robotClient, invoiceManagerAccessTokenService);
+            return getPictureContent(chatbotMessage, robotClient, managerAccessTokenService);
         }
         if (chatbotMessage.getText() == null) {
             if (Objects.equals("audio", chatbotMessage.getMsgtype())) {
@@ -44,11 +45,11 @@ public class ChatbotMessageUtils {
 
     }
 
-    private static String getPictureContent(ChatbotMessage chatbotMessage, Client robotClient, InvoiceManagerAccessTokenService invoiceManagerAccessTokenService) {
+    private static String getPictureContent(ChatbotMessage chatbotMessage, Client robotClient, ManagerAccessTokenService managerAccessTokenService) {
         String downloadCode = chatbotMessage.getContent().getDownloadCode();
         RobotMessageFileDownloadHeaders robotMessageFileDownloadHeaders = new RobotMessageFileDownloadHeaders();
-        robotMessageFileDownloadHeaders.xAcsDingtalkAccessToken = invoiceManagerAccessTokenService.getAccessToken();
-        RobotMessageFileDownloadRequest robotMessageFileDownloadRequest = new RobotMessageFileDownloadRequest().setDownloadCode(downloadCode).setRobotCode(invoiceManagerAccessTokenService.getRobotCode());
+        robotMessageFileDownloadHeaders.xAcsDingtalkAccessToken = managerAccessTokenService.getAccessToken();
+        RobotMessageFileDownloadRequest robotMessageFileDownloadRequest = new RobotMessageFileDownloadRequest().setDownloadCode(downloadCode).setRobotCode(managerAccessTokenService.getRobotCode());
         try {
             RobotMessageFileDownloadResponse robotMessageFileDownloadResponse = robotClient.robotMessageFileDownloadWithOptions(robotMessageFileDownloadRequest, robotMessageFileDownloadHeaders, new RuntimeOptions());
             String downloadUrl = robotMessageFileDownloadResponse.getBody().getDownloadUrl();
@@ -62,7 +63,7 @@ public class ChatbotMessageUtils {
                 }
             }
            // String result = HttpDownloadUtils.getreceiptByBase64File(downloadUrl, invoiceManagerAccessTokenService.getBaiduapiKey());
-            String result =  HttpDownloadUtils.getreceiptTextIn(downloadUrl, invoiceManagerAccessTokenService.getXtiappid(), invoiceManagerAccessTokenService.getXtisecretcode());
+            String result =  HttpDownloadUtils.getreceiptTextIn(downloadUrl, managerAccessTokenService.getXtiappid(), managerAccessTokenService.getXtisecretcode());
             JSONObject jsonObject = JSONUtil.parseObj(result);
            /* JSONObject returnImange= jsonObject.getJSONArray("words_result").getJSONObject(0).getJSONObject("result");
             logger.info("识别发票信息:"+returnImange);

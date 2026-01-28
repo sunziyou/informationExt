@@ -2,13 +2,15 @@ package org.example.service.invoice;
 
 import org.example.entity.Invoice;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 @Service
 public class DbInvoiceService implements InvoiceService {
-    /*@Autowired
-    private JdbcTemplate jdbcTemplate;*/
+    @Autowired
+    @Qualifier("localJdbc")
+    private JdbcTemplate jdbcTemplate;
     @Override
     public int save(Invoice invoice) {
         String sql = "MERGE OP_InvoiceData AS target " +
@@ -29,7 +31,7 @@ public class DbInvoiceService implements InvoiceService {
                 "VALUES (source.FInvoiceNo, source.FInvoiceDate, source.FInvoiceName, source.FEmpName, " +
                 "source.FServiceType, source.FSellerName, source.FPurchaserName, source.FAmount, source.FTax);";
 
-      /*  int count = jdbcTemplate.update(sql,
+        int count = jdbcTemplate.update(sql,
                 invoice.getInvoiceNumConfirm(),
                 invoice.getInvoiceDate(),
                 invoice.getFileName(),
@@ -37,11 +39,11 @@ public class DbInvoiceService implements InvoiceService {
                 invoice.getServiceType(),
                 invoice.getSellerName(),
                 invoice.getPurchaserName(),
-                emptyAsZero(invoice.getTotalAmount()),
-                emptyAsZero(invoice.getTotalTax())
+                emptyAsZero(String.valueOf(invoice.getTotalAmount())),
+                emptyAsZero(String.valueOf(invoice.getTotalTax()))
         );
-        return count;*/
-      return  0;
+        return count;
+     // return  0;
     }
     private Object emptyAsZero(String totalTax) {
         if(totalTax==null ||totalTax.trim().equals("")){

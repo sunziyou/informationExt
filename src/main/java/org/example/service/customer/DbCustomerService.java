@@ -63,20 +63,13 @@ public class DbCustomerService implements  CustomerService{
         String sql2 = "select FConNumber as number,FProName as name,FPMNumber as fPMNumber from VW_ProInfo where FCUSTName=?";
         List<Projectbean> projectbeans = jdbcTemplateK3.query(sql2, new BeanPropertyRowMapper<>(Projectbean.class), customer);
         return  projectbeans;
-        /* String sql2 = "select TOP 5 FcustName from OP_Customer where FcustName like '%"+customer+"%'";
-         return  jdbcTemplate.query(sql2,(rs, rowNum) -> rs.getString("
-         FcustName"));*/
-       /* List<Projectbean> names=new ArrayList<>();
-        Projectbean projectbean1= new Projectbean();
-        projectbean1.setName("项目1");
-        projectbean1.setNumber("pj0001");
-        names.add(projectbean1);
-        if(!customer.contains("殴软")){
-            Projectbean projectbean2 = new Projectbean();
-            projectbean2.setName("项目2");
-            projectbean2.setNumber("pj0002");
-            names.add(projectbean2);
-        }
-        return  names;*/
+
+    }
+
+    @Override
+    public List<CustomBean> queryCustomer(String customer) {
+        String sql2 = "select FCustName as fCustName,FType as fType,FKeyWord as fKeyWord,FPWD as fPWD,FNote as fNote from vw_FCustSVInfo where fCustName like '%"+customer+"%'";
+        List<CustomBean> customBeans = jdbcTemplateK3.query(sql2, new BeanPropertyRowMapper<>(CustomBean.class));
+        return  customBeans;
     }
 }
