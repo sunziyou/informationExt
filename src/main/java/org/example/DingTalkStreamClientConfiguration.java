@@ -112,7 +112,7 @@ public class DingTalkStreamClientConfiguration {
                 //配置应用的身份信息, 企业内部应用分别为appKey和appSecret, 三方应用为suiteKey和suiteSecret
                 .credential(new AuthClientCredential(saleManagerClientId, AESUtils.decrypt(saleManagerClientSecret)))
                 //注册机器人回调
-                .registerCallbackListener(DingTalkStreamTopics.BOT_MESSAGE_TOPIC, aiGraphPluginCallbackListener)
+                .registerCallbackListener(DingTalkStreamTopics.BOT_MESSAGE_TOPIC, saleManagerChatBotCallbackListener)
                 //注册graph api回调
                 .registerCallbackListener(DingTalkStreamTopics.GRAPH_API_TOPIC, aiGraphPluginCallbackListener).build();
     }
@@ -124,7 +124,7 @@ public class DingTalkStreamClientConfiguration {
                 //配置应用的身份信息, 企业内部应用分别为appKey和appSecret, 三方应用为suiteKey和suiteSecret
                 .credential(new AuthClientCredential(customManagerClientId, AESUtils.decrypt(customManagerClientSecret)))
                 //注册机器人回调
-                .registerCallbackListener(DingTalkStreamTopics.BOT_MESSAGE_TOPIC, aiGraphPluginCallbackListener)
+                .registerCallbackListener(DingTalkStreamTopics.BOT_MESSAGE_TOPIC, customManagerChatBotCallbackListener)
                 //注册graph api回调
                 .registerCallbackListener(DingTalkStreamTopics.GRAPH_API_TOPIC, aiGraphPluginCallbackListener).build();
     }

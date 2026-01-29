@@ -43,7 +43,7 @@ public class CustomGroupMessagesService extends AbstractMessageService {
     private final CustomAccessTokenService customAccessTokenService;
     private static final String SEND_URL = "https://oapi.dingtalk.com/topapi/message/corpconversation/asyncsend_v2";
 
-    @Value("${robot.deliver.code}")
+    @Value("${robot.customerManager.code}")
     private String robotCode;
 
     @Value("${module}")

@@ -5,7 +5,8 @@ public class ContractBean {
     private String  f_PAEZ_ContractBillNo;
     private String f_UNW_ConText;
     private String f_PAEZ_Supplier_Name;
-    private String f_PAEZ_ConStatus;
+    private String fStaffName;
+
     private String f_PAEZ_ConAmount;
     private String f_PAEZ_APAMOUNT;
 
@@ -20,14 +21,29 @@ public class ContractBean {
     private String fBillHead_Link_FSTableName;
     private String fBillHead_Link_FSBillId;
     private String fBillHead_Link_FSId;
+
+    private String fSTAFFNUMBER;
     @Override
     public String toString() {
         return  "合同号:" + f_PAEZ_ContractBillNo +"\n"+
                 "合同内容：" + f_UNW_ConText  +"\n"+
                 "供应商名称:" + f_PAEZ_Supplier_Name +"\n"+
                 "合同金额:" + f_PAEZ_ConAmount+"\n"+
+                "销售人员:"+fStaffName+"\n"+
                 "已付款金额:" + f_PAEZ_APAMOUNT+"\n"+
                 "未付款金额:" + (Double.parseDouble(f_PAEZ_ConAmount) - Double.parseDouble(f_PAEZ_APAMOUNT))+"\n";
+    }
+
+    public String getF_PAEZ_Supplier_FNumber() {
+        return f_PAEZ_Supplier_FNumber;
+    }
+
+    public String getfSTAFFNUMBER() {
+        return fSTAFFNUMBER;
+    }
+
+    public void setfSTAFFNUMBER(String fSTAFFNUMBER) {
+        this.fSTAFFNUMBER = fSTAFFNUMBER;
     }
 
     public String getF_PAEZ_ContractBillNo() {
@@ -54,13 +70,7 @@ public class ContractBean {
         this.f_PAEZ_Supplier_Name = f_PAEZ_Supplier_Name;
     }
 
-    public String getF_PAEZ_ConStatus() {
-        return f_PAEZ_ConStatus;
-    }
 
-    public void setF_PAEZ_ConStatus(String f_PAEZ_ConStatus) {
-        this.f_PAEZ_ConStatus = f_PAEZ_ConStatus;
-    }
 
     public String getF_PAEZ_ConAmount() {
         return f_PAEZ_ConAmount;
@@ -112,6 +122,14 @@ public class ContractBean {
 
     public void setfBillHead_Link_FSBillId(String fBillHead_Link_FSBillId) {
         this.fBillHead_Link_FSBillId = fBillHead_Link_FSBillId;
+    }
+
+    public String getfStaffName() {
+        return fStaffName;
+    }
+
+    public void setfStaffName(String fStaffName) {
+        this.fStaffName = fStaffName;
     }
 
     public String getfBillHead_Link_FSId() {

@@ -33,7 +33,7 @@ public class BillService {
     private static Logger logger = LogManager.getLogger(BillService.class);
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
     private static  final String formid="UNW_OPINvoiceSP";
-    private static  final String saleformid="UNW_OPINvoiceSP";
+    private static  final String saleformid="PAEZ_PaymentBill";
     @Autowired
     private K3userService k3userService;
 
@@ -210,14 +210,14 @@ public class BillService {
         model.putOpt("FCreateDate", currentDate);
         model.putOpt("F_PAEZ_ConAmount",contractBean.getF_PAEZ_ConAmount());
         JSONObject FEmp = model.getJSONObject("FEmp");
-        FEmp.putOpt("FSTAFFNUMBER", userBean.getfSecUserNo());
+        FEmp.putOpt("FSTAFFNUMBER", contractBean.getfSTAFFNUMBER());
         model.putOpt("FEmp", FEmp);
         JSONObject f_PAEZ_Department = model.getJSONObject("F_PAEZ_Department");
         f_PAEZ_Department.putOpt("FNumber", userBean.getFdepartmentNumber());
         model.putOpt("F_PAEZ_Department", f_PAEZ_Department);
         model.putOpt("F_PAEZ_ConDate",contractBean.getF_PAEZ_ConDate());
         model.putOpt("F_PAEZ_ContractBillNo",contractBean.getF_PAEZ_ContractBillNo());
-        model.putOpt("F_PAEZ_PaymentDate",contractBean.getF_PAEZ_PaymentDate());
+        model.putOpt("F_PAEZ_PaymentDate",currentDate.substring(0,10));
         JSONObject f_PAEZ_Supplier = model.getJSONObject("F_PAEZ_Supplier");
         f_PAEZ_Supplier.putOpt("FNUMBER", contractBean.getF_PAEZ_Supplier_FNumbe());
         model.putOpt("F_PAEZ_Supplier", f_PAEZ_Supplier);
@@ -240,12 +240,17 @@ public class BillService {
         K3CloudApi api = new K3CloudApi();
         String result = null;
         try {
-            logger.info("保存票据:{}", jsonObject.toString());
+            logger.info("保存票据:{},formId:{}", jsonObject.toString(),saleformid);
             result = api.save(saleformid, jsonObject.toString());
             logger.info("票据返回信息" + result);
             JSONObject jsonObject1 = JSONUtil.parseObj(result);
             resultBean= checkResult(jsonObject1, resultBean,invoice,filePath,api,false,saleformid);
-
+            String date="{\"CreateOrgId\": 0,\"Numbers\": [],\"Ids\": \"110632\",\"SelectedPostId\": 0,\"UseOrgId\": 0,\"NetworkCtrl\": \"\",\"IgnoreInterationFlag\": \"\"}";
+            JSONObject datejson = JSONUtil.parseObj(date);
+            datejson.putOpt("Ids", invoice.getId());
+            logger.info("提交票据:{},formId:{}", datejson.toString(),saleformid);
+            String submit = api.submit(saleformid, datejson.toString());
+            logger.info("票据提交返回信息:" + submit);
         } catch (Exception e) {
             logger.warn("保存工作汇报失败", e);
             resultBean.error("保存工作汇报失败");

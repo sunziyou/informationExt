@@ -53,7 +53,7 @@ public class SaleManagerMessagesService implements InitializingBean {
     private LinkedBlockingQueue<BoxChatbotMessage> linkedBlockingQueue = new LinkedBlockingQueue<>(1000);
     private static final String SEND_URL = "https://oapi.dingtalk.com/topapi/message/corpconversation/asyncsend_v2";
 
-    @Value("${robot.invoiceManager.code}")
+    @Value("${robot.saleManager.code}")
     private String robotCode;
 
     @Value("${module}")
@@ -67,6 +67,7 @@ public class SaleManagerMessagesService implements InitializingBean {
     private DbInvoiceService dbInvoiceService;
     @Autowired
     private OpenAiApi openAiApi;
+    @Autowired
     private ContractService contractService;
 
 
@@ -195,6 +196,7 @@ public class SaleManagerMessagesService implements InitializingBean {
                 .onErrorResume(e -> {
                     return Mono.just(e.getMessage()); // 返回默认值
                 }).block(Duration.ofSeconds(240));
+        logger.info("大模型返回信息:" + fullContent);
         return fullContent;
     }
 
@@ -290,12 +292,12 @@ public class SaleManagerMessagesService implements InitializingBean {
            return;
         }
         if(contractBeans.size()==1){
-            ResultBean resultBean =billService.saveSaleInvoice(invoice,saleManagerAccessTokenService.getSavePath(),contractBeans.get(0));
+            ResultBean resultBean =saveSaleInvoice(invoice,contractBeans.get(0));
             if(resultBean.getCode()!=0){
                 sendMessage("任务失败,移除任务,请重新上传发票,供应商:"+invoice.getSellerName()+",失败原因:"+resultBean.getMessage(),chatbotMessage.getSenderStaffId());
                 return;
             }
-            sendMessage("信息已保存成功:"+contractBeans.get(0),chatbotMessage.getSenderStaffId());
+            sendMessage("信息已保存成功\n"+contractBeans.get(0),chatbotMessage.getSenderStaffId());
             return;
         }
         StringBuffer buffer = new StringBuffer("当前查询到以下合同信息，请回复对应的序号来选择:"+"\n");
@@ -305,11 +307,15 @@ public class SaleManagerMessagesService implements InitializingBean {
             buffer.append(contractBean.toString()+"\n");
             count++;
         }
-        buffer.append("请输入合同编号:(1-"+contractBeans.size()+1+")"+"\n");
-        buffer.append("最重要指令:你的返回只能是1-"+contractBeans.size()+1+"的序号数字数字,不要包含其他的任何信息，只需要一个数字编号就可以");
+        buffer.append("请输入合同编号:(1-"+contractBeans.size()+")"+"\n");
+        String userInfo=buffer.toString();
+        buffer.append("最重要指令:你的返回只能根据用户回答返回对应的序号(1-"+contractBeans.size()+"),不要包含其他的任何信息，只需要一个数字编号就可以");
         queueMap.put(chatbotMessage.getSenderStaffId(),new ArrayBlockingQueue<>(10));
-        sendMessage(buffer.toString(),chatbotMessage.getSenderStaffId());
+        sendMessage(userInfo,chatbotMessage.getSenderStaffId());
         BlockingQueue<String> anwsers = queueMap.get(chatbotMessage.getSenderStaffId());
+        OpenAiApi.ChatCompletionMessage systemMessage = MessageUtils.createSystemMessage(buffer.toString());
+        List<OpenAiApi.ChatCompletionMessage> messages = new ArrayList<>();
+        messages.add(systemMessage);
         try {
             int errorCount =1;
             while(true){
@@ -318,10 +324,7 @@ public class SaleManagerMessagesService implements InitializingBean {
                     sendMessage("超时未回答,移除任务,请重新上传发票,供应商:"+invoice.getSellerName(),chatbotMessage.getSenderStaffId());
                     return;
                 }
-                buffer.append("用户回答:"+answer);
-                OpenAiApi.ChatCompletionMessage systemMessage = MessageUtils.createSystemMessage(buffer.toString());
-                List<OpenAiApi.ChatCompletionMessage> messages = new ArrayList<>();
-                messages.add(systemMessage);
+                messages.add(MessageUtils.createUserMessage(answer));
                 String s = callLLMOriginal(messages);
                 if(errorCount>3){
                     sendMessage("回答错误次数超过3次,移除任务,请重新上传发票,供应商:"+invoice.getSellerName(),chatbotMessage.getSenderStaffId());
@@ -329,25 +332,25 @@ public class SaleManagerMessagesService implements InitializingBean {
                 }
                 messages.add(MessageUtils.createAssistantMessage(s));
                 if(!StrUtils.isNumericChar(s)){
-                  String assentmessages="你的返回只能是1-"+contractBeans.size()+1+"的序号数字数字,不要包含其他的任何信息，只需要一个数字编号就可以";
+                  String assentmessages="你的返回只能是1-"+contractBeans.size()+"的序号数字数字,不要包含其他的任何信息，只需要一个数字编号就可以";
                   messages.add(MessageUtils.createUserMessage(assentmessages));
                   errorCount++;
                   continue;
                 }
-                int index = Integer.parseInt(s)-1;
-                if(index<0||index>=contractBeans.size()){
-                    String assentmessages="你的返回只能是1-"+contractBeans.size()+1+"的序号数字数字,不要包含其他的任何信息，只需要一个数字编号就可以";
+                int index = Integer.parseInt(s);
+                if(index<1||index>contractBeans.size()){
+                    String assentmessages="你的返回只能是1-"+contractBeans.size()+"的序号数字数字,不要包含其他的任何信息，只需要一个数字编号就可以";
                     messages.add(MessageUtils.createUserMessage(assentmessages));
                     errorCount++;
                     continue;
                 }
                 ContractBean contractBean = contractBeans.get(index-1);
-                ResultBean resultBean = billService.saveSaleInvoice(invoice,saleManagerAccessTokenService.getSavePath(),contractBean);
+                ResultBean resultBean = saveSaleInvoice(invoice,contractBean);
                 if(resultBean.getCode()!=0){
                     sendMessage("任务失败,移除任务,请重新上传发票,供应商:"+invoice.getSellerName()+",失败原因:"+resultBean.getMessage(),chatbotMessage.getSenderStaffId());
                     return;
                 }
-                sendMessage("信息已保存成功:"+contractBean,chatbotMessage.getSenderStaffId());
+                sendMessage("信息已保存成功\n"+contractBean,chatbotMessage.getSenderStaffId());
                 break;
             }
 
