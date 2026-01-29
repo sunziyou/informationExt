@@ -5,6 +5,8 @@ public class UserBean {
     private String fSecUserID="API2888822";
     private String fSecUserNo="-1";
 
+    private String userName;
+
     public String getFdepartmentNumber() {
         return fdepartmentNumber;
     }
@@ -23,6 +25,14 @@ public class UserBean {
 
     public String getfSecUserNo() {
         return fSecUserNo;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public void setfSecUserNo(String fSecUserNo) {

@@ -51,11 +51,11 @@ public class CustomBean {
 
     @Override
     public String toString() {
-        return  "客户名称:" + fCustName +
-                ", 类型:" + fType +
-                ", 内容:" + fKeyWord +
-                ", 密码:" + fPWD +
-                ", 备注:'" + fNote ;
+        return  "客户名称:" + fCustName +"\n"+
+                "类型:" + fType +"\n"+
+                "内容:" + fKeyWord +"\n"+
+                "密码:" + fPWD +"\n"+
+                "备注:" + fNote +"\n";
 
     }
 }

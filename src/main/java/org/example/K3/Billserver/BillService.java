@@ -7,6 +7,8 @@ import cn.hutool.json.JSONUtil;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.kingdee.bos.webapi.entity.OperateParam;
+import com.kingdee.bos.webapi.sdk.ApiRequester;
 import com.kingdee.bos.webapi.sdk.K3CloudApi;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -203,125 +205,83 @@ public class BillService {
             return resultBean;
         }
         String currentDate = formatter.format(LocalDateTime.now());
-        JSONObject model = jsonObject.getJSONObject("Model");
-        JSONObject fCreatorId = model.getJSONObject("FCreatorId");
-        fCreatorId.putOpt("FUserID", userBean.getfSecUserID());
-        model.putOpt("FCreatorId", fCreatorId);
-        model.putOpt("FCreateDate", currentDate);
-        model.putOpt("F_PAEZ_ConAmount",contractBean.getF_PAEZ_ConAmount());
-        JSONObject FEmp = model.getJSONObject("FEmp");
-        FEmp.putOpt("FSTAFFNUMBER", contractBean.getfSTAFFNUMBER());
-        model.putOpt("FEmp", FEmp);
-        JSONObject f_PAEZ_Department = model.getJSONObject("F_PAEZ_Department");
-        f_PAEZ_Department.putOpt("FNumber", userBean.getFdepartmentNumber());
-        model.putOpt("F_PAEZ_Department", f_PAEZ_Department);
-        model.putOpt("F_PAEZ_ConDate",contractBean.getF_PAEZ_ConDate());
-        model.putOpt("F_PAEZ_ContractBillNo",contractBean.getF_PAEZ_ContractBillNo());
-        model.putOpt("F_PAEZ_PaymentDate",currentDate.substring(0,10));
-        JSONObject f_PAEZ_Supplier = model.getJSONObject("F_PAEZ_Supplier");
-        f_PAEZ_Supplier.putOpt("FNUMBER", contractBean.getF_PAEZ_Supplier_FNumbe());
-        model.putOpt("F_PAEZ_Supplier", f_PAEZ_Supplier);
-
-        model.putOpt("F_UNW_PayAmount",  invoice.getTotalTax() + invoice.getTotalAmount());
-        model.putOpt("F_UNW_InvoiceNo",invoice.getInvoiceNumConfirm());
-        model.putOpt("F_UNW_FPAmount",  invoice.getTotalTax() + invoice.getTotalAmount());
-        model.putOpt("F_UNW_FPNotaxAmount",  invoice.getTotalAmount());
-        model.putOpt("F_UNW_FPtaxAmount",  invoice.getTotalTax() );
-        model.putOpt("F_UNW_ConText",contractBean.getF_UNW_ConText());
-        JSONArray jsonArray = new JSONArray();
-        JSONObject resultObject = new JSONObject();
-        resultObject.putOpt("FBillHead_Link_FRuleId", contractBean.getfBillHead_Link_FRuleId());
-        resultObject.putOpt("FBillHead_Link_FSTableName", contractBean.getfBillHead_Link_FSTableName());
-        resultObject.putOpt("FBillHead_Link_FSBillId", contractBean.getfBillHead_Link_FSBillId());
-        resultObject.putOpt("FBillHead_Link_FSId", contractBean.getfBillHead_Link_FSId());
-        jsonArray.add(resultObject);
-        model.putOpt("FBillHead_Link", jsonArray);
-        jsonObject.putOpt("Model", model);
-        K3CloudApi api = new K3CloudApi();
-        String result = null;
         try {
-            logger.info("保存票据:{},formId:{}", jsonObject.toString(),saleformid);
-            result = api.save(saleformid, jsonObject.toString());
-            logger.info("票据返回信息" + result);
-            JSONObject jsonObject1 = JSONUtil.parseObj(result);
-            resultBean= checkResult(jsonObject1, resultBean,invoice,filePath,api,false,saleformid);
-            String date="{\"CreateOrgId\": 0,\"Numbers\": [],\"Ids\": \"110632\",\"SelectedPostId\": 0,\"UseOrgId\": 0,\"NetworkCtrl\": \"\",\"IgnoreInterationFlag\": \"\"}";
-            JSONObject datejson = JSONUtil.parseObj(date);
-            datejson.putOpt("Ids", invoice.getId());
-            logger.info("提交票据:{},formId:{}", datejson.toString(),saleformid);
-            String submit = api.submit(saleformid, datejson.toString());
-            logger.info("票据提交返回信息:" + submit);
-        } catch (Exception e) {
-            logger.warn("保存工作汇报失败", e);
-            resultBean.error("保存工作汇报失败");
+            JSONObject model = jsonObject.getJSONObject("Model");
+            JSONObject fCreatorId = model.getJSONObject("FCreatorId");
+            fCreatorId.putOpt("FUserID", userBean.getfSecUserID());
+            model.putOpt("FCreatorId", fCreatorId);
+            model.putOpt("FCreateDate", currentDate);
+            model.putOpt("F_PAEZ_ConAmount",contractBean.getF_PAEZ_ConAmount());
+            JSONObject FEmp = model.getJSONObject("FEmp");
+            FEmp.putOpt("FSTAFFNUMBER", contractBean.getfSTAFFNUMBER());
+            model.putOpt("FEmp", FEmp);
+            JSONObject f_PAEZ_Department = model.getJSONObject("F_PAEZ_Department");
+            f_PAEZ_Department.putOpt("FNumber", userBean.getFdepartmentNumber());
+            model.putOpt("F_PAEZ_Department", f_PAEZ_Department);
+            model.putOpt("F_PAEZ_ConDate",contractBean.getF_PAEZ_ConDate());
+            model.putOpt("F_PAEZ_ContractBillNo",contractBean.getF_PAEZ_ContractBillNo());
+            model.putOpt("F_PAEZ_PaymentDate",currentDate.substring(0,10));
+            JSONObject f_PAEZ_Supplier = model.getJSONObject("F_PAEZ_Supplier");
+            f_PAEZ_Supplier.putOpt("FNUMBER", contractBean.getF_PAEZ_Supplier_FNumbe());
+            model.putOpt("F_PAEZ_Supplier", f_PAEZ_Supplier);
+            JSONObject fModifierld = new JSONObject();
+            fModifierld.putOpt("FUserID", userBean.getfSecUserID());
+            model.putOpt("FModifierId",fModifierld);
+            model.putOpt("F_UNW_PayAmount",  invoice.getTotalTax() + invoice.getTotalAmount());
+            model.putOpt("F_UNW_InvoiceNo",invoice.getInvoiceNumConfirm());
+            model.putOpt("F_UNW_FPAmount",  invoice.getTotalTax() + invoice.getTotalAmount());
+            model.putOpt("F_UNW_FPNotaxAmount",  invoice.getTotalAmount());
+            model.putOpt("F_UNW_FPtaxAmount",  invoice.getTotalTax() );
+            model.putOpt("F_UNW_ConText",contractBean.getF_UNW_ConText());
+            JSONArray jsonArray = new JSONArray();
+            JSONObject resultObject = new JSONObject();
+            resultObject.putOpt("FBillHead_Link_FRuleId", contractBean.getfBillHead_Link_FRuleId());
+            resultObject.putOpt("FBillHead_Link_FSTableName", contractBean.getfBillHead_Link_FSTableName());
+            resultObject.putOpt("FBillHead_Link_FSBillId", contractBean.getfBillHead_Link_FSBillId());
+            resultObject.putOpt("FBillHead_Link_FSId", contractBean.getfBillHead_Link_FSId());
+            jsonArray.add(resultObject);
+            model.putOpt("FBillHead_Link", jsonArray);
+            jsonObject.putOpt("Model", model);
+            K3CloudApi api = new K3CloudApi();
+            String result = null;
+            try {
+                logger.info("保存票据:{},formId:{}", jsonObject.toString(),saleformid);
+                result = api.save(saleformid, jsonObject.toString());
+                logger.info("票据返回信息" + result);
+                JSONObject jsonObject1 = JSONUtil.parseObj(result);
+                ApiRequester.K3CloudContext.set(userBean.getUserName());
+                api = new K3CloudApi();
+                logger.info("当前用户:" + ApiRequester.K3CloudContext.get());
+                resultBean= checkResult(jsonObject1, resultBean,invoice,filePath,api,false,saleformid);
+                String date="{\"CreateOrgId\": 0,\"Numbers\": [],\"Ids\": \"110632\",\"SelectedPostId\": 0,\"UseOrgId\": 0,\"NetworkCtrl\": \"\",\"IgnoreInterationFlag\": \"\"}";
+                JSONObject datejson = JSONUtil.parseObj(date);
+                JSONObject model1 = new JSONObject();
+                JSONObject fModifier = new JSONObject();
+                fModifierld.putOpt("FUserID", userBean.getfSecUserID());
+                model1.putOpt("FModifierId",fModifier);
+                datejson.putOpt("Model",model1);
+                datejson.putOpt("Ids", invoice.getId());
+                logger.info("提交票据:{},formId:{}", datejson.toString(),saleformid);
+
+                String submit = api.submit(saleformid, datejson.toString());
+                logger.info("票据提交返回信息:" + submit);
+            } catch (Exception e) {
+                logger.warn("保存工作汇报失败", e);
+                resultBean.error("保存工作汇报失败");
+            }
+            return resultBean;
+        }finally {
+            ApiRequester.K3CloudContext.remove();
         }
-        return resultBean;
+
     }
     public static void main(String[] args) throws Exception {
 
-        String formId = "UNW_OPINvoiceSP";
-        String billNo = "25117000001389086695";
-        String id = "100047";
-        String fileName="滴滴电子发票.pdf";
-        String filePath = "C:\\Users\\supersun\\Desktop\\发票"+ File.separator + fileName;
-        ResultBean resultBean = new ResultBean();
-        int blockSize = 3*1024 * 1024; // 分块大小：1M
-        File file = new File(filePath);
-        if (file.length() <= 0) {
-            resultBean.error("文件内容为空");
-           return;
-        }
-        FileInputStream fis=null;
-        try {
-            fis = new FileInputStream(file);
-        } catch (FileNotFoundException e) {
-            resultBean.error("文件不存在");
-            System.out.println(resultBean.getMessage());
-            return;
-        }
-        byte[] content = new byte[blockSize];
-        String fileId = "";
-        int count=0;
+        String json="{\"CreateOrgId\": 0,\"Numbers\": [],\"Ids\": \"110636\",\"SelectedPostId\": 0,\"UseOrgId\": 0,\"NetworkCtrl\": \"\",\"IgnoreInterationFlag\": \"\"}";
         K3CloudApi api = new K3CloudApi();
-        while (true) {
-            try {
-                int size = fis.read(content);
-                if (size == 0) {
-                    break;
-                }
-                count++;
-                if(count>10){
-                    resultBean.error("附件太大放弃上传");
-                }
-                boolean isLast = (size != blockSize);
-                byte[] uploadBytes = Arrays.copyOf(content, size);
-                String fileBase64String = Base64.encode(uploadBytes);
-                Map<String, Object> request = new HashMap<>();
-                request.put("FileName",fileName);
-               /* request.put("FormId", formId);*/
-                request.put("IsLast", isLast);
-              /*  request.put("InterId", id);
-                request.put("BillNo", billNo);*/
-               /* request.put("AliasFileName", fileName);*/
-                request.put("FileId ", fileId);
-                logger.info("上传附件数据:"+JSONUtil.toJsonStr(request));
-                request.put("SendByte", fileBase64String);
-                String result = api.attachmentUpload(new Gson().toJson(request));
-                logger.info("上传附件结果:"+result);
-                JSONObject resultObject = JSONUtil.parseObj(result);
-                JSONObject data = resultObject.getJSONObject("Result");
-                // 第一个分块上传时，FileId是空，从第二个分块开始，FileId不能再为空
-                fileId = data.getStr("FileId");
-                if (isLast) {
-                    break;
-                }
-            }catch (Exception e){
-                logger.warn("上传附件错误",e);
-                resultBean.error("上传附件错误"+e.getMessage());
-                return ;
-            }
-        }
-        return ;
-
+        ApiRequester.K3CloudContext.set("杜明闪");
+        String submit = api.submit(saleformid, json);
+        ApiRequester.K3CloudContext.remove();
+        System.out.println("票据提交返回信息:" + submit);
     }
 }

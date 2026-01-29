@@ -102,7 +102,18 @@ public class CustomGroupMessagesService extends AbstractMessageService {
             CustomHistory.invalidate(chatbotMessage.getSenderStaffId());
             return "历史消息已经清除";
         }
-
+        String userContent1 = ChatbotMessageUtils.getUserContent(chatbotMessage);
+        List<CustomBean> customBeans = dbCustomerService.queryCustomer(userContent1);
+        if(customBeans.size()>0){
+            StringBuffer buffer = new StringBuffer("获取到如下客户:\n");
+            int count=1;
+            for (CustomBean customBean : customBeans) {
+                buffer.append(count+"."+customBean.toString()).append("\n");
+                count++;
+            }
+            CustomHistory.invalidate(chatbotMessage.getSenderStaffId());
+            return buffer.toString();
+        }
         List<OpenAiApi.ChatCompletionMessage> messages = getMessages(chatbotMessage, "user.txt");
         logger.info("请求内容:"+messages);
         String jsonString = OpenAiUtils.invokeLLm(openAiApi, messages, moduleName);
@@ -110,9 +121,9 @@ public class CustomGroupMessagesService extends AbstractMessageService {
         addAssistToHistory(messages, chatbotMessage, jsonString);
         cn.hutool.json.JSONObject customJson = JSONUtil.parseObj(jsonString);
         String message = "无法获取用户名,请补充";
-        if(customJson.containsKey("userName")&&!StringUtils.isEmpty(customJson.getStr("userName"))){
-            String userName = customJson.getStr("userName");
-            List<CustomBean> customBeans = dbCustomerService.queryCustomer(userName);
+        if(customJson.containsKey("customer")&&!StringUtils.isEmpty(customJson.getStr("customer"))){
+            String customer = customJson.getStr("customer");
+             customBeans = dbCustomerService.queryCustomer(customer);
             if(customBeans.size()>0){
                 StringBuffer buffer = new StringBuffer("获取到如下客户:\n");
                 int count=1;
@@ -123,7 +134,7 @@ public class CustomGroupMessagesService extends AbstractMessageService {
                 CustomHistory.invalidate(chatbotMessage.getSenderStaffId());
                 return buffer.toString();
             }
-            message = "无法获取用户信息，请确认用户名:"+userName+"是否正确";
+            message = "无法获取用户信息，请确认用户名:"+customer+"是否正确";
         }
 
         OpenAiApi.ChatCompletionMessage userMessage = MessageUtils.createUserMessage(message);
